@@ -1,0 +1,27 @@
+# Entornos virtuales
+venv/
+.env
+
+# Archivos de configuración sensibles
+credentials.json
+instance/
+
+# Cachés y compilados
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos de logs
+logs/
+
+# Modelos locales
+models/*.gguf
+
+# Archivos temporales
+*.tmp
+*.log
+
+# Archivos de IDE
+.vscode/
+.idea/
