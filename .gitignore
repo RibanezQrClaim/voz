@@ -1,27 +1,33 @@
-# Entornos virtuales
+# Entorno virtual de Python
 venv/
-.env
+/venv/
+*.venv
+.venv
 
-# Archivos de configuración sensibles
-credentials.json
-instance/
-
-# Cachés y compilados
+# Archivos de caché de Python
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
+
+# Archivos de base de datos
+*.db
+*.sqlite3
+
+# Archivos de configuración y credenciales (¡MUY IMPORTANTE!)
+*.env
+credentials.json
+token.json
 
 # Archivos de logs
 logs/
-
-# Modelos locales
-models/*.gguf
-
-# Archivos temporales
-*.tmp
 *.log
+*.jsonl
 
-# Archivos de IDE
-.vscode/
-.idea/
+# Modelos de Lenguaje y archivos pesados
+*.gguf
+*.zip
+*.rar
+*.7z
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
