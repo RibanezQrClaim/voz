@@ -1,0 +1,76 @@
+[09:12:34] 🗣️ Comando recibido: ¿Quién me escribió hoy?
+[09:12:34] ❌ Error en procesamiento: 'module' object is not callable
+[09:15:37] 🗣️ Comando recibido: ¿Quién me escribió hoy?
+[09:15:37] ❌ Error en procesamiento: 'module' object is not callable
+[09:23:50] 🗣️ Comando recibido: ¿Quién me escribió hoy?
+[09:23:50] ❌ Error en procesamiento: 'module' object is not callable
+[09:24:46] 🗣️ Comando recibido: ¿Quién me escribió hoy?
+[09:24:46] ❌ Error en procesamiento: 'module' object is not callable
+[09:30:45] 🗣️ Comando recibido: ¿Quién me escribió hoy?
+[09:30:45] ❌ Error en procesamiento: 'module' object is not callable
+[09:37:10] 🗣️ Comando recibido: ¿Quién me escribió hoy?
+[09:37:14] 🔍 Intención detectada: {'accion': 'remitentes_hoy'}
+[09:37:15] 📤 Respuesta generada: No recibiste correos hoy.
+[09:37:21] 🗣️ Comando recibido: ¿Tengo correos sin leer?
+[09:37:21] 🔍 Intención detectada: {'accion': 'contar_no_leidos'}
+[09:37:22] 📤 Respuesta generada: Tienes 100 correos sin leer.
+[09:37:28] 🗣️ Comando recibido: dame el ultimo correo
+[09:37:28] 🔍 Intención detectada: {'accion': 'leer_ultimo'}
+[09:37:29] 📤 Respuesta generada: El correo más reciente es:
+
+📩 De: DF BRANDS <dfbrands@dfbrands.cl>
+📌 Asunto: ¡Descarga tu entrada gratis para Expo Agua 2025!
+[09:45:29] 🗣️ Comando recibido: ¿Quién me escribió hoy?
+[09:45:29] 🔍 Intención detectada: {'accion': 'remitentes_hoy'}
+[09:45:30] 📤 Respuesta generada: No recibiste correos hoy.
+[09:45:33] 🗣️ Comando recibido: Resúmeme los correos
+[09:45:33] 🔍 Intención detectada: {'accion': 'resumen_hoy'}
+[09:45:34] 📤 Respuesta generada: No tienes correos nuevos hoy.
+[09:45:36] 🗣️ Comando recibido: ¿Tengo correos sin leer?
+[09:45:36] 🔍 Intención detectada: {'accion': 'contar_no_leidos'}
+[09:45:36] 📤 Respuesta generada: Tienes 27 correos sin leer.
+[09:45:41] 🗣️ Comando recibido: ultimo correo
+[09:45:42] 🔍 Intención detectada: {'accion': 'leer_ultimo'}
+[09:45:43] 📤 Respuesta generada: El correo más reciente es:
+
+📩 De: Google <no-reply@accounts.google.com>
+📌 Asunto: Alerta de seguridad para rodrigo.ibanezm@gmail.com
+[09:45:54] 🗣️ Comando recibido: resume el ultimo correo
+[09:45:54] 🔍 Intención detectada: {'accion': 'resumen_hoy'}
+[09:45:55] 📤 Respuesta generada: No tienes correos nuevos hoy.
+[09:46:08] 🗣️ Comando recibido: tengo correos de ayer?
+[09:46:08] 🔍 Intención detectada: {'accion': 'contar_no_leidos'}
+[09:46:09] 📤 Respuesta generada: Tienes 27 correos sin leer.
+[12:02:44] 🗣️ Comando recibido: quién me escribió hoy
+[12:02:45] 🔍 Intención detectada: {'accion': 'remitentes_hoy'}
+[12:02:46] 📤 Respuesta generada: No recibiste correos hoy.
+[12:02:52] 🗣️ Comando recibido: Resúmeme los correos
+[12:02:52] 🔍 Intención detectada: {'accion': 'resumen_hoy'}
+[12:02:52] 📤 Respuesta generada: No tienes correos nuevos hoy.
+[12:02:55] 🗣️ Comando recibido: ¿Tengo correos sin leer?
+[12:02:55] 🔍 Intención detectada: {'accion': 'contar_no_leidos'}
+[12:02:56] 📤 Respuesta generada: Tienes 100 correos sin leer.
+[12:03:49] 🗣️ Comando recibido: ¿Quién me escribió hoy?
+[12:03:49] 🔍 Intención detectada: {'accion': 'remitentes_hoy'}
+[12:03:51] 📤 Respuesta generada: rodrigo ibanez
+[12:03:56] 🗣️ Comando recibido: Resúmeme los correos
+[12:03:56] 🔍 Intención detectada: {'accion': 'resumen_hoy'}
+[12:05:07] 📤 Respuesta generada: QrClaim no quebró por tener un mal producto. Quebró porque el modelo
+completo —desde cómo lo posicionamos hasta cómo lo vendimos y cuándo
+salimos al mercado— tenía fallas estratégicas fundamentales.
+
+Lección 1: El Posicionamiento. Vendíamos un Conflicto, no una Solución.
+
+Nuestra palabra clave...
+[12:12:19] 🗣️ Comando recibido: ¿Tengo correos sin leer?
+[12:12:20] 🔍 Intención detectada: {'accion': 'contar_no_leidos'}
+[12:12:21] 📤 Respuesta generada: Tienes 100 correos sin leer.
+[12:12:47] 🗣️ Comando recibido: quiero el ultimo correo
+[12:12:47] 🔍 Intención detectada: {'accion': 'leer_ultimo'}
+[12:12:48] 📤 Respuesta generada: El correo más reciente es:
+
+📩 De: rodrigo ibanez <rodrigo@qrclaim.com>
+📌 Asunto: test
+[12:12:56] 🗣️ Comando recibido: cuenta un chiste
+[12:12:56] 🔍 Intención detectada: {'accion': 'desconocido'}
+[12:12:56] 📤 Respuesta generada: Lo siento, no entendí lo que quieres hacer.

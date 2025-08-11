@@ -1,0 +1,23 @@
+{"ts": "2025-08-07T23:10:34.928350", "usuario_id": "1", "comando": "¿Quién me escribió hoy?", "intencion": {"accion": "remitentes_hoy"}}
+{"ts": "2025-08-07T23:23:44.732243", "usuario_id": "1", "comando": "Qué me llegó más recientemente", "intencion": {"accion": "leer_ultimo"}}
+{"ts": "2025-08-07T23:24:53.209078", "usuario_id": "1", "comando": "Cuál es mi último correo?", "intencion": {"accion": "leer_ultimo"}}
+{"ts": "2025-08-07T23:30:12.071756", "usuario_id": "1", "comando": "Cuál es mi último correo\"", "intencion": {"accion": "leer_ultimo"}}
+{"ts": "2025-08-07T23:30:46.463527", "usuario_id": "1", "comando": "tengo algo urgente?", "intencion": {"accion": "correos_importantes"}}
+{"ts": "2025-08-07T23:30:54.529112", "usuario_id": "1", "comando": "cual es el correo importante?", "intencion": {"accion": "leer_ultimo"}}
+{"ts": "2025-08-08T09:37:14.593340", "usuario_id": "1", "comando": "¿Quién me escribió hoy?", "intencion": {"accion": "remitentes_hoy"}}
+{"ts": "2025-08-08T09:37:21.590982", "usuario_id": "1", "comando": "¿Tengo correos sin leer?", "intencion": {"accion": "contar_no_leidos"}}
+{"ts": "2025-08-08T09:37:28.093065", "usuario_id": "1", "comando": "dame el ultimo correo", "intencion": {"accion": "leer_ultimo"}}
+{"ts": "2025-08-08T09:45:29.904853", "usuario_id": "1", "comando": "¿Quién me escribió hoy?", "intencion": {"accion": "remitentes_hoy"}}
+{"ts": "2025-08-08T09:45:33.404956", "usuario_id": "1", "comando": "Resúmeme los correos", "intencion": {"accion": "resumen_hoy"}}
+{"ts": "2025-08-08T09:45:36.053566", "usuario_id": "1", "comando": "¿Tengo correos sin leer?", "intencion": {"accion": "contar_no_leidos"}}
+{"ts": "2025-08-08T09:45:42.023639", "usuario_id": "1", "comando": "ultimo correo", "intencion": {"accion": "leer_ultimo"}}
+{"ts": "2025-08-08T09:45:54.210775", "usuario_id": "1", "comando": "resume el ultimo correo", "intencion": {"accion": "resumen_hoy"}}
+{"ts": "2025-08-08T09:46:08.744417", "usuario_id": "1", "comando": "tengo correos de ayer?", "intencion": {"accion": "contar_no_leidos"}}
+{"ts": "2025-08-08T12:02:45.221179", "usuario_id": "1", "comando": "quién me escribió hoy", "intencion": {"accion": "remitentes_hoy"}}
+{"ts": "2025-08-08T12:02:52.128092", "usuario_id": "1", "comando": "Resúmeme los correos", "intencion": {"accion": "resumen_hoy"}}
+{"ts": "2025-08-08T12:02:55.786300", "usuario_id": "1", "comando": "¿Tengo correos sin leer?", "intencion": {"accion": "contar_no_leidos"}}
+{"ts": "2025-08-08T12:03:49.767162", "usuario_id": "1", "comando": "¿Quién me escribió hoy?", "intencion": {"accion": "remitentes_hoy"}}
+{"ts": "2025-08-08T12:03:56.169027", "usuario_id": "1", "comando": "Resúmeme los correos", "intencion": {"accion": "resumen_hoy"}}
+{"ts": "2025-08-08T12:12:20.127654", "usuario_id": "1", "comando": "¿Tengo correos sin leer?", "intencion": {"accion": "contar_no_leidos"}}
+{"ts": "2025-08-08T12:12:47.567354", "usuario_id": "1", "comando": "quiero el ultimo correo", "intencion": {"accion": "leer_ultimo"}}
+{"ts": "2025-08-08T12:12:56.628751", "usuario_id": "1", "comando": "cuenta un chiste", "intencion": {"accion": "desconocido"}}
