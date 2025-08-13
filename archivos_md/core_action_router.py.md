@@ -1,6 +1,12 @@
-# core/action_router.py
-from core.gmail import remitentes_hoy, leer_ultimo, contar_no_leidos
-from utils.summarizer import resumen_correos_hoy  # mantiene tu pipeline actual
+### .\core\action_router.py
+
+```py
+from core.gmail.leer import (
+    contar_correos_no_leidos,
+    remitentes_hoy,
+    resumen_correos_hoy,
+    leer_ultimo_correo  # 🆕 agregado
+)
 
 def ejecutar_accion(intencion, comando=None, contexto=None, filtros=None):
     print("🎯 Ejecutando acción:", intencion)
@@ -15,31 +21,24 @@ def ejecutar_accion(intencion, comando=None, contexto=None, filtros=None):
     print("🔄 Acción original:", accion)
     filtros = intencion.get("filtros") or {}
 
-    # Acción: leer último correo (Primary)
+    # 🆕 Acción: leer último correo
     if accion == "leer_ultimo":
-        meta = leer_ultimo(contexto["service"])
-        if not meta:
-            return "No encontré correos recientes."
-        headers = {h["name"].lower(): h["value"] for h in meta.get("payload", {}).get("headers", [])}
-        frm = headers.get("from", "")
-        subject = headers.get("subject", "")
-        snippet = meta.get("snippet", "")
-        return f"El correo más reciente es:\n\nDe: {frm}\nAsunto: {subject}\n\n{snippet}"
+        return f"El correo más reciente es:\n\n{leer_ultimo_correo(contexto['service'])}"
 
-    # Acción: contar no leídos (Primary)
+    # Acción: contar no leídos
     if accion == "contar_no_leidos":
-        cantidad = contar_no_leidos(contexto["service"])
+        cantidad = contar_correos_no_leidos(contexto["service"])
         return f"Tienes {cantidad} correos sin leer."
 
-    # Acción: remitentes de hoy (Primary)
+    # Acción: remitentes de hoy
     if accion == "remitentes_hoy":
         return remitentes_hoy(contexto["service"])
 
-    # Acción: resumen de correos de hoy (mantiene tu impl. actual)
+    # Acción: resumen de correos de hoy
     if accion == "resumen_hoy":
         return resumen_correos_hoy(contexto["service"])
 
-    # Acción: detectar correos importantes (heurística simple sobre el resumen)
+    # 🆕 Acción: detectar correos importantes
     if accion == "correos_importantes":
         raw = resumen_correos_hoy(contexto["service"], cantidad=50)
         urgentes = [
@@ -75,7 +74,7 @@ def ejecutar_accion(intencion, comando=None, contexto=None, filtros=None):
             return f"Aquí tienes los {len(lista)} correos más recientes:\n\n" + "\n\n".join(lista)
 
     # Acción: buscar correo por remitente
-    if accion in ["buscar_correo", "buscar_correos"]:
+    elif accion in ["buscar_correo", "buscar_correos"]:
         remitente_filtro = filtros.get("remite", "").lower().strip()
         raw = resumen_correos_hoy(contexto["service"], cantidad=10)
         lista = [m.strip() for m in raw.split("-----") if m.strip()]
@@ -86,3 +85,5 @@ def ejecutar_accion(intencion, comando=None, contexto=None, filtros=None):
         return f"El correo más reciente de {remitente_filtro} es:\n\n{encontrados[0]}"
 
     return "Lo siento, no entendí lo que quieres hacer."
+
+```
