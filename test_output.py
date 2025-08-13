@@ -1,3 +1,7 @@
+import pytest
+
+pytest.importorskip("pyttsx3")
+
 from interfaces.voice_output import responder_en_voz
 
 if __name__ == "__main__":

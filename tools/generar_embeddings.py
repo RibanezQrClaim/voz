@@ -1,38 +1,40 @@
 # tools/generar_embeddings.py
 
 import json
-import numpy as np
-from sentence_transformers import SentenceTransformer
+import os
 
-# Ruta del archivo JSONL de logs
 LOG_PATH = "logs/intent_log.jsonl"
 OUTPUT_PATH = "core/intent_classifier/intents_embeddings.npz"
 
-# Cargar modelo
-model = SentenceTransformer("all-MiniLM-L6-v2")
 
-# Leer los comandos y etiquetas
-comandos = []
-etiquetas = []
+def generar_embeddings():
+    try:
+        from sentence_transformers import SentenceTransformer
+        import numpy as np
+    except ModuleNotFoundError as exc:
+        raise ImportError("sentence_transformers y numpy son necesarios para generar embeddings") from exc
 
-with open(LOG_PATH, "r", encoding="utf-8") as f:
-    for line in f:
-        entry = json.loads(line)
-        comando = entry.get("comando", "").strip()
-        intencion = entry.get("intencion", {})
-        accion = intencion.get("accion", "desconocido")
-        if comando and accion:
-            comandos.append(comando)
-            etiquetas.append(accion)
+    model = SentenceTransformer("all-MiniLM-L6-v2")
 
-# Generar embeddings
-embeddings = model.encode(comandos, convert_to_numpy=True)
+    comandos = []
+    etiquetas = []
 
-# Crear carpeta si no existe
-import os
-os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
+    with open(LOG_PATH, "r", encoding="utf-8") as f:
+        for line in f:
+            entry = json.loads(line)
+            comando = entry.get("comando", "").strip()
+            intencion = entry.get("intencion", {})
+            accion = intencion.get("accion", "desconocido")
+            if comando and accion:
+                comandos.append(comando)
+                etiquetas.append(accion)
 
-# Guardar embeddings, comandos y etiquetas
-np.savez(OUTPUT_PATH, comandos=comandos, etiquetas=etiquetas, embeddings=embeddings)
+    embeddings = model.encode(comandos, convert_to_numpy=True)
 
-print(f"✅ Embeddings guardados en {OUTPUT_PATH}")
+    os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
+    np.savez(OUTPUT_PATH, comandos=comandos, etiquetas=etiquetas, embeddings=embeddings)
+    print(f"✅ Embeddings guardados en {OUTPUT_PATH}")
+
+
+if __name__ == "__main__":
+    generar_embeddings()

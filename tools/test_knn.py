@@ -1,10 +1,14 @@
 import sys
 import os
+import pytest
+
+pytest.importorskip("sentence_transformers")
+pytest.importorskip("sklearn")
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(BASE_DIR)
 
-from core.intent_classifier.clasificar_comando import clasificar_comando
+from core.intent_classifier import clasificar_comando
 
 ejemplos = [
     "¿Qué me llegó más recientemente?",

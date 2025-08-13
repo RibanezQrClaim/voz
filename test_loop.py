@@ -1,3 +1,10 @@
+import pytest
+
+pytest.importorskip("sentence_transformers")
+pytest.importorskip("sklearn")
+pytest.importorskip("sounddevice")
+pytest.importorskip("pyttsx3")
+
 from interfaces.voice_input import escuchar_comando
 from core.intent_detector import detectar_intencion
 from core.action_router import ejecutar_accion

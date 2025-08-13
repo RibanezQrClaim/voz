@@ -1,0 +1,5 @@
+llama-cpp-python
+numpy
+scikit-learn
+scipy
+sentence-transformers
