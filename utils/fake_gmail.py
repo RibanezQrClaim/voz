@@ -4,10 +4,13 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 
 from utils.config import get_fake_emails_path
+
+TZ_SCL = ZoneInfo("America/Santiago")
 
 
 @dataclass(frozen=True)
@@ -100,6 +103,12 @@ def _load_fixture() -> List[FakeEmail]:
 
 # --- API simulada usada por el MVP --------------------------------------------
 
+
+def listar(max_results: int = 20) -> List[Dict[str, Any]]:
+    """Devuelve correos en formato gmail-like."""
+    data = _load_fixture()
+    return [e.to_gmail_like() for e in data[:max_results]]
+
 def leer_ultimo() -> Optional[Dict[str, Any]]:
     """Devuelve el último correo (más reciente) en formato 'gmail-like'."""
     data = _load_fixture()
@@ -113,11 +122,13 @@ def remitentes_hoy(now: Optional[datetime] = None) -> List[str]:
     Lista de remitentes únicos que escribieron HOY (zona local del host).
     En caso de necesitar TZ distinta, podemos parametrizar.
     """
-    now = now or datetime.now().astimezone()
+    now = now or datetime.now(TZ_SCL)
     data = _load_fixture()
     senders: List[str] = []
     for e in data:
-        dt_local = datetime.fromtimestamp(e.date_epoch_ms / 1000.0, tz=timezone.utc).astimezone(now.tzinfo)
+        dt_local = datetime.fromtimestamp(
+            e.date_epoch_ms / 1000.0, tz=timezone.utc
+        ).astimezone(TZ_SCL)
         if dt_local.date() == now.date():
             if e.from_ not in senders:
                 senders.append(e.from_)

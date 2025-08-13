@@ -1,20 +1,34 @@
-import speech_recognition as sr
-import pyttsx3
+try:
+    import speech_recognition as sr
+except ModuleNotFoundError:
+    sr = None
+try:
+    import pyttsx3
+except ModuleNotFoundError:
+    pyttsx3 = None
 
 from core.intent_detector import detectar_intencion
 from core.action_router import ejecutar_accion
 from core.gmail.auth import get_authenticated_service
 
-# Inicializar voz
-voz = pyttsx3.init()
-voz.setProperty('rate', 160)
+if pyttsx3:
+    voz = pyttsx3.init()
+    voz.setProperty('rate', 160)
+else:
+    voz = None
+
 
 def hablar(texto):
+    if voz is None:
+        raise ImportError("pyttsx3 es necesario para salida de voz")
     print("📣", texto)
     voz.say(texto)
     voz.runAndWait()
 
+
 def escuchar():
+    if sr is None:
+        raise ImportError("speech_recognition es necesario para entrada de voz")
     recognizer = sr.Recognizer()
     with sr.Microphone() as source:
         print("🎤 Escuchando... habla ahora.")
@@ -28,6 +42,7 @@ def escuchar():
         return "No entendí lo que dijiste."
     except sr.RequestError as e:
         return f"Error al conectar con Google: {e}"
+
 
 def main():
     comando = escuchar()
@@ -43,6 +58,7 @@ def main():
     respuesta = ejecutar_accion(intencion, comando=comando, contexto=contexto)
 
     hablar(respuesta)
+
 
 if __name__ == "__main__":
     main()
