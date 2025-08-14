@@ -95,9 +95,9 @@ def _get_message_metadata(service, msg_id: str) -> Dict[str, Any]:
 
     return msg
 
-def listar(service=None, max_results: int = GMAIL_MAX_RESULTS, base_query: str | None = None) -> List[Dict[str, Any]]:
+def listar(max_results: int = GMAIL_MAX_RESULTS, base_query: str | None = None) -> List[Dict[str, Any]]:
     """Lista correos de la bandeja principal."""
-    service = service or get_authenticated_service()
+    service = get_authenticated_service()
     ids = _list_primary_message_ids(service, max_results, base_query=base_query)
     out: List[Dict[str, Any]] = []
     for mid in ids:
@@ -107,11 +107,11 @@ def listar(service=None, max_results: int = GMAIL_MAX_RESULTS, base_query: str |
     return out
 
 
-def remitentes_hoy(service=None) -> List[str]:
+def remitentes_hoy() -> List[str]:
     """
     Retorna remitentes de últimos N correos en Primary estrictamente de hoy (≈ últimas 24h).
     """
-    service = service or get_authenticated_service()
+    service = get_authenticated_service()
     after = get_rfc3339_today()
     ids = _list_primary_message_ids(
         service, GMAIL_MAX_RESULTS, base_query=f"after:{after}"
@@ -128,11 +128,11 @@ def remitentes_hoy(service=None) -> List[str]:
     return remitentes
 
 
-def leer_ultimo(service=None) -> Dict[str, Any]:
+def leer_ultimo() -> Dict[str, Any]:
     """
     Retorna metadata del último correo 'bueno' (Primary).
     """
-    service = service or get_authenticated_service()
+    service = get_authenticated_service()
     ids = _list_primary_message_ids(service, max_results=1)
     if not ids:
         return {}
@@ -140,11 +140,11 @@ def leer_ultimo(service=None) -> Dict[str, Any]:
     return meta or {}
 
 
-def contar_no_leidos(service=None) -> int:
+def contar_no_leidos() -> int:
     """
     Cuenta no leídos SOLO en Primary (excluyendo Social/Promos/etc.).
     """
-    service = service or get_authenticated_service()
+    service = get_authenticated_service()
     resp = (
         service.users()
         .messages()
