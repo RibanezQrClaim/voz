@@ -13,11 +13,11 @@ from utils.summarizer import resumen_correos_hoy as _resumen_correos_hoy
 GMAIL_MAX_RESULTS = int(os.getenv("GMAIL_MAX_RESULTS", "10"))
 
 
-def contar_correos_no_leidos(service):
-    """
-    Compat: reporta string con conteo de no leídos en Primary.
-    """
-    cantidad = _contar_no_leidos(service)
+def contar_correos_no_leidos(*args, **kwargs):
+    """Compat: reporta string con conteo de no leídos en Primary."""
+    if args or kwargs:
+        print(f"⚠️ contar_correos_no_leidos ignoró args extra: args={args} kwargs={kwargs}")
+    cantidad = _contar_no_leidos()
     if cantidad == 0:
         return "No tienes correos sin leer."
     if cantidad == 1:
@@ -25,11 +25,11 @@ def contar_correos_no_leidos(service):
     return f"Tienes {cantidad} correos sin leer."
 
 
-def remitentes_hoy(service):
-    """
-    Compat: devuelve string con remitentes únicos de las últimas 24h (Primary).
-    """
-    remitentes: List[str] = _remitentes_hoy(service)
+def remitentes_hoy(*args, **kwargs):
+    """Compat: devuelve string con remitentes únicos de las últimas 24h (Primary)."""
+    if args or kwargs:
+        print(f"⚠️ remitentes_hoy ignoró args extra: args={args} kwargs={kwargs}")
+    remitentes: List[str] = _remitentes_hoy()
     if not remitentes:
         return "Hoy no has recibido correos nuevos."
 
@@ -40,15 +40,15 @@ def remitentes_hoy(service):
     return f"Hoy te escribieron {nombres}."
 
 
-def leer_ultimo_correo(service):
-    """
-    Compat: retorna dict con metadata del último correo (Primary).
-    """
-    return _leer_ultimo(service)
+def leer_ultimo_correo(*args, **kwargs):
+    """Compat: retorna dict con metadata del último correo (Primary)."""
+    if args or kwargs:
+        print(f"⚠️ leer_ultimo_correo ignoró args extra: args={args} kwargs={kwargs}")
+    return _leer_ultimo()
 
 
-def resumen_correos_hoy(service, cantidad: int = 10):
-    """
-    Delegado al summarizer actual. Mantiene la firma para código legado.
-    """
-    return _resumen_correos_hoy(service, cantidad=cantidad)
+def resumen_correos_hoy(cantidad: int = 10, *args, **kwargs):
+    """Delegado al summarizer actual. Mantiene compatibilidad."""
+    if args or kwargs:
+        print(f"⚠️ resumen_correos_hoy ignoró args extra: args={args} kwargs={kwargs}")
+    return _resumen_correos_hoy(cantidad=cantidad)

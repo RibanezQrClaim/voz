@@ -17,7 +17,7 @@ def ejecutar_accion(intencion, comando=None, contexto=None, filtros=None):
 
     # Acción: leer último correo (Primary)
     if accion == "leer_ultimo":
-        meta = leer_ultimo(contexto["service"])
+        meta = leer_ultimo()
         if not meta:
             return "No encontré correos recientes."
         headers = {h["name"].lower(): h["value"] for h in meta.get("payload", {}).get("headers", [])}
@@ -28,20 +28,20 @@ def ejecutar_accion(intencion, comando=None, contexto=None, filtros=None):
 
     # Acción: contar no leídos (Primary)
     if accion == "contar_no_leidos":
-        cantidad = contar_no_leidos(contexto["service"])
+        cantidad = contar_no_leidos()
         return f"Tienes {cantidad} correos sin leer."
 
     # Acción: remitentes de hoy (Primary)
     if accion == "remitentes_hoy":
-        return remitentes_hoy(contexto["service"])
+        return remitentes_hoy()
 
     # Acción: resumen de correos de hoy (mantiene tu impl. actual)
     if accion == "resumen_hoy":
-        return resumen_correos_hoy(contexto["service"])
+        return resumen_correos_hoy()
 
     # Acción: detectar correos importantes (heurística simple sobre el resumen)
     if accion == "correos_importantes":
-        raw = resumen_correos_hoy(contexto["service"], cantidad=50)
+        raw = resumen_correos_hoy(cantidad=50)
         urgentes = [
             m for m in raw.split("-----")
             if any(x in m.lower() for x in ["urgente", "importante", "reunión", "responder", "hoy"])
@@ -53,7 +53,7 @@ def ejecutar_accion(intencion, comando=None, contexto=None, filtros=None):
     # Acción: listar correos recientes (resumidos)
     if accion == "listar_correos":
         print("✔️ Ejecutando listar_correos con filtros:", filtros)
-        raw = resumen_correos_hoy(contexto["service"], cantidad=50)
+        raw = resumen_correos_hoy(cantidad=50)
         lista = [m.strip() for m in raw.split("-----") if m.strip()]
 
         remitente_filtro = filtros.get("remite", "").lower().strip()
@@ -77,7 +77,7 @@ def ejecutar_accion(intencion, comando=None, contexto=None, filtros=None):
     # Acción: buscar correo por remitente
     if accion in ["buscar_correo", "buscar_correos"]:
         remitente_filtro = filtros.get("remite", "").lower().strip()
-        raw = resumen_correos_hoy(contexto["service"], cantidad=10)
+        raw = resumen_correos_hoy(cantidad=10)
         lista = [m.strip() for m in raw.split("-----") if m.strip()]
         encontrados = [m for m in lista if remitente_filtro in m.lower()]
 

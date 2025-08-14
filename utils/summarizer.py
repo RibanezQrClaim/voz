@@ -1,6 +1,7 @@
 # utils/summarizer.py
 from typing import List, Dict, Any, Optional
 import os, re, base64, html
+from core.gmail.auth import get_authenticated_service
 
 # --- Config desde entorno ---
 SUMMARY_MAX_CHARS = int(os.getenv("SUMMARY_MAX_CHARS", "350"))
@@ -223,7 +224,8 @@ def _compose_item(meta: Dict[str, Any], clean_body: str) -> Optional[str]:
 
 # ---------- Endpoint: resumen de correos de hoy ----------
 
-def resumen_correos_hoy(service, cantidad: int = 10) -> str:
+def resumen_correos_hoy(cantidad: int = 10) -> str:
+    service = get_authenticated_service()
     n = max(1, min(int(cantidad), GMAIL_MAX_RESULTS))
     ids = _list_primary_message_ids(service, n, base_query="newer_than:1d")
     if not ids:

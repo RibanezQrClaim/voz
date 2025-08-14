@@ -9,9 +9,9 @@ from .leer import (
 from .auth import get_authenticated_service
 
 
-def buscar(query: str, max_results: int = 20, service=None) -> List[Dict[str, Any]]:
+def buscar(query: str, max_results: int = 20) -> List[Dict[str, Any]]:
     """Busqueda simple en Gmail API manteniendo orden y forma."""
-    service = service or get_authenticated_service()
+    service = get_authenticated_service()
     q = (query or "").strip()
     if not q:
         return []

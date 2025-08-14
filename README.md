@@ -26,9 +26,14 @@ Para trabajar sin acceso a Gmail real, define:
 ```bash
 export USE_FAKE_GMAIL=1
 export FAKE_EMAILS_PATH=tests/fixtures/emails_home.json  # opcional
+# Alias aceptado: FAKE_EMAILS_FILE
 ```
 
 Los tests usan este modo y funcionan sin instalar los extras de LLM o audio.
+
+Los helpers de Gmail (`listar`, `leer_ultimo`, `remitentes_hoy`, `contar_no_leidos`,
+`buscar` y `resumen_correos_hoy`) ya no aceptan el objeto `service`; lo obtienen
+internamente. Cualquier argumento inesperado se ignora y se registra un *warning*.
 
 ### Nota sobre proxies
 
