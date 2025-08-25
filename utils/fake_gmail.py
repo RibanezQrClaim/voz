@@ -2,16 +2,71 @@
 from __future__ import annotations
 
 import json
+import time
+import random
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 from pathlib import Path
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Tuple
 
-from utils.config import get_fake_emails_path
+from utils.config import get_fake_emails_path, CONFIG
 
 TZ_SCL = ZoneInfo("America/Santiago")
 
+
+# ------------------- Simulación (latencia/errores) -------------------
+
+class SimulatedGmailError(RuntimeError):
+    """Error para emular 429/503 en backend fake."""
+    def __init__(self, code: int):
+        self.code = int(code)
+        super().__init__(f"Simulated Gmail error {self.code}")
+
+
+def _sim_settings() -> Dict[str, Any]:
+    gmail = CONFIG.get("gmail", {}) if isinstance(CONFIG, dict) else {}
+    sim = gmail.get("simulate", {}) if isinstance(gmail, dict) else {}
+    return {
+        "enabled": bool(sim.get("enabled", False)),
+        "latency_ms": int(sim.get("latency_ms", 0)),
+        "jitter_ms": int(sim.get("jitter_ms", 0)),
+        "error_rate_get": float(sim.get("error_rate_get", 0.0)),
+        "error_code": int(sim.get("error_code", 429)),
+    }
+
+
+def _sleep_ms(ms: int) -> None:
+    if ms > 0:
+        time.sleep(ms / 1000.0)
+
+
+def _maybe_simulate(kind: str = "get") -> None:
+    """
+    Emula comportamiento de Gmail real:
+      - Demora por request (latency_ms ± jitter)
+      - Fallo aleatorio con prob. error_rate_get (códigos 429/503)
+    Se activa solo si gmail.simulate.enabled = true.
+    """
+    s = _sim_settings()
+    if not s["enabled"]:
+        return
+
+    base = max(0, s["latency_ms"])
+    jit = max(0, s["jitter_ms"])
+    if jit:
+        delta = random.randint(-jit, jit)
+    else:
+        delta = 0
+    _sleep_ms(max(0, base + delta))
+
+    # Emulamos error solo en operaciones tipo "get" (por item).
+    if kind == "get":
+        if random.random() < max(0.0, min(1.0, s["error_rate_get"])):
+            raise SimulatedGmailError(s["error_code"])
+
+
+# --------------------- Modelo y conversión ---------------------
 
 @dataclass(frozen=True)
 class FakeEmail:
@@ -32,7 +87,9 @@ class FakeEmail:
         return datetime.fromtimestamp(self.date_epoch_ms / 1000.0, tz=timezone.utc)
 
     def to_gmail_like(self) -> Dict[str, Any]:
-        # Forma simple y estable para el MVP/resumen
+        # Emula costo de messages.get (por item)
+        _maybe_simulate(kind="get")
+
         return {
             "id": self.id,
             "snippet": self.snippet,
@@ -43,7 +100,6 @@ class FakeEmail:
                 "headers": [
                     {"name": "From", "value": self.from_},
                     {"name": "Subject", "value": self.subject},
-                    # Fecha RFC2822 aproximada, por si algo la usa:
                     {
                         "name": "Date",
                         "value": self.date_dt.astimezone().strftime("%a, %d %b %Y %H:%M:%S %z"),
@@ -51,10 +107,9 @@ class FakeEmail:
                     {"name": "To", "value": ", ".join(self.to)},
                     {"name": "Cc", "value": ", ".join(self.cc)},
                 ],
-                # Cuerpo “llano” para el summarizer (ya con ruido/HTML según el fixture):
                 "body": {"data": self.body},
             },
-            # Campo directo útil si no quieres navegar payload:
+            # Campos de acceso rápido:
             "from": self.from_,
             "subject": self.subject,
             "to": self.to,
@@ -64,7 +119,7 @@ class FakeEmail:
         }
 
 
-# --- Carga y cache en memoria -------------------------------------------------
+# --------------------- Carga + cache en memoria ---------------------
 
 _CACHE: List[FakeEmail] | None = None
 
@@ -95,22 +150,30 @@ def _load_fixture() -> List[FakeEmail]:
             )
         )
 
-    # Ordenar descendente por fecha (más nuevo primero), como hace Gmail
+    # Orden descendente por fecha (más nuevo primero)
     emails.sort(key=lambda x: x.date_epoch_ms, reverse=True)
     _CACHE = emails
     return _CACHE
 
 
-# --- API simulada usada por el MVP --------------------------------------------
-
+# --------------------- API simulada (compatible con core) ---------------------
 
 def listar(max_results: int = 20) -> List[Dict[str, Any]]:
-    """Devuelve correos en formato gmail-like."""
+    """
+    Devuelve correos en formato gmail-like.
+    Simula costo por item (como si fuese messages.get por id).
+    """
     data = _load_fixture()
-    return [e.to_gmail_like() for e in data[:max_results]]
+    out: List[Dict[str, Any]] = []
+    for e in data[:max_results]:
+        out.append(e.to_gmail_like())
+    return out
+
 
 def leer_ultimo() -> Optional[Dict[str, Any]]:
-    """Devuelve el último correo (más reciente) en formato 'gmail-like'."""
+    """
+    Devuelve el último correo (más reciente) en formato 'gmail-like'.
+    """
     data = _load_fixture()
     if not data:
         return None
@@ -119,13 +182,16 @@ def leer_ultimo() -> Optional[Dict[str, Any]]:
 
 def remitentes_hoy(now: Optional[datetime] = None) -> List[str]:
     """
-    Lista de remitentes únicos que escribieron HOY (zona local del host).
-    En caso de necesitar TZ distinta, podemos parametrizar.
+    Lista remitentes únicos que escribieron HOY (zona local del host).
+    Nota: simulación se aplica por item (como messages.get).
     """
     now = now or datetime.now(TZ_SCL)
     data = _load_fixture()
     senders: List[str] = []
     for e in data:
+        # Aplica simulación por item
+        _maybe_simulate(kind="get")
+
         dt_local = datetime.fromtimestamp(
             e.date_epoch_ms / 1000.0, tz=timezone.utc
         ).astimezone(TZ_SCL)
@@ -133,27 +199,36 @@ def remitentes_hoy(now: Optional[datetime] = None) -> List[str]:
             if e.from_ not in senders:
                 senders.append(e.from_)
         else:
-            # como vienen ordenados desc, si ya pasamos a ayer, cortamos
+            # orden desc → al pasar a ayer, cortamos
             if dt_local.date() < now.date():
                 break
     return senders
 
 
 def contar_no_leidos() -> int:
-    """Cuenta correos marcados como no leídos en el fixture."""
-    return sum(1 for e in _load_fixture() if e.is_unread)
+    """
+    Cuenta correos marcados como no leídos en el fixture.
+    Simula costo por item.
+    """
+    cnt = 0
+    for e in _load_fixture():
+        _maybe_simulate(kind="get")
+        if e.is_unread:
+            cnt += 1
+    return cnt
 
 
-# (Opcional para pasos siguientes) búsqueda muy simple por query en from/subject/body
 def buscar(query: str, max_results: int = 20) -> List[Dict[str, Any]]:
     """
     Búsqueda naive contains() en from/subject/body. Mantiene orden por fecha.
+    Simula costo por item.
     """
     q = (query or "").strip().lower()
     if not q:
         return []
     out: List[Dict[str, Any]] = []
     for e in _load_fixture():
+        _maybe_simulate(kind="get")
         hay = (
             q in e.from_.lower()
             or q in e.subject.lower()

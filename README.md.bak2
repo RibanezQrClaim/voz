@@ -1,0 +1,125 @@
+# README — Voz Agente Gmail (MVP actualizado)
+
+## 🚀 Descripción
+Este proyecto implementa un **asistente de voz para Gmail** que permite consultar, resumir y priorizar correos electrónicos de manera simple. Se ejecuta en entorno local y puede funcionar con:
+
+- **Modo fake** → usando `emails_home.json` como dataset de prueba.
+- **Modo real** → conectado a la API de Gmail mediante OAuth.
+
+Toda la configuración está centralizada en **`config.json`**, lo que elimina la necesidad de variables de entorno manuales.
+
+---
+
+## 📂 Estructura del proyecto
+
+```
+voz_agente_gmail/
+│
+├── main.py                 # Flask app principal
+├── config.json             # Configuración centralizada
+├── utils/config.py         # Cargador de configuración
+├── utils/importance.py     # Heurística de correos importantes
+├── utils/summarizer.py     # Resumen de correos con LLM
+├── core/gmail/leer.py      # Lectura de correos desde Gmail
+├── core/action_router.py   # Orquestador de acciones
+├── interfaces/             # Endpoints Flask (comando_api, gmail, auth)
+└── tests/fixtures/         # Fixtures de correos y contactos fake
+```
+
+---
+
+## ⚙️ Configuración
+
+Toda la configuración vive en **`config.json`**:
+
+```json
+{
+  "app": {
+    "host": "127.0.0.1",
+    "port": 8000,
+    "secret_key": "clave_secreta_123"
+  },
+  "llm": {
+    "mode": "local",
+    "local_model_path": "./models/Qwen2.5-3B-Instruct.Q4_K_M.gguf"
+  },
+  "gmail": {
+    "scopes": ["gmail.readonly", "gmail.modify"],
+    "fake_emails_path": "tests/fixtures/emails_home.json",
+    "fake_contacts_path": "tests/fixtures/contacts_retail.json",
+    "max_results": 10
+  },
+  "importance": {
+    "recency_half_life_h": 24,
+    "keyword_weights": {
+      "urgente": 18,
+      "vencimiento": 14,
+      "rechazo de pago": 14,
+      "respuesta requerida": 12,
+      "reunión": 6,
+      "hoy": 5
+    },
+    "important_senders": [
+      "ceo@home.cl",
+      "@cliente-grande.com",
+      "finanzas@home.cl"
+    ]
+  }
+}
+```
+
+---
+
+## ▶️ Ejecución
+
+1. Instalar dependencias:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. Ejecutar en modo **fake Gmail**:
+   ```bash
+   python main.py
+   ```
+
+   Esto levanta el servidor en:
+   [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+3. Probar desde el frontend (interfaz web) con comandos como:
+   - **"Resúmeme los correos"**
+   - **"Tengo correos importantes?"**
+   - **"Cuántos correos no leídos tengo?"**
+   - **"Quién me escribió hoy?"**
+
+---
+
+## 🧠 Funcionalidades implementadas (Fase 1 + 2)
+
+- `remitentes_hoy` → lista remitentes de hoy.
+- `contar_no_leidos` → cuenta no leídos en Primary.
+- `resumen_hoy` → resume correos con LLM, con **chunking real**.
+- `correos_importantes` → pondera urgencia según remitente, palabras clave y antigüedad.
+
+---
+
+## 🔮 Próximos pasos (Fase 3)
+
+- Integrar contactos y calendario.
+- Mejorar UX del frontend.
+- Ajustar heurística con feedback real.
+- Optimizar latencia de resúmenes en hilos largos.
+
+---
+
+## 👨‍💻 Desarrollo
+
+Este proyecto sigue los principios:
+- **Simple**: configuración única en `config.json`.
+- **Modular**: cada función vive en su archivo.
+- **Escalable**: se puede pasar de fake Gmail a real Gmail sin tocar código.
+- **Limpio**: sin dependencias innecesarias.
+
+---
+
+✉️ Hecho con foco en productividad y simplicidad.
+

@@ -1,0 +1,55 @@
+# 📑 CHANGELOG --- Voz Agente Gmail
+
+## \[0.2.0\] --- 2025-08-18
+
+### Added
+
+-   `config.json` como **fuente única de configuración** (reemplaza
+    múltiples env vars).
+-   `utils/config.py` actualizado para cargar `config.json`
+    automáticamente.
+-   Heurística de correos importantes extendida con:
+    -   **ponderación por palabras clave** (urgente, vencimiento, etc.).
+    -   **ponderación por remitente** (`ceo@home.cl`,
+        `@cliente-grande.com`, etc.).
+    -   **decay exponencial por antigüedad**.
+-   Soporte de **chunking real** en `summarizer.py` para correos largos
+    (\>2KB).
+-   Ajuste de prompt en resúmenes para asegurar **una sola oración
+    clara**.
+
+### Changed
+
+-   `core/action_router.py` ahora usa `importance.py` en lugar de
+    heurística fija.
+-   `main.py` simplificado: solo requiere `python main.py` (sin setear
+    env vars).
+-   README actualizado con estructura, config centralizada y flujo de
+    ejecución.
+
+### Fixed
+
+-   Corrección en `comando_api.py` para inyectar servicio Gmail (real o
+    fake) según configuración.
+-   Limpieza de logs de debug redundantes.
+
+------------------------------------------------------------------------
+
+## \[0.1.0\] --- 2025-08-10
+
+### Added
+
+-   Funciones base de Gmail:
+    -   `remitentes_hoy`
+    -   `contar_no_leidos`
+    -   `resumen_hoy`
+    -   `correos_importantes` (heurística simple inicial)
+-   Soporte para **fake Gmail** con `emails_home.json`.
+-   Endpoints iniciales en Flask (`gmail_routes`, `comando_api`,
+    `auth_routes`).
+-   Primer README del MVP.
+
+### Notes
+
+-   Esta versión permitió validar el flujo completo: **voz → intención →
+    acción → respuesta** usando datos fake.

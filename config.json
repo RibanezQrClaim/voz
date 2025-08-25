@@ -1,0 +1,118 @@
+{
+    "app": {
+        "host": "127.0.0.1",
+        "port": 8000,
+        "secret_key": "clave_secreta_123"
+    },
+    "llm": {
+        "mode": "local",
+        "local_model_path": "./models/Qwen2.5-3B-Instruct.Q4_K_M.gguf",
+        "context_size": 2048,
+        "threads": 6
+    },
+    "gmail": {
+        "scopes": [
+            "gmail.readonly",
+            "gmail.modify"
+        ],
+        "calendar_scopes": [
+            "calendar.readonly"
+        ],
+        "max_results": 10,
+        "backoff_max_tries": 3,
+        "backoff_base_ms": 200,
+        "backoff_jitter_ms": 100,
+        "fields_list": "messages(id),nextPageToken",
+        "fields_get": "id,internalDate,labelIds,snippet,payload(headers(name,value))",
+        "headers_get": [
+            "From",
+            "Subject",
+            "Date",
+            "To",
+            "Cc"
+        ],
+        "excluded_labels": [
+            "CATEGORY_SOCIAL",
+            "CATEGORY_PROMOTIONS",
+            "CATEGORY_UPDATES",
+            "CATEGORY_FORUMS",
+            "SPAM",
+            "TRASH"
+        ],
+        "fake_emails_path": "tests/fixtures/emails_home.json",
+        "fake_contacts_path": "tests/fixtures/contacts_retail.json",
+        "primary_email": "carolina@home.cl",
+        "timezone": "America/Santiago",
+        "concurrency_get": 4,
+        "cache_ttl_seconds": 60,
+        "simulate": {
+            "enabled": true,
+            "latency_ms": 120,
+            "jitter_ms": 0,
+            "error_rate_get": 0.0,
+            "error_code": 429
+        },
+        "circuit_breaker": {
+            "enabled": true,
+            "threshold": 3,
+            "cooldown_seconds": 30,
+            "user_notice": true
+        }
+    },
+    "summarizer": {
+        "max_chars": 280,
+        "input_chars": 1200,
+        "chunk_bytes": 2048,
+        "chunk_overlap": 200,
+        "force_one_sentence": true
+    },
+    "importance": {
+        "important_senders": [
+            "ceo@home.cl",
+            "@cliente-grande.com",
+            "finanzas@home.cl"
+        ],
+        "keyword_weights": {
+            "urgente": 18,
+            "vencimiento": 14,
+            "rechazo de pago": 14,
+            "respuesta requerida": 12,
+            "reunión": 6,
+            "hoy": 5,
+            "quiebre": 10,
+            "conciliación": 8,
+            "plazo": 8,
+            "SLA": 6
+        },
+        "recency_half_life_h": 24,
+        "important_min_score": 25
+    },
+    "alerts": {
+        "critical_keywords": [
+            "error",
+            "rechazo",
+            "rechazos",
+            "sanción",
+            "sanciones",
+            "ticket p1",
+            "p1",
+            "urgente",
+            "urgencia",
+            "caída",
+            "caido",
+            "caído",
+            "stock crítico",
+            "quiebre de stock",
+            "alerta",
+            "denuncia",
+            "crítico",
+            "quiebre",
+            "conciliación",
+            "plazo",
+            "SLA"
+        ]
+    },
+    "logging": {
+        "level": "INFO"
+    }
+}

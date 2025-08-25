@@ -1,0 +1,426 @@
+[
+  {
+    "id": "fake-1755763800-0",
+    "labelIds": [
+      "INBOX",
+      "UNREAD"
+    ],
+    "internalDate": "1755763800000",
+    "ts": "2025-08-21T08:10:00+00:00",
+    "snippet": "Ticket P1: error 500 en checkout, urgencia en punto de venta. Detalle extendido para pruebas de chunking y resumen. Incluye información de operaciones, inventar",
+    "payload": {
+      "mimeType": "text/plain",
+      "headers": [
+        {
+          "name": "From",
+          "value": "rrhh@home.cl"
+        },
+        {
+          "name": "To",
+          "value": "carolina@home.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Ticket P1: error 500 en checkout"
+        },
+        {
+          "name": "Date",
+          "value": "Thu, 21 Aug 2025 08:10:00 +0000"
+        }
+      ],
+      "body": {
+        "text": "Ticket P1: error 500 en checkout, urgencia en punto de venta. Detalle extendido para pruebas de chunking y resumen. Incluye información de operaciones, inventario, coordinación y seguimiento. Iteración 0. Este párrafo es intencionalmente largo para verificar truncado ≤280."
+      }
+    },
+    "meta": {}
+  },
+  {
+    "id": "fake-1755681900-1",
+    "labelIds": [
+      "INBOX",
+      "UNREAD"
+    ],
+    "internalDate": "1755681900000",
+    "ts": "2025-08-20T09:25:00+00:00",
+    "snippet": "Quiebre de stock en tienda 4, crítico para ventas de hoy. Detalle extendido para pruebas de chunking y resumen. Incluye información de operaciones, inventario, ",
+    "payload": {
+      "mimeType": "text/plain",
+      "headers": [
+        {
+          "name": "From",
+          "value": "prov1@acme.com"
+        },
+        {
+          "name": "To",
+          "value": "carolina@home.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Revisión forecast Q3 ventas"
+        },
+        {
+          "name": "Date",
+          "value": "Wed, 20 Aug 2025 09:25:00 +0000"
+        }
+      ],
+      "body": {
+        "text": "Quiebre de stock en tienda 4, crítico para ventas de hoy. Detalle extendido para pruebas de chunking y resumen. Incluye información de operaciones, inventario, coordinación y seguimiento. Iteración 1. Este párrafo es intencionalmente largo para verificar truncado ≤280."
+      }
+    },
+    "meta": {}
+  },
+  {
+    "id": "fake-1755772800-2",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755772800000",
+    "ts": "2025-08-21T10:40:00+00:00",
+    "snippet": "Atraso de despacho informado por el proveedor, requiere coordinación de logística. Detalle extendido para pruebas de chunking y resumen. Incluye información de ",
+    "payload": {
+      "mimeType": "text/plain",
+      "headers": [
+        {
+          "name": "From",
+          "value": "ti@home.cl"
+        },
+        {
+          "name": "To",
+          "value": "carolina@home.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Reunión con gerencia 8h"
+        },
+        {
+          "name": "Date",
+          "value": "Thu, 21 Aug 2025 10:40:00 +0000"
+        }
+      ],
+      "body": {
+        "text": "Atraso de despacho informado por el proveedor, requiere coordinación de logística. Detalle extendido para pruebas de chunking y resumen. Incluye información de operaciones, inventario, coordinación y seguimiento. Iteración 2. Este párrafo es intencionalmente largo para verificar truncado ≤280."
+      }
+    },
+    "meta": {}
+  },
+  {
+    "id": "fake-1755691500-3",
+    "labelIds": [
+      "INBOX",
+      "UNREAD"
+    ],
+    "internalDate": "1755691500000",
+    "ts": "2025-08-20T12:05:00+00:00",
+    "snippet": "Conciliación pendiente de cierre de mes, seguimiento con finanzas y control interno. Detalle extendido para pruebas de chunking y resumen. Incluye información d",
+    "payload": {
+      "mimeType": "text/plain",
+      "headers": [
+        {
+          "name": "From",
+          "value": "mall1@mall1.cl"
+        },
+        {
+          "name": "To",
+          "value": "carolina@home.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Quiebre de stock SKUs críticos en tienda 4"
+        },
+        {
+          "name": "Date",
+          "value": "Wed, 20 Aug 2025 12:05:00 +0000"
+        }
+      ],
+      "body": {
+        "text": "Conciliación pendiente de cierre de mes, seguimiento con finanzas y control interno. Detalle extendido para pruebas de chunking y resumen. Incluye información de operaciones, inventario, coordinación y seguimiento. Iteración 3. Este párrafo es intencionalmente largo para verificar truncado ≤280."
+      }
+    },
+    "meta": {}
+  },
+  {
+    "id": "fake-1755786000-4",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755786000000",
+    "ts": "2025-08-21T14:20:00+00:00",
+    "snippet": "Incidente de seguridad reportado, alerta elevada y bloqueo preventivo aplicado. Detalle extendido para pruebas de chunking y resumen. Incluye información de ope",
+    "payload": {
+      "mimeType": "text/plain",
+      "headers": [
+        {
+          "name": "From",
+          "value": "tienda9@home.cl"
+        },
+        {
+          "name": "To",
+          "value": "carolina@home.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Revisión forecast Q3 ventas"
+        },
+        {
+          "name": "Date",
+          "value": "Thu, 21 Aug 2025 14:20:00 +0000"
+        }
+      ],
+      "body": {
+        "text": "Incidente de seguridad reportado, alerta elevada y bloqueo preventivo aplicado. Detalle extendido para pruebas de chunking y resumen. Incluye información de operaciones, inventario, coordinación y seguimiento. Iteración 4. Este párrafo es intencionalmente largo para verificar truncado ≤280."
+      }
+    },
+    "meta": {}
+  },
+  {
+    "id": "fake-1755707700-5",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755707700000",
+    "ts": "2025-08-20T16:35:00+00:00",
+    "snippet": "Reunión con gerencia para alinear forecast Q3, SLA y abastecimiento. Detalle extendido para pruebas de chunking y resumen. Incluye información de operaciones, i",
+    "payload": {
+      "mimeType": "text/plain",
+      "headers": [
+        {
+          "name": "From",
+          "value": "finanzas@home.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Cierre de mes: conciliación pendiente"
+        },
+        {
+          "name": "Date",
+          "value": "Wed, 20 Aug 2025 16:35:00 +0000"
+        },
+        {
+          "name": "To",
+          "value": "equipo@home.cl"
+        },
+        {
+          "name": "Cc",
+          "value": "carolina@home.cl"
+        }
+      ],
+      "body": {
+        "text": "Reunión con gerencia para alinear forecast Q3, SLA y abastecimiento. Detalle extendido para pruebas de chunking y resumen. Incluye información de operaciones, inventario, coordinación y seguimiento. Iteración 5. Este párrafo es intencionalmente largo para verificar truncado ≤280."
+      }
+    },
+    "meta": {
+      "cc_only": true
+    }
+  },
+  {
+    "id": "fake-1755802200-6",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755802200000",
+    "ts": "2025-08-21T18:50:00+00:00",
+    "snippet": "Errores intermitentes en checkout web, monitoreo y rollback listos. Detalle extendido para pruebas de chunking y resumen. Incluye información de operaciones, in",
+    "payload": {
+      "mimeType": "text/plain",
+      "headers": [
+        {
+          "name": "From",
+          "value": "prov3@acme.com"
+        },
+        {
+          "name": "To",
+          "value": "carolina@home.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Ticket P1: error 500 en checkout"
+        },
+        {
+          "name": "Date",
+          "value": "Thu, 21 Aug 2025 18:50:00 +0000"
+        }
+      ],
+      "body": {
+        "text": "Errores intermitentes en checkout web, monitoreo y rollback listos. Detalle extendido para pruebas de chunking y resumen. Incluye información de operaciones, inventario, coordinación y seguimiento. Iteración 6. Este párrafo es intencionalmente largo para verificar truncado ≤280."
+      }
+    },
+    "meta": {}
+  },
+  {
+    "id": "fake-1755720300-7",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755720300000",
+    "ts": "2025-08-20T20:05:00+00:00",
+    "snippet": "Inventario con desajustes, solicitud de recuento y auditoría express. Detalle extendido para pruebas de chunking y resumen. Incluye información de operaciones, ",
+    "payload": {
+      "mimeType": "text/plain",
+      "headers": [
+        {
+          "name": "From",
+          "value": "tienda2@home.cl"
+        },
+        {
+          "name": "To",
+          "value": "carolina@home.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Inventario semanal tienda 6"
+        },
+        {
+          "name": "Date",
+          "value": "Wed, 20 Aug 2025 20:05:00 +0000"
+        }
+      ],
+      "body": {
+        "text": "Inventario con desajustes, solicitud de recuento y auditoría express. Detalle extendido para pruebas de chunking y resumen. Incluye información de operaciones, inventario, coordinación y seguimiento. Iteración 7. Este párrafo es intencionalmente largo para verificar truncado ≤280."
+      }
+    },
+    "meta": {}
+  },
+  {
+    "id": "fake-1755811200-8",
+    "labelIds": [
+      "INBOX",
+      "UNREAD"
+    ],
+    "internalDate": "1755811200000",
+    "ts": "2025-08-21T21:20:00+00:00",
+    "snippet": "Caída de POS en tienda 12, técnico en ruta, bypass temporal activado. Detalle extendido para pruebas de chunking y resumen. Incluye información de operaciones, ",
+    "payload": {
+      "mimeType": "text/plain",
+      "headers": [
+        {
+          "name": "From",
+          "value": "soporte@home.cl"
+        },
+        {
+          "name": "To",
+          "value": "carolina@home.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Incidente: caída POS en tienda 12"
+        },
+        {
+          "name": "Date",
+          "value": "Thu, 21 Aug 2025 21:20:00 +0000"
+        }
+      ],
+      "body": {
+        "text": "Caída de POS en tienda 12, técnico en ruta, bypass temporal activado. Detalle extendido para pruebas de chunking y resumen. Incluye información de operaciones, inventario, coordinación y seguimiento. Iteración 8. Este párrafo es intencionalmente largo para verificar truncado ≤280."
+      }
+    },
+    "meta": {}
+  },
+  {
+    "id": "fake-1755731400-9",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755731400000",
+    "ts": "2025-08-20T23:10:00+00:00",
+    "snippet": "Seguimiento de sanciones y reemplazos por incumplimiento de SLA. Detalle extendido para pruebas de chunking y resumen. Incluye información de operaciones, inven",
+    "payload": {
+      "mimeType": "text/plain",
+      "headers": [
+        {
+          "name": "From",
+          "value": "mall2@mall2.cl"
+        },
+        {
+          "name": "To",
+          "value": "carolina@home.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Cierre de mes: conciliación pendiente"
+        },
+        {
+          "name": "Date",
+          "value": "Wed, 20 Aug 2025 23:10:00 +0000"
+        }
+      ],
+      "body": {
+        "text": "Seguimiento de sanciones y reemplazos por incumplimiento de SLA. Detalle extendido para pruebas de chunking y resumen. Incluye información de operaciones, inventario, coordinación y seguimiento. Iteración 9. Este párrafo es intencionalmente largo para verificar truncado ≤280."
+      }
+    },
+    "meta": {}
+  },
+  {
+    "id": "fake-1755819900-10",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755819900000",
+    "ts": "2025-08-21T23:45:00+00:00",
+    "snippet": "Intento de acceso no autorizado, revisión de logs y rotación de credenciales. Detalle extendido para pruebas de chunking y resumen. Incluye información de opera",
+    "payload": {
+      "mimeType": "text/plain",
+      "headers": [
+        {
+          "name": "From",
+          "value": "seguridad@home.cl"
+        },
+        {
+          "name": "To",
+          "value": "carolina@home.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Alerta: intento de acceso no autorizado"
+        },
+        {
+          "name": "Date",
+          "value": "Thu, 21 Aug 2025 23:45:00 +0000"
+        }
+      ],
+      "body": {
+        "text": "Intento de acceso no autorizado, revisión de logs y rotación de credenciales. Detalle extendido para pruebas de chunking y resumen. Incluye información de operaciones, inventario, coordinación y seguimiento. Iteración 10. Este párrafo es intencionalmente largo para verificar truncado ≤280."
+      }
+    },
+    "meta": {}
+  },
+  {
+    "id": "fake-1755734100-11",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755734100000",
+    "ts": "2025-08-20T23:55:00+00:00",
+    "snippet": "Mantenimiento eléctrico programado, ventanas de riesgo y plan de contingencia. Detalle extendido para pruebas de chunking y resumen. Incluye información de oper",
+    "payload": {
+      "mimeType": "text/plain",
+      "headers": [
+        {
+          "name": "From",
+          "value": "compras@home.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Proveedor eléctrico: mantenimiento programado"
+        },
+        {
+          "name": "Date",
+          "value": "Wed, 20 Aug 2025 23:55:00 +0000"
+        },
+        {
+          "name": "To",
+          "value": "equipo@home.cl"
+        },
+        {
+          "name": "Cc",
+          "value": "carolina@home.cl"
+        }
+      ],
+      "body": {
+        "text": "Mantenimiento eléctrico programado, ventanas de riesgo y plan de contingencia. Detalle extendido para pruebas de chunking y resumen. Incluye información de operaciones, inventario, coordinación y seguimiento. Iteración 11. Este párrafo es intencionalmente largo para verificar truncado ≤280."
+      }
+    },
+    "meta": {
+      "cc_only": true
+    }
+  }
+]

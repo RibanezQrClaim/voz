@@ -1,0 +1,33 @@
+# CHANGELOG
+
+## 0.2.1 — 2025-08-22
+### Cambios
+- **Intent detector** (`core/intent_detector.py`)
+  - Alias imperativo `resume`.
+  - Soporte nativo de `resumen_ayer` y `remitentes_ayer`.
+- **Summarizer** (`utils/summarizer.py`)
+  - Filtra por **fecha** antes de aplicar el límite (fake/real).
+  - `_is_to_me`: usa `To:` del header y campo top-level `to` (fixture).
+  - Resumen en **una sola oración**, **≤ 280**, **sin HTML**, y **sin cortar palabras**.
+- **Action router** (`core/action_router.py`)
+  - Ramas `remitentes_hoy/ayer`, `resumen_hoy/ayer` consolidadas.
+  - `leer_ultimo`: preview limpio ≤ 240 con corte en límite natural.
+- **Gmail core** (`core/gmail/__init__.py`)
+  - Export de `remitentes_hoy` y `remitentes_ayer`.
+  - Métricas de duración por backend (fake/real).
+- **Fixture** (`data/emails_home.json`)
+  - Fechas movidas a **hoy/ayer** para reproducibilidad.
+- **Docs**
+  - README del MVP actualizado con quickstart, intents y ejemplos.
+
+### Notas
+- En “ayer”, se excluyen correos **CC-only** del conteo de remitentes.
+- `USE_FAKE_GMAIL=1` fuerza el backend fake y usa el fixture de `FAKE_EMAILS_PATH`.
+
+---
+
+## 0.2.0 — 2025-08-19
+- MVP inicial: lectura simple, resumen, no leídos, importantes.
+- Modo fake integrado y endpoint `POST /api/comando`.
+- Base de reglas de intención y router de acciones.
+

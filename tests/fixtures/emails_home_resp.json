@@ -1,0 +1,467 @@
+[
+  {
+    "id": "msg_38144",
+    "threadId": "thr_1275",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755784994520",
+    "snippet": "Se reporta un error crítico en checkout que afecta el flujo de ventas online, requiere atención inme",
+    "payload": {
+      "headers": [
+        {
+          "name": "From",
+          "value": "rrhh@home.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Ticket P1: error 500 en checkout"
+        },
+        {
+          "name": "Date",
+          "value": "Thu, 21 Aug 2025 10:03:14 -0400"
+        },
+        {
+          "name": "To",
+          "value": "user@test.com"
+        }
+      ]
+    },
+    "ts": "2025-08-21T10:03:14.520351-04:00",
+    "body": "Se reporta un error crítico en checkout que afecta el flujo de ventas online, requiere atención inmediata y coordinación de logística y TI para resolver el impacto en clientes y operaciones."
+  },
+  {
+    "id": "msg_40875",
+    "threadId": "thr_9449",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755784094520",
+    "snippet": "El forecast de Q3 muestra desviaciones importantes respecto a la planificación inicial, se recomiend",
+    "payload": {
+      "headers": [
+        {
+          "name": "From",
+          "value": "prov1@acme.com"
+        },
+        {
+          "name": "Subject",
+          "value": "Revisión forecast Q3 ventas"
+        },
+        {
+          "name": "Date",
+          "value": "Thu, 21 Aug 2025 09:48:14 -0400"
+        },
+        {
+          "name": "To",
+          "value": "user@test.com"
+        }
+      ]
+    },
+    "ts": "2025-08-21T09:48:14.520351-04:00",
+    "body": "El forecast de Q3 muestra desviaciones importantes respecto a la planificación inicial, se recomienda revisar inventarios, contratos y plan de contingencia con proveedores estratégicos."
+  },
+  {
+    "id": "msg_21858",
+    "threadId": "thr_6175",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755781694520",
+    "snippet": "El inventario semanal de la tienda 9 presenta inconsistencias en SKUs de alta rotación, se requiere ",
+    "payload": {
+      "headers": [
+        {
+          "name": "From",
+          "value": "tienda9@home.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Inventario semanal tienda 9"
+        },
+        {
+          "name": "Date",
+          "value": "Thu, 21 Aug 2025 09:08:14 -0400"
+        },
+        {
+          "name": "To",
+          "value": "user@test.com"
+        }
+      ]
+    },
+    "ts": "2025-08-21T09:08:14.520351-04:00",
+    "body": "El inventario semanal de la tienda 9 presenta inconsistencias en SKUs de alta rotación, se requiere conciliación y ajuste antes de fin de semana."
+  },
+  {
+    "id": "msg_10888",
+    "threadId": "thr_2230",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755779894520",
+    "snippet": "Se detectó quiebre de stock en productos críticos de la tienda 4, lo que impacta en la experiencia d",
+    "payload": {
+      "headers": [
+        {
+          "name": "From",
+          "value": "mall1@mall1.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Quiebre de stock SKUs críticos"
+        },
+        {
+          "name": "Date",
+          "value": "Thu, 21 Aug 2025 08:38:14 -0400"
+        },
+        {
+          "name": "To",
+          "value": "user@test.com"
+        }
+      ]
+    },
+    "ts": "2025-08-21T08:38:14.520351-04:00",
+    "body": "Se detectó quiebre de stock en productos críticos de la tienda 4, lo que impacta en la experiencia de cliente y genera riesgos reputacionales."
+  },
+  {
+    "id": "msg_54694",
+    "threadId": "thr_8944",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755778094520",
+    "snippet": "Se convoca reunión con gerencia hoy a las 8h para revisar la estrategia comercial y definir acciones",
+    "payload": {
+      "headers": [
+        {
+          "name": "From",
+          "value": "ti@home.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Reunión con gerencia 8h"
+        },
+        {
+          "name": "Date",
+          "value": "Thu, 21 Aug 2025 08:08:14 -0400"
+        },
+        {
+          "name": "To",
+          "value": "user@test.com"
+        }
+      ]
+    },
+    "ts": "2025-08-21T08:08:14.520351-04:00",
+    "body": "Se convoca reunión con gerencia hoy a las 8h para revisar la estrategia comercial y definir acciones frente a incidentes recientes."
+  },
+  {
+    "id": "msg_49931",
+    "threadId": "thr_3014",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755774494520",
+    "snippet": "Pendiente conciliación de cierres de mes en tiendas principales, requiere validación de datos financ",
+    "payload": {
+      "headers": [
+        {
+          "name": "From",
+          "value": "mall2@mall2.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Cierre de mes: conciliación pendiente"
+        },
+        {
+          "name": "Date",
+          "value": "Thu, 21 Aug 2025 07:08:14 -0400"
+        },
+        {
+          "name": "To",
+          "value": "user@test.com"
+        }
+      ]
+    },
+    "ts": "2025-08-21T07:08:14.520351-04:00",
+    "body": "Pendiente conciliación de cierres de mes en tiendas principales, requiere validación de datos financieros y coordinación con finanzas."
+  },
+  {
+    "id": "msg_65452",
+    "threadId": "thr_4734",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755770894520",
+    "snippet": "Proveedor Acme notifica atraso en despacho al sur del país, compromete SLA de entrega y requiere pla",
+    "payload": {
+      "headers": [
+        {
+          "name": "From",
+          "value": "prov2@acme.com"
+        },
+        {
+          "name": "Subject",
+          "value": "Entrega atrasada despacho sur"
+        },
+        {
+          "name": "Date",
+          "value": "Thu, 21 Aug 2025 06:08:14 -0400"
+        },
+        {
+          "name": "To",
+          "value": "user@test.com"
+        }
+      ]
+    },
+    "ts": "2025-08-21T06:08:14.520351-04:00",
+    "body": "Proveedor Acme notifica atraso en despacho al sur del país, compromete SLA de entrega y requiere plan de contingencia inmediato."
+  },
+  {
+    "id": "msg_83232",
+    "threadId": "thr_4039",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755767294520",
+    "snippet": "Se actualizan los números de ventas Q3, con tendencia positiva en algunos segmentos pero riesgos en ",
+    "payload": {
+      "headers": [
+        {
+          "name": "From",
+          "value": "tienda2@home.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Actualización ventas Q3"
+        },
+        {
+          "name": "Date",
+          "value": "Thu, 21 Aug 2025 05:08:14 -0400"
+        },
+        {
+          "name": "To",
+          "value": "user@test.com"
+        }
+      ]
+    },
+    "ts": "2025-08-21T05:08:14.520351-04:00",
+    "body": "Se actualizan los números de ventas Q3, con tendencia positiva en algunos segmentos pero riesgos en logística por entregas atrasadas."
+  },
+  {
+    "id": "msg_63884",
+    "threadId": "thr_2929",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755761294520",
+    "snippet": "Cliente corporativo solicita cotización urgente de servicios adicionales, requiere respuesta en meno",
+    "payload": {
+      "headers": [
+        {
+          "name": "From",
+          "value": "cliente1@corp.com"
+        },
+        {
+          "name": "Subject",
+          "value": "Solicitud urgente de cotización"
+        },
+        {
+          "name": "Date",
+          "value": "Thu, 21 Aug 2025 03:28:14 -0400"
+        },
+        {
+          "name": "To",
+          "value": "user@test.com"
+        }
+      ]
+    },
+    "ts": "2025-08-21T03:28:14.520351-04:00",
+    "body": "Cliente corporativo solicita cotización urgente de servicios adicionales, requiere respuesta en menos de 24h."
+  },
+  {
+    "id": "msg_52676",
+    "threadId": "thr_7146",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755755294520",
+    "snippet": "Se registra error intermitente en login de usuarios, con impacto menor pero que debe monitorearse pa",
+    "payload": {
+      "headers": [
+        {
+          "name": "From",
+          "value": "soporte@plataforma.com"
+        },
+        {
+          "name": "Subject",
+          "value": "Ticket P2: error intermitente en login"
+        },
+        {
+          "name": "Date",
+          "value": "Thu, 21 Aug 2025 01:48:14 -0400"
+        },
+        {
+          "name": "To",
+          "value": "user@test.com"
+        }
+      ]
+    },
+    "ts": "2025-08-21T01:48:14.520351-04:00",
+    "body": "Se registra error intermitente en login de usuarios, con impacto menor pero que debe monitorearse para evitar incidentes mayores."
+  },
+  {
+    "id": "msg_71424",
+    "threadId": "thr_1449",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755749294520",
+    "snippet": "Proveedor eléctrico envía actualización de contrato SLA, con observaciones en plazos y multas por in",
+    "payload": {
+      "headers": [
+        {
+          "name": "From",
+          "value": "prov3@acme.com"
+        },
+        {
+          "name": "Subject",
+          "value": "Revisión contrato eléctrico SLA"
+        },
+        {
+          "name": "Date",
+          "value": "Thu, 21 Aug 2025 00:08:14 -0400"
+        },
+        {
+          "name": "To",
+          "value": "user@test.com"
+        }
+      ]
+    },
+    "ts": "2025-08-21T00:08:14.520351-04:00",
+    "body": "Proveedor eléctrico envía actualización de contrato SLA, con observaciones en plazos y multas por incumplimiento."
+  },
+  {
+    "id": "msg_15504",
+    "threadId": "thr_3566",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755743294520",
+    "snippet": "Equipo de marketing prepara campaña de promoción de septiembre, con énfasis en fidelización y aument",
+    "payload": {
+      "headers": [
+        {
+          "name": "From",
+          "value": "marketing@home.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Campaña promoción septiembre"
+        },
+        {
+          "name": "Date",
+          "value": "Wed, 20 Aug 2025 22:28:14 -0400"
+        },
+        {
+          "name": "To",
+          "value": "user@test.com"
+        }
+      ]
+    },
+    "ts": "2025-08-20T22:28:14.520351-04:00",
+    "body": "Equipo de marketing prepara campaña de promoción de septiembre, con énfasis en fidelización y aumento de ventas."
+  },
+  {
+    "id": "msg_90025",
+    "threadId": "thr_1156",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755737294520",
+    "snippet": "El área de logística alerta sobre un despacho urgente pendiente, se necesita coordinación entre bode",
+    "payload": {
+      "headers": [
+        {
+          "name": "From",
+          "value": "logistica@home.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Despacho urgente pendiente coordinación"
+        },
+        {
+          "name": "Date",
+          "value": "Wed, 20 Aug 2025 20:48:14 -0400"
+        },
+        {
+          "name": "To",
+          "value": "user@test.com"
+        }
+      ]
+    },
+    "ts": "2025-08-20T20:48:14.520351-04:00",
+    "body": "El área de logística alerta sobre un despacho urgente pendiente, se necesita coordinación entre bodegas y transporte hoy mismo."
+  },
+  {
+    "id": "msg_58547",
+    "threadId": "thr_1541",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755731294520",
+    "snippet": "Finanzas reporta conciliación bancaria con diferencias detectadas, requiere revisión y aprobación.",
+    "payload": {
+      "headers": [
+        {
+          "name": "From",
+          "value": "finanzas@home.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Conciliación bancaria agosto"
+        },
+        {
+          "name": "Date",
+          "value": "Wed, 20 Aug 2025 19:08:14 -0400"
+        },
+        {
+          "name": "To",
+          "value": "user@test.com"
+        }
+      ]
+    },
+    "ts": "2025-08-20T19:08:14.520351-04:00",
+    "body": "Finanzas reporta conciliación bancaria con diferencias detectadas, requiere revisión y aprobación."
+  },
+  {
+    "id": "msg_62461",
+    "threadId": "thr_5456",
+    "labelIds": [
+      "INBOX"
+    ],
+    "internalDate": "1755719294520",
+    "snippet": "Jefatura recuerda la presentación programada a las 11h con dirección general, se deben preparar slid",
+    "payload": {
+      "headers": [
+        {
+          "name": "From",
+          "value": "jefe@home.cl"
+        },
+        {
+          "name": "Subject",
+          "value": "Recordatorio presentación 11h"
+        },
+        {
+          "name": "Date",
+          "value": "Wed, 20 Aug 2025 15:48:14 -0400"
+        },
+        {
+          "name": "To",
+          "value": "user@test.com"
+        }
+      ]
+    },
+    "ts": "2025-08-20T15:48:14.520351-04:00",
+    "body": "Jefatura recuerda la presentación programada a las 11h con dirección general, se deben preparar slides finales."
+  }
+]

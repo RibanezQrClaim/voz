@@ -1,0 +1,473 @@
+[
+  {
+    "id": "m_00001",
+    "threadId": "t_00001",
+    "internalDate": "1755677700000",
+    "ts": "2025-08-20T08:15:00+00:00",
+    "from": "rrhh@home.cl",
+    "to": [
+      "carolina@home.cl"
+    ],
+    "cc": [],
+    "subject": "Cierre de mes: conciliación pendiente",
+    "snippet": "mes oportunidad pipeline P1 cliente vitrina pago seguimiento crítico stock sanción ticket forecast cierre prioridad pipeline rechazo proveedor reemplazo coordin",
+    "body": "<p>mes oportunidad pipeline P1 cliente vitrina pago seguimiento crítico stock sanción ticket forecast cierre prioridad pipeline rechazo proveedor reemplazo coordinación contrato mes crítico licencia reemplazo logística promoción caída coordinación licencia sanción aprobación soporte horario mañana incidente licencia apertura tienda garantía cliente operación promoción seguridad ticket cierre soporte mantenimiento caída cliente quiebre mañana POS eléctrico turno venta banco incidente crítico contrato cierre médica ticket sanción aprobación apertura hoy cliente conciliación cliente garantía abastecimiento apertura alerta banco aprobación inventario coordinación reemplazo eléctrico SLA quiebre vitrina inventario soporte campaña pipeline campaña crítico P1 aprobación soporte accidente mantenimiento tienda logística operación accidente mall mantenimiento cierre urgente médica oportunidad campaña licencia promoción médica POS pipeline médica mañana venta pago crítico denuncia alerta médica SLA alerta mes campaña indicador inventario quiebre inventario P1 turno cierre accidente seguimiento venta vitrina urgente horario prioridad campaña eléctrico denuncia horario banco vitrina campaña venta mall hoy aprobación promoción denuncia pago denuncia vitrina ticket aprobación hoy venta tienda cierre mall promoción proveedor cliente indicador licencia pipeline caída rechazo cierre médica</p>\n<blockquote>On Tue, 12 Aug 2025, someone wrote: please see details below…</blockquote>",
+    "labels": [
+      "INBOX",
+      "INTERNAL",
+      "RRHH",
+      "URGENTE",
+      "DIRECT"
+    ],
+    "hasAttachments": false,
+    "meta": {
+      "role_from": "rrhh",
+      "direct_to_me": true,
+      "cc_only": false,
+      "store": null,
+      "mall": null,
+      "proveedor": null,
+      "priority_hint": "P1",
+      "deadline": null,
+      "location": null,
+      "doc_refs": null
+    },
+    "payload": {
+      "headers": [
+        {
+          "name": "Date",
+          "value": "Tue, 19 Aug 2025 12:39:39 -0400"
+        }
+      ],
+      "mimeType": "text/plain",
+      "body": {
+        "text": "Este es un correo de prueba con contenido extendido para pruebas de resumen. Iteración 0. Contiene detalles adicionales sobre operaciones, gestión, inventario, logística y coordinación entre equipos."
+      }
+    }
+  },
+  {
+    "id": "m_00002",
+    "threadId": "t_00002",
+    "internalDate": "1755594600000",
+    "ts": "2025-08-19T09:10:00+00:00",
+    "from": "mall1@mall1.cl",
+    "to": [
+      "carolina@home.cl"
+    ],
+    "cc": [],
+    "subject": "Quiebre de stock SKUs críticos en tienda 4",
+    "snippet": "accidente logística apertura accidente rechazo quiebre contrato apertura SLA crítico POS banco eléctrico tienda eléctrico promoción quiebre horario incidente pr",
+    "body": "<p>accidente logística apertura accidente rechazo quiebre contrato apertura SLA crítico POS banco eléctrico tienda eléctrico promoción quiebre horario incidente proveedor venta alerta soporte banco soporte aprobación aprobación eléctrico coordinación mall cliente seguimiento devolución reunión turno denuncia licencia stock campaña accidente inventario caída sanción cliente garantía tienda crítico accidente venta proveedor cierre alerta horario pago médica mañana eléctrico ticket P1 aprobación mes campaña soporte pago reunión apertura indicador hoy denuncia urgente soporte devolución denuncia aprobación abastecimiento P1 soporte banco proveedor accidente mall licencia mañana cierre SLA pago rechazo logística caída logística mall urgente caída P1 denuncia hoy cierre sanción conciliación abastecimiento incidente P1 caída reunión mall pago cierre mantenimiento soporte operación pipeline denuncia pipeline eléctrico accidente médica caída coordinación horario denuncia oportunidad vitrina indicador garantía seguimiento inventario eléctrico banco reemplazo logística urgente contrato aprobación P1 sanción médica médica pipeline reemplazo apertura incidente P1 cliente inventario POS indicador reunión médica proveedor conciliación alerta SLA SLA médica soporte tienda crítico garantía cliente horario licencia mantenimiento devolución promoción venta indicador POS banco mañana eléctrico conciliación operación soporte soporte horario seguridad seguridad indicador coordinación licencia cierre rechazo abastecimiento apertura venta eléctrico apertura reemplazo ticket pago coordinación urgente accidente cliente tienda Monto: $10.020.201 CLP.</p>\n<blockquote>On Tue, 12 Aug 2025, someone wrote: please see details below…</blockquote>\n<img src=\"tracker.png\" width=\"1\" height=\"1\" alt=\"\"/>",
+    "labels": [
+      "INBOX",
+      "EXTERNAL",
+      "MALL",
+      "URGENTE",
+      "DIRECT"
+    ],
+    "hasAttachments": false,
+    "meta": {
+      "role_from": "mall",
+      "direct_to_me": true,
+      "cc_only": false,
+      "store": null,
+      "mall": "mall4",
+      "proveedor": null,
+      "priority_hint": "P1",
+      "deadline": "2025-14-09T16:00:00-04:00",
+      "location": null,
+      "doc_refs": {
+        "tipo": "OC",
+        "id": "OC-25194",
+        "monto": 13061203,
+        "moneda": "CLP"
+      }
+    },
+    "payload": {
+      "headers": [
+        {
+          "name": "Date",
+          "value": "Tue, 19 Aug 2025 11:09:39 -0400"
+        }
+      ],
+      "mimeType": "text/plain",
+      "body": {
+        "text": "Este es un correo de prueba con contenido extendido para pruebas de resumen. Iteración 1. Contiene detalles adicionales sobre operaciones, gestión, inventario, logística y coordinación entre equipos."
+      }
+    }
+  },
+  {
+    "id": "m_00003",
+    "threadId": "t_00003",
+    "internalDate": "1755693000000",
+    "ts": "2025-08-20T12:30:00+00:00",
+    "from": "tienda9@home.cl",
+    "to": [
+      "carolina@home.cl"
+    ],
+    "cc": [],
+    "subject": "Revisión forecast Q3 ventas",
+    "snippet": "sanción garantía seguridad médica coordinación pago operación conciliación campaña denuncia prioridad garantía aprobación SLA banco reunión turno P1 venta logís",
+    "body": "<p>sanción garantía seguridad médica coordinación pago operación conciliación campaña denuncia prioridad garantía aprobación SLA banco reunión turno P1 venta logística horario devolución inventario horario conciliación SLA turno denuncia accidente accidente inventario caída contrato mañana operación seguimiento crítico forecast mes crítico pago reunión hoy venta proveedor cliente pipeline médica denuncia cierre urgente quiebre horario pipeline cierre alerta quiebre forecast turno cierre accidente tienda seguridad coordinación seguridad proveedor pipeline pipeline médica sanción accidente hoy turno cliente inventario accidente cierre mes soporte cliente forecast forecast forecast quiebre cierre SLA urgente pipeline coordinación seguimiento garantía tienda reemplazo mañana licencia abastecimiento devolución pipeline médica soporte promoción coordinación aprobación conciliación quiebre inventario mall eléctrico aprobación POS indicador pipeline garantía alerta tienda inventario accidente rechazo rechazo reunión aprobación Tel: +56 9 8237 6661.</p>\n<blockquote>On Tue, 12 Aug 2025, someone wrote: please see details below…</blockquote>",
+    "labels": [
+      "INBOX",
+      "INTERNAL",
+      "TIENDA",
+      "URGENTE",
+      "DIRECT"
+    ],
+    "hasAttachments": false,
+    "meta": {
+      "role_from": "tienda",
+      "direct_to_me": true,
+      "cc_only": false,
+      "store": "tienda5",
+      "mall": null,
+      "proveedor": null,
+      "priority_hint": "P1",
+      "deadline": "2025-08-08T18:00:00-04:00",
+      "location": null,
+      "doc_refs": null
+    },
+    "payload": {
+      "headers": [
+        {
+          "name": "Date",
+          "value": "Tue, 19 Aug 2025 09:39:39 -0400"
+        }
+      ],
+      "mimeType": "text/plain",
+      "body": {
+        "text": "Este es un correo de prueba con contenido extendido para pruebas de resumen. Iteración 2. Contiene detalles adicionales sobre operaciones, gestión, inventario, logística y coordinación entre equipos."
+      }
+    }
+  },
+  {
+    "id": "m_00004",
+    "threadId": "t_00004",
+    "internalDate": "1755609900000",
+    "ts": "2025-08-19T13:25:00+00:00",
+    "from": "ti@home.cl",
+    "to": [
+      "carolina@home.cl"
+    ],
+    "cc": [],
+    "subject": "Reunión con gerencia 8h",
+    "snippet": "mañana venta promoción crítico alerta aprobación P1 caída rechazo urgente urgente ticket operación abastecimiento garantía coordinación crítico prioridad stock ",
+    "body": "<p>mañana venta promoción crítico alerta aprobación P1 caída rechazo urgente urgente ticket operación abastecimiento garantía coordinación crítico prioridad stock operación promoción cierre turno incidente crítico pipeline stock seguridad pago POS tienda horario cierre conciliación pipeline aprobación accidente indicador mañana P1 ticket ticket vitrina forecast mantenimiento abastecimiento vitrina pago operación quiebre mañana rechazo quiebre devolución quiebre ticket accidente garantía horario cierre contrato devolución devolución accidente soporte cliente logística coordinación coordinación reemplazo logística alerta mall vitrina quiebre apertura soporte mall proveedor hoy campaña cliente venta garantía horario pago soporte P1 Plazo hoy 14:00. mantenimiento cierre stock vitrina caída logística forecast médica cliente devolución contrato prioridad crítico alerta operación eléctrico seguimiento urgente incidente P1 pipeline cierre inventario promoción reunión forecast inventario operación rechazo POS cliente prioridad reunión aprobación alerta cierre POS coordinación mañana sanción mañana denuncia crítico sanción logística seguridad horario coordinación crítico pipeline sanción accidente apertura seguimiento denuncia vitrina soporte denuncia promoción indicador indicador contrato seguimiento pago devolución mantenimiento cierre reemplazo mall médica contrato abastecimiento SLA</p>\n<blockquote>On Tue, 12 Aug 2025, someone wrote: please see details below…</blockquote>",
+    "labels": [
+      "INBOX",
+      "INTERNAL",
+      "TI",
+      "URGENTE",
+      "DIRECT"
+    ],
+    "hasAttachments": true,
+    "meta": {
+      "role_from": "ti",
+      "direct_to_me": true,
+      "cc_only": false,
+      "store": null,
+      "mall": null,
+      "proveedor": null,
+      "priority_hint": "P1",
+      "deadline": "2025-08-08T14:00:00-04:00",
+      "location": null,
+      "doc_refs": null
+    },
+    "payload": {
+      "headers": [
+        {
+          "name": "Date",
+          "value": "Tue, 19 Aug 2025 08:09:39 -0400"
+        }
+      ],
+      "mimeType": "text/plain",
+      "body": {
+        "text": "Este es un correo de prueba con contenido extendido para pruebas de resumen. Iteración 3. Contiene detalles adicionales sobre operaciones, gestión, inventario, logística y coordinación entre equipos."
+      }
+    }
+  },
+  {
+    "id": "m_00005",
+    "threadId": "t_00005",
+    "internalDate": "1755708300000",
+    "ts": "2025-08-20T16:45:00+00:00",
+    "from": "prov1@acme.com",
+    "to": [
+      "carolina@home.cl"
+    ],
+    "cc": [],
+    "subject": "Revisión forecast Q3 ventas",
+    "snippet": "oportunidad mantenimiento proveedor eléctrico cierre logística stock cliente mañana pipeline hoy cierre contrato stock eléctrico P1 cliente P1 logística forecas",
+    "body": "<p>oportunidad mantenimiento proveedor eléctrico cierre logística stock cliente mañana pipeline hoy cierre contrato stock eléctrico P1 cliente P1 logística forecast stock urgente eléctrico oportunidad forecast cierre oportunidad contrato devolución prioridad tienda venta pago caída SLA banco mes reunión pipeline eléctrico vitrina inventario devolución prioridad mañana P1 turno mes quiebre hoy crítico eléctrico indicador coordinación inventario garantía ticket pago cliente denuncia médica pago urgente logística licencia conciliación ticket denuncia ticket coordinación vitrina contrato reunión Plazo mañana 11:30. reunión mañana caída quiebre SLA seguridad venta aprobación indicador pipeline coordinación prioridad tienda pipeline eléctrico eléctrico SLA turno logística prioridad cierre aprobación garantía venta tienda abastecimiento forecast alerta proveedor sanción vitrina banco mes cierre POS sanción logística sanción promoción mes hoy oportunidad oportunidad alerta inventario incidente contrato urgente cliente caída crítico seguridad urgente urgente médica tienda eléctrico</p>\n<blockquote>On Tue, 12 Aug 2025, someone wrote: please see details below…</blockquote>\nTabla:\nSKU | Stock | Tienda\nA12 | 0 | Tienda 3\nB55 | 2 | Tienda 7\nC90 | 5 | Tienda 1",
+    "labels": [
+      "INBOX",
+      "EXTERNAL",
+      "PROVEEDOR",
+      "URGENTE",
+      "DIRECT"
+    ],
+    "hasAttachments": false,
+    "meta": {
+      "role_from": "proveedor",
+      "direct_to_me": true,
+      "cc_only": false,
+      "store": null,
+      "mall": null,
+      "proveedor": "prov2@acme.com",
+      "priority_hint": "P1",
+      "deadline": "2025-08-11T16:00:00-04:00",
+      "location": null,
+      "doc_refs": null
+    },
+    "payload": {
+      "headers": [
+        {
+          "name": "Date",
+          "value": "Tue, 19 Aug 2025 06:39:39 -0400"
+        }
+      ],
+      "mimeType": "text/plain",
+      "body": {
+        "text": "Este es un correo de prueba con contenido extendido para pruebas de resumen. Iteración 4. Contiene detalles adicionales sobre operaciones, gestión, inventario, logística y coordinación entre equipos."
+      }
+    }
+  },
+  {
+    "id": "m_00006",
+    "threadId": "t_00006",
+    "internalDate": "1755625200000",
+    "ts": "2025-08-19T17:40:00+00:00",
+    "from": "rrhh@home.cl",
+    "to": [
+      "tienda8@home.cl"
+    ],
+    "cc": [
+      "carolina@home.cl",
+      "sup2@home.cl"
+    ],
+    "subject": "Revisión forecast Q3 ventas",
+    "snippet": "mantenimiento aprobación promoción médica oportunidad cliente cierre denuncia inventario seguimiento abastecimiento promoción mes SLA seguridad POS rechazo lice",
+    "body": "<p>mantenimiento aprobación promoción médica oportunidad cliente cierre denuncia inventario seguimiento abastecimiento promoción mes SLA seguridad POS rechazo licencia médica sanción POS quiebre conciliación turno mes contrato crítico devolución seguimiento abastecimiento ticket conciliación hoy cliente promoción pipeline mes proveedor inventario mes cierre soporte vitrina proveedor horario banco quiebre aprobación oportunidad ticket venta mañana soporte mall devolución licencia stock stock caída P1 apertura denuncia P1 operación indicador forecast abastecimiento urgente venta campaña coordinación mes urgente operación quiebre POS venta urgente oportunidad POS licencia turno ticket alerta médica conciliación mañana</p>\n<blockquote>On Tue, 12 Aug 2025, someone wrote: please see details below…</blockquote>",
+    "labels": [
+      "INBOX",
+      "INTERNAL",
+      "RRHH",
+      "URGENTE",
+      "CC_ONLY"
+    ],
+    "hasAttachments": false,
+    "meta": {
+      "role_from": "rrhh",
+      "direct_to_me": false,
+      "cc_only": true,
+      "store": null,
+      "mall": null,
+      "proveedor": null,
+      "priority_hint": "P1",
+      "deadline": null,
+      "location": null,
+      "doc_refs": null
+    },
+    "payload": {
+      "headers": [
+        {
+          "name": "Date",
+          "value": "Tue, 19 Aug 2025 05:09:39 -0400"
+        }
+      ],
+      "mimeType": "text/plain",
+      "body": {
+        "text": "Este es un correo de prueba con contenido extendido para pruebas de resumen. Iteración 5. Contiene detalles adicionales sobre operaciones, gestión, inventario, logística y coordinación entre equipos."
+      }
+    }
+  },
+  {
+    "id": "m_00007",
+    "threadId": "t_00007",
+    "internalDate": "1755720000000",
+    "ts": "2025-08-20T20:00:00+00:00",
+    "from": "prov3@acme.com",
+    "to": [
+      "tienda9@home.cl"
+    ],
+    "cc": [
+      "carolina@home.cl",
+      "sup2@home.cl"
+    ],
+    "subject": "Ticket P1: error 500 en checkout",
+    "snippet": "horario SLA sanción operación indicador POS médica sanción venta abastecimiento promoción oportunidad campaña horario turno vitrina quiebre vitrina indicador P1",
+    "body": "<p>horario SLA sanción operación indicador POS médica sanción venta abastecimiento promoción oportunidad campaña horario turno vitrina quiebre vitrina indicador P1 cierre abastecimiento SLA mes inventario coordinación tienda accidente venta urgente accidente garantía promoción prioridad P1 inventario horario contrato licencia crítico alerta logística alerta devolución garantía seguimiento venta seguridad mall devolución eléctrico SLA conciliación reunión stock eléctrico caída ticket sanción stock apertura mantenimiento crítico seguridad prioridad pipeline coordinación vitrina quiebre mañana stock seguimiento alerta cliente abastecimiento proveedor urgente operación stock mes devolución venta soporte cierre denuncia Monto: $2.462.450 CLP. Plazo hoy 16:00.</p>\n<ul><li>Punto 1</li><li>Punto 2</li><li>Punto 3</li></ul>\n<blockquote>On Tue, 12 Aug 2025, someone wrote: please see details below…</blockquote>\nTabla:\nSKU | Stock | Tienda\nA12 | 0 | Tienda 3\nB55 | 2 | Tienda 7\nC90 | 5 | Tienda 1",
+    "labels": [
+      "INBOX",
+      "EXTERNAL",
+      "PROVEEDOR",
+      "URGENTE",
+      "CC_ONLY"
+    ],
+    "hasAttachments": false,
+    "meta": {
+      "role_from": "proveedor",
+      "direct_to_me": false,
+      "cc_only": true,
+      "store": null,
+      "mall": null,
+      "proveedor": "prov1@acme.com",
+      "priority_hint": "P1",
+      "deadline": "2025-08-10T14:00:00-04:00",
+      "location": null,
+      "doc_refs": null
+    },
+    "payload": {
+      "headers": [
+        {
+          "name": "Date",
+          "value": "Sun, 17 Aug 2025 12:39:39 -0400"
+        }
+      ],
+      "mimeType": "text/plain",
+      "body": {
+        "text": "Este es un correo de prueba con contenido extendido para pruebas de resumen. Iteración 6. Contiene detalles adicionales sobre operaciones, gestión, inventario, logística y coordinación entre equipos."
+      }
+    }
+  },
+  {
+    "id": "m_00008",
+    "threadId": "t_00008",
+    "internalDate": "1755637200000",
+    "ts": "2025-08-19T21:00:00+00:00",
+    "from": "tienda2@home.cl",
+    "to": [
+      "carolina@home.cl"
+    ],
+    "cc": [],
+    "subject": "Inventario semanal tienda 6",
+    "snippet": "mes caída soporte stock aprobación pago indicador licencia licencia reemplazo caída conciliación abastecimiento cierre conciliación médica SLA POS médica médica",
+    "body": "<p>mes caída soporte stock aprobación pago indicador licencia licencia reemplazo caída conciliación abastecimiento cierre conciliación médica SLA POS médica médica hoy promoción garantía licencia devolución aprobación seguimiento ticket turno sanción mañana POS prioridad forecast ticket licencia operación alerta devolución stock apertura prioridad inventario médica quiebre médica indicador operación stock banco pago apertura prioridad caída sanción tienda logística crítico SLA P1 contrato soporte reemplazo incidente operación indicador POS SLA reemplazo oportunidad cierre reemplazo ticket SLA SLA tienda devolución aprobación seguridad logística incidente operación aprobación prioridad mantenimiento quiebre aprobación mantenimiento contrato indicador banco reemplazo SLA sanción urgente oportunidad indicador cierre devolución médica ticket mes campaña crítico devolución caída cierre licencia promoción seguimiento operación inventario POS cierre SLA mes horario promoción forecast rechazo devolución mantenimiento operación banco mall seguridad POS horario inventario cliente hoy contrato forecast eléctrico Plazo mañana 09:00.</p>\n<blockquote>On Tue, 12 Aug 2025, someone wrote: please see details below…</blockquote>",
+    "labels": [
+      "INBOX",
+      "INTERNAL",
+      "TIENDA",
+      "URGENTE",
+      "DIRECT"
+    ],
+    "hasAttachments": false,
+    "meta": {
+      "role_from": "tienda",
+      "direct_to_me": true,
+      "cc_only": false,
+      "store": "tienda7",
+      "mall": null,
+      "proveedor": null,
+      "priority_hint": "P1",
+      "deadline": null,
+      "location": null,
+      "doc_refs": null
+    },
+    "payload": {
+      "headers": [
+        {
+          "name": "Date",
+          "value": "Sun, 17 Aug 2025 11:09:39 -0400"
+        }
+      ],
+      "mimeType": "text/plain",
+      "body": {
+        "text": "Este es un correo de prueba con contenido extendido para pruebas de resumen. Iteración 7. Contiene detalles adicionales sobre operaciones, gestión, inventario, logística y coordinación entre equipos."
+      }
+    }
+  },
+  {
+    "id": "m_00009",
+    "threadId": "t_00009",
+    "internalDate": "1755733800000",
+    "ts": "2025-08-20T23:50:00+00:00",
+    "from": "rrhh@home.cl",
+    "to": [
+      "carolina@home.cl"
+    ],
+    "cc": [],
+    "subject": "Ticket P1: error 500 en checkout",
+    "snippet": "mes inventario pipeline cierre reemplazo mes vitrina urgente sanción logística alerta logística médica inventario coordinación horario pipeline turno apertura p",
+    "body": "<p>mes inventario pipeline cierre reemplazo mes vitrina urgente sanción logística alerta logística médica inventario coordinación horario pipeline turno apertura promoción oportunidad horario hoy caída POS reemplazo accidente campaña seguridad abastecimiento vitrina accidente alerta proveedor coordinación conciliación contrato forecast ticket conciliación reunión logística operación pago stock vitrina coordinación coordinación eléctrico stock conciliación vitrina médica mantenimiento venta garantía contrato operación abastecimiento quiebre reemplazo mantenimiento stock Monto: $10.307.651 CLP. coordinación SLA aprobación sanción inventario campaña operación horario cierre vitrina garantía forecast proveedor seguridad sanción denuncia eléctrico denuncia reunión cierre logística turno banco promoción pipeline garantía contrato pago cliente cierre eléctrico P1 coordinación denuncia sanción hoy crítico quiebre oportunidad alerta eléctrico soporte caída médica turno turno incidente seguridad contrato accidente forecast hoy</p>\n<blockquote>On Tue, 12 Aug 2025, someone wrote: please see details below…</blockquote>",
+    "labels": [
+      "INBOX",
+      "INTERNAL",
+      "RRHH",
+      "URGENTE",
+      "DIRECT"
+    ],
+    "hasAttachments": false,
+    "meta": {
+      "role_from": "rrhh",
+      "direct_to_me": true,
+      "cc_only": false,
+      "store": null,
+      "mall": null,
+      "proveedor": null,
+      "priority_hint": "P1",
+      "deadline": null,
+      "location": null,
+      "doc_refs": null
+    },
+    "payload": {
+      "headers": [
+        {
+          "name": "Date",
+          "value": "Sun, 17 Aug 2025 09:39:39 -0400"
+        }
+      ],
+      "mimeType": "text/plain",
+      "body": {
+        "text": "Este es un correo de prueba con contenido extendido para pruebas de resumen. Iteración 8. Contiene detalles adicionales sobre operaciones, gestión, inventario, logística y coordinación entre equipos."
+      }
+    }
+  },
+  {
+    "id": "m_00010",
+    "threadId": "t_00010",
+    "internalDate": "1755647700000",
+    "ts": "2025-08-19T23:55:00+00:00",
+    "from": "mall2@mall2.cl",
+    "to": [
+      "carolina@home.cl"
+    ],
+    "cc": [],
+    "subject": "Cierre de mes: conciliación pendiente",
+    "snippet": "banco horario cierre urgente SLA soporte denuncia denuncia mantenimiento horario hoy conciliación eléctrico mall promoción vitrina mes crítico inventario coordi",
+    "body": "<p>banco horario cierre urgente SLA soporte denuncia denuncia mantenimiento horario hoy conciliación eléctrico mall promoción vitrina mes crítico inventario coordinación apertura indicador tienda cliente mañana P1 venta pago eléctrico pago logística mañana alerta coordinación promoción P1 alerta abastecimiento cierre accidente ticket operación apertura cierre POS cliente campaña denuncia cliente urgente conciliación conciliación seguimiento urgente cliente alerta mañana forecast coordinación tienda turno venta horario coordinación venta crítico caída mañana pipeline conciliación coordinación banco contrato tienda mes médica devolución sanción campaña operación seguridad pago oportunidad cierre hoy Tel: +56 9 6523 5833. ticket incidente contrato devolución turno licencia cierre vitrina abastecimiento cierre denuncia horario reunión quiebre médica pago cierre proveedor eléctrico rechazo stock alerta ticket accidente POS soporte tienda campaña urgente soporte devolución horario stock P1 apertura denuncia médica reemplazo quiebre SLA tienda urgente aprobación venta urgente ticket proveedor crítico sanción mall stock tienda logística venta promoción incidente mall POS forecast médica ticket SLA denuncia promoción médica seguimiento operación turno eléctrico mantenimiento ticket banco prioridad rechazo reunión P1 indicador licencia soporte mall seguimiento campaña reemplazo accidente conciliación caída Monto: $10.963.003 CLP. quiebre campaña médica tienda quiebre indicador apertura pipeline operación pipeline logística reemplazo vitrina operación cierre venta urgente cierre accidente SLA licencia quiebre alerta accidente inventario caída pipeline urgente prioridad cliente garantía horario campaña alerta seguimiento proveedor médica ticket pipeline alerta coordinación médica mall mañana crítico operación reemplazo alerta tienda eléctrico eléctrico crítico oportunidad alerta pipeline reemplazo sanción turno pago mantenimiento proveedor hoy POS ticket mantenimiento coordinación mes devolución quiebre sanción soporte turno banco caída mall alerta Monto: $14.587.154 CLP.</p>\n<img src=\"tracker.png\" width=\"1\" height=\"1\" alt=\"\"/>",
+    "labels": [
+      "INBOX",
+      "EXTERNAL",
+      "MALL",
+      "URGENTE",
+      "DIRECT"
+    ],
+    "hasAttachments": false,
+    "meta": {
+      "role_from": "mall",
+      "direct_to_me": true,
+      "cc_only": false,
+      "store": null,
+      "mall": "mall1",
+      "proveedor": null,
+      "priority_hint": "P1",
+      "deadline": null,
+      "location": null,
+      "doc_refs": null
+    },
+    "payload": {
+      "headers": [
+        {
+          "name": "Date",
+          "value": "Tue, 12 Aug 2025 15:33:41 -0400"
+        }
+      ],
+      "mimeType": "text/plain",
+      "body": {
+        "text": "Este es un correo de prueba con contenido extendido para pruebas de resumen. Iteración 9. Contiene detalles adicionales sobre operaciones, gestión, inventario, logística y coordinación entre equipos."
+      }
+    }
+  }
+]

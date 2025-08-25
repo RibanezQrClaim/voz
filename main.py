@@ -1,52 +1,101 @@
 # main.py
-
 import os
 import sys
 
-# --- Carga .env ANTES de importar módulos del proyecto ---
+# Asegura imports relativos al correr desde la raíz del proyecto
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+# Cargar configuración principal desde config.json
+from utils.config import load_config
+try:
+    from utils.config import CONFIG  # dict con la config anidada (opcional)
+except Exception:
+    CONFIG = {}
+
+# 1) Cargar config.json (inyecta os.environ y prepara CONFIG si corresponde)
+load_config()
+
+# 2) (Opcional) Cargar .env SOLO para variables faltantes (no override a config.json)
 try:
     from dotenv import load_dotenv
-    load_dotenv()
+    load_dotenv(override=False)
 except Exception:
     pass
 
-# Debug rápido: confirma que el .env se cargó
-print(f"LLM_MODE={os.getenv('LLM_MODE')}  MODEL={os.getenv('LLM_LOCAL_MODEL_PATH')}")
+# ---- Helpers para tomar primero ENV y luego CONFIG ----
+def _cfg(path: str, default=None):
+    cur = CONFIG or {}
+    try:
+        for p in path.split("."):
+            cur = cur[p]
+        return cur
+    except Exception:
+        return default
 
-# Asegura que los imports relativos funcionen al ejecutar desde la raíz
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+def get_host() -> str:
+    return os.getenv("HOST") or str(_cfg("app.host", "127.0.0.1"))
+
+def get_port() -> int:
+    env_port = os.getenv("PORT")
+    if env_port:
+        try:
+            return int(env_port)
+        except ValueError:
+            pass
+    return int(_cfg("app.port", 8000))
+
+def get_secret_key() -> str:
+    return os.getenv("APP_SECRET_KEY") or str(_cfg("app.secret_key", "clave_secreta_123"))
+
+def get_llm_mode() -> str:
+    return os.getenv("LLM_MODE") or str(_cfg("llm.mode", "off"))
+
+def get_llm_model_path() -> str:
+    return os.getenv("LLM_MODEL_PATH") or str(_cfg("llm.local_model_path", ""))
+
+# 3) Cargar versión desde archivo VERSION (si no existe, usar "dev")
+VERSION_FILE = os.path.join(os.path.dirname(__file__), "VERSION")
+try:
+    with open(VERSION_FILE, "r", encoding="utf-8") as f:
+        PROJECT_VERSION = f.read().strip() or "dev"
+except FileNotFoundError:
+    PROJECT_VERSION = "dev"
+
+# Debug rápido
+print(f"LLM_MODE={get_llm_mode()}  MODEL={get_llm_model_path()}")
 
 from flask import Flask, send_from_directory
 from flask_cors import CORS
 
-# Blueprints del proyecto (importar después de load_dotenv)
+# Blueprints del proyecto
 from interfaces.gmail_routes import gmail_bp
 from interfaces.comando_api import comando_bp  # 🎯 Director de orquesta
 from interfaces.auth_routes import auth_bp     # 🔐 Login/Logout Gmail
+from interfaces.health_api import register_health  # 🩺 Nuevo endpoint /health
 
 app = Flask(__name__)
-app.secret_key = "clave_secreta_123"  # Requerido para sesiones OAuth
+app.secret_key = get_secret_key()
 CORS(app)
 
 # Registrar Blueprints
 app.register_blueprint(gmail_bp)
 app.register_blueprint(comando_bp)
 app.register_blueprint(auth_bp)
+register_health(app)  # <<< registro del /health
 
 # Servir la interfaz visual (HTML)
 @app.route("/")
 def home():
-    return send_from_directory('frontend', 'index_bloques.html')
+    return send_from_directory("frontend", "index_bloques.html")
 
-# (Opcional) Servir archivos estáticos si los necesitas más adelante
+# Estáticos
 @app.route("/static/<path:filename>")
 def static_files(filename):
     return send_from_directory("frontend", filename)
 
 if __name__ == "__main__":
-    port = int(os.getenv("PORT", "8000"))
-    host = os.getenv("HOST", "127.0.0.1")
-    print(f"🚀 Server starting on http://{host}:{port}")
-    # Evita el doble proceso del reloader que confunde los logs en Windows
+    host = get_host()
+    port = get_port()
+    print(f"🚀 Voz Agente Gmail v{PROJECT_VERSION} iniciando en http://{host}:{port}")
+    # Evita doble proceso del reloader en Windows
     app.run(debug=True, host=host, port=port, use_reloader=False, threaded=True)
-
