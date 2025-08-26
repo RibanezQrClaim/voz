@@ -2,9 +2,12 @@ import React from 'react';
 
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {}
 
-export function Select({ children, ...props }: SelectProps) {
+export function Select({ children, className = '', ...props }: SelectProps) {
   return (
-    <select {...props} className="border p-2">
+    <select
+      {...props}
+      className={`input-base ${className}`}
+    >
       {children}
     </select>
   );

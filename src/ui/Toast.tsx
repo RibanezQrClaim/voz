@@ -7,7 +7,7 @@ interface ToastProps {
 export function Toast({ message }: ToastProps) {
   if (!message) return null;
   return (
-    <div className="fixed bottom-4 right-4 p-2 bg-gray-800 text-white">
+    <div className="toast">
       {message}
     </div>
   );
