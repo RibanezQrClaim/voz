@@ -1,36 +1,51 @@
-# Entorno virtual de Python
+# === Python ===
+.venv/
 venv/
-/venv/
 *.venv
-.venv
-
-# Archivos de caché de Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
 
-# Archivos de base de datos
-*.db
-*.sqlite3
+# === Node / Vite (frontend) ===
+node_modules/
+dist/
+.vite/
+*.tsbuildinfo
 
-# Archivos de configuración y credenciales (¡MUY IMPORTANTE!)
-*.env
-credentials.json
-token.json
-
-# Archivos de logs
+# === Logs ===
 logs/
 *.log
 *.jsonl
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Modelos de Lenguaje y archivos pesados
+# === Entorno / secretos ===
+.env
+.env.*
+credentials.json
+token.json
+
+# === Bases de datos locales ===
+*.db
+*.sqlite3
+
+# === SO / editor ===
+.DS_Store
+Thumbs.db
+.idea/
+# .vscode/  # <- Déjalo comentado si quieres versionar ajustes de VS Code
+
+# === Modelos/artefactos pesados (opcional) ===
+models/*.gguf
 *.gguf
 *.zip
 *.rar
 *.7z
-
-# Archivos del sistema operativo
-.DS_Store
-Thumbs.db
-
-# modelos locales
-models/*.gguf
