@@ -25,9 +25,17 @@ export function AppShell({
   onConfirm,
   confirmDisabled,
 }: AppShellProps) {
+  const toggleTheme = () => {
+    document.documentElement.classList.toggle('dark');
+  };
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="p-4">Logo | Paso {step}</header>
+      <header className="p-4 flex items-center justify-between">
+        <span>Logo | Paso {step}</span>
+        <Button id="btn-theme" className="px-2 py-1 text-sm" onClick={toggleTheme}>
+          Tema
+        </Button>
+      </header>
       <ProgressBar current={step} total={total} />
       <main className="flex-1 p-4">{children}</main>
       <footer className="p-4 flex gap-2 justify-end">
