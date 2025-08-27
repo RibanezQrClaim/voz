@@ -1,7 +1,7 @@
 import React from "react";
 
-type Variant = "primary" | "secondary" | "ghost";
-type Size = "sm" | "md";
+type Variant = "primary" | "secondary" | "danger" | "ghost";
+type Size = "sm" | "md" | "lg";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
@@ -9,30 +9,29 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 const base =
-  "inline-flex items-center justify-center rounded-md font-medium border transition-colors " +
-  "disabled:opacity-50 disabled:cursor-not-allowed";
+  "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--ring] disabled:opacity-60 disabled:pointer-events-none";
 
 const variants: Record<Variant, string> = {
   primary:
-    "border-blue-600 bg-blue-600 text-white hover:bg-blue-700 hover:border-blue-700 " +
-    "dark:border-blue-500 dark:bg-blue-500 dark:hover:bg-blue-600",
+    "bg-[--primary] text-[--primary-fg] border border-[--primary] hover:opacity-90",
   secondary:
-    "border-gray-300 bg-white text-gray-900 hover:bg-gray-100 " +
-    "dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800",
+    "bg-[--bg-muted] text-[--fg] border border-[--border] hover:bg-[--bg]",
+  danger:
+    "bg-[--danger] text-[--primary-fg] border border-[--danger] hover:opacity-90",
   ghost:
-    "border-transparent bg-transparent text-gray-700 hover:bg-gray-100 " +
-    "dark:text-zinc-200 dark:hover:bg-zinc-800",
+    "bg-transparent text-[--fg] border border-transparent hover:bg-[--bg-muted]",
 };
 
 const sizes: Record<Size, string> = {
-  sm: "px-2 py-1 text-sm",
-  md: "px-3 py-2 text-sm",
+  sm: "h-8 px-3 text-sm",
+  md: "h-10 px-4 text-sm",
+  lg: "h-12 px-6 text-base",
 };
 
 export function Button({
   variant = "secondary",
   size = "md",
-  className,
+  className = "",
   ...props
 }: ButtonProps) {
   const cls = [base, variants[variant], sizes[size], className]
