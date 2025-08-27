@@ -1,17 +1,42 @@
-@'
 <!doctype html>
 <html lang="es">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Voz</title>
-</head>
-
-<body>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --bg-muted: #f1f5f9;
+        --card: #ffffff;
+        --border: #e2e8f0;
+        --ring: #3b82f6;
+        --fg: #0f172a;
+        --fg-muted: #475569;
+        --primary: #3b82f6;
+        --primary-fg: #ffffff;
+        --success: #16a34a;
+        --warning: #d97706;
+        --danger: #dc2626;
+      }
+      .dark {
+        --bg: #0f172a;
+        --bg-muted: #1e293b;
+        --card: #1e293b;
+        --border: #334155;
+        --ring: #3b82f6;
+        --fg: #f1f5f9;
+        --fg-muted: #94a3b8;
+        --primary: #3b82f6;
+        --primary-fg: #ffffff;
+        --success: #22c55e;
+        --warning: #f59e0b;
+        --danger: #ef4444;
+      }
+    </style>
+  </head>
+  <body class="bg-[--bg] text-[--fg]">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-</body>
-
+  </body>
 </html>
-'@ | Set-Content -Encoding UTF8 index.html
