@@ -2,7 +2,7 @@ name: Deploy
 
 on:
   push:
-    branches: ['main']
+    branches: [ main ]
 
 permissions:
   contents: read
@@ -10,8 +10,8 @@ permissions:
   id-token: write
 
 concurrency:
-  group: 'pages'
-  cancel-in-progress: false
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -19,28 +19,33 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Install dependencies
+          cache: npm
+
+      - name: Install
         run: npm ci
-      - name: Build
-        run: npm run build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+
+      # Construye con base correcta y genera 404.html para SPA
+      - name: Build (GH Pages)
+        run: npm run build:gh
+
+      # ↳ usa la acción nueva para Pages (no upload-artifact@v3)
+      - name: Upload artifact (Pages)
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: ./dist
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    permissions:
-      pages: write
-      id-token: write
     steps:
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
