@@ -1,3 +1,6 @@
+// src/contracts/index.ts
+
+// === Agente / Usuario / Confianza / Reglas ===
 export interface AgentProfile {
   id: string;
   name: string;
@@ -22,7 +25,7 @@ export interface TrustCircleItem {
 export interface UrgencyRule {
   id: string;
   from: string;
-  contains: string[];
+  contains: string[]; // palabras clave separadas
   level: 'urgent' | 'important' | 'normal';
   active: boolean;
 }
@@ -35,26 +38,34 @@ export interface PersonalizationState {
   isComplete: boolean;
 }
 
+// === Cards / Emails / UI ===
 export interface EmailSummary {
   id: string;
   from: string;
   subject: string;
   snippet: string;
-  summary280: string;
-  why: string;
+  summary280: string; // resumen corto para card
+  why: string;        // explicación breve (reglas/razón)
 }
 
 export interface Card {
   type: 'email' | 'event' | 'info' | 'error';
-  // EventCard interface not yet defined
+  // TODO: definir EventCard si aplica; por ahora EmailSummary | any
   data: EmailSummary | any;
   actions: ('Resumen' | 'Urgente' | 'Agendar' | 'Abrir')[];
-  meta: { createdAt: string; source: 'gmail' | 'calendar' | 'system' };
+  meta: {
+    createdAt: string; // ISO
+    source: 'gmail' | 'calendar' | 'system';
+  };
 }
 
 export interface UIState {
-  view: 'onboarding' | 'main';
+  // ← Agregamos 'config' para la Config Page
+  view: 'onboarding' | 'main' | 'config';
   list: Card[];
   listFilter: 'all' | 'urgent' | 'today';
   listSort: 'recency' | 'importance';
 }
+
+// (Opcional) alias útil
+export type UIView = UIState['view'];
