@@ -3,6 +3,7 @@ import React, { useMemo, useState } from "react";
 import { usePersonalization } from "../store/personalization";
 import { Button } from "../ui/Button";
 import { Toast } from "../ui/Toast";
+import { useToast } from "../ui/useToast";
 import { ConfigTree, GroupId, SectionId, TreeNode } from "./ConfigTree";
 
 // Reutilizamos los pasos como editores (no es un wizard)
@@ -22,6 +23,9 @@ import type {
 
 export function ConfigPage() {
     const { state, save } = usePersonalization();
+
+    // hook de toasts (Prompt 3)
+    const { toasts, push, remove } = useToast();
 
     // Estado local editable (draft)
     const [draft, setDraft] = useState(state);
@@ -86,11 +90,6 @@ export function ConfigPage() {
     const [dirty, setDirty] = useState<Record<SectionId, boolean>>(emptyFlags);
     const [invalid, setInvalid] = useState<Record<SectionId, boolean>>(emptyFlags);
 
-    const [toast, setToast] = useState<{
-        msg: string;
-        kind?: "success" | "error" | "info";
-    } | null>(null);
-
     const touch = (id: SectionId, changed = true) =>
         setDirty((d) => ({ ...d, [id]: changed }));
 
@@ -104,15 +103,16 @@ export function ConfigPage() {
 
     const onSave = () => {
         save(draft);
-        setToast({ msg: "Preferencias guardadas", kind: "success" });
+        // usamos el hook de toasts
+        push("success", "Preferencias guardadas", 1200);
         setDirty({ ...emptyFlags });
-        setTimeout(() => setToast(null), 1200);
     };
 
     const onReset = () => {
         setDraft(state);
         setDirty({ ...emptyFlags });
         setInvalid({ ...emptyFlags });
+        push("info", "Cambios descartados");
     };
 
     // Panel de la derecha (usa los Step* existentes)
@@ -246,7 +246,22 @@ export function ConfigPage() {
                 {panel}
             </section>
 
-            {toast && <Toast message={toast.msg} kind={toast.kind} />}
+            {/* Toast container simple (usa hook) */}
+            <div
+                className="fixed right-4 top-4 z-50 flex w-[min(92vw,360px)] flex-col gap-2"
+                aria-live="polite"
+            >
+                {toasts.map((t) => (
+                    <Toast
+                        key={t.id}
+                        id={t.id}
+                        type={t.type}
+                        message={t.message}
+                        durationMs={t.durationMs}
+                        onClose={remove}
+                    />
+                ))}
+            </div>
         </div>
     );
 }
