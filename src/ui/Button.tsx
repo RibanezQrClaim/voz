@@ -1,41 +1,57 @@
-import React from "react";
+// src/ui/Button.tsx
+import * as React from "react";
 
-type Variant = "primary" | "secondary" | "danger" | "ghost";
-type Size = "sm" | "md" | "lg";
+export type ButtonVariant = "primary" | "secondary" | "danger" | "ghost";
+export type ButtonSize = "sm" | "md" | "lg";
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: Variant;
-  size?: Size;
-}
-
-const base =
-  "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--ring] disabled:opacity-60 disabled:pointer-events-none";
-
-const variants: Record<Variant, string> = {
-  primary:
-    "bg-[--primary] text-[--primary-fg] border border-[--primary] hover:opacity-90",
-  secondary:
-    "bg-[--bg-muted] text-[--fg] border border-[--border] hover:bg-[--bg]",
-  danger:
-    "bg-[--danger] text-[--primary-fg] border border-[--danger] hover:opacity-90",
-  ghost:
-    "bg-transparent text-[--fg] border border-transparent hover:bg-[--bg-muted]",
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  /** API nueva */
+  variant?: ButtonVariant;
+  /** ⚠️ Compat: API antigua que usan los Step* (kind≡variant) */
+  kind?: ButtonVariant;
+  size?: ButtonSize;
 };
 
-const sizes: Record<Size, string> = {
-  sm: "h-8 px-3 text-sm",
-  md: "h-10 px-4 text-sm",
-  lg: "h-12 px-6 text-base",
-};
+export function Button(props: ButtonProps) {
+  const {
+    variant,
+    kind,
+    size = "md",
+    className,
+    disabled,
+    ...rest
+  } = props;
 
-export function Button({
-  variant = "secondary",
-  size = "md",
-  className = "",
-  ...props
-}: ButtonProps) {
-  const cls = [base, variants[variant], sizes[size], className]
-    .filter(Boolean)
-    .join(" ");
-  return <button {...props} className={cls} />;
+  const intent: ButtonVariant = (variant ?? kind ?? "secondary");
+
+  const base =
+    "inline-flex items-center justify-center rounded-2xl border transition " +
+    "focus:outline-none focus:ring-2 ring-[--ring] " +
+    "disabled:opacity-50 disabled:pointer-events-none";
+
+  const sizes: Record<ButtonSize, string> = {
+    sm: "h-8 px-3 text-sm",
+    md: "h-10 px-4",
+    lg: "h-12 px-5 text-base",
+  };
+
+  const variants: Record<ButtonVariant, string> = {
+    primary:
+      "bg-[--primary] text-[--primary-fg] border-transparent hover:opacity-90",
+    secondary:
+      "bg-[--bg-muted] text-[--fg] border-[--border] hover:bg-[--card]",
+    danger:
+      "bg-[--danger] text-white border-transparent hover:opacity-90",
+    ghost:
+      "bg-transparent text-[--fg] border-transparent hover:bg-[--bg-muted]",
+  };
+
+  const classes = [
+    base,
+    sizes[size],
+    variants[intent],
+    className ?? "",
+  ].join(" ");
+
+  return <button className={classes} disabled={disabled} {...rest} />;
 }

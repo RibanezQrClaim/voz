@@ -1,15 +1,23 @@
-import React from 'react';
+import * as React from "react";
 
-export function SkeletonList(): JSX.Element {
+export function SkeletonList({ count = 6 }: { count?: number }) {
   return (
-    <div className="grid grid-cols-1 gap-4">
-      {Array.from({ length: 3 }).map((_, i) => (
+    <div
+      role="status"
+      aria-label="Cargando…"
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+    >
+      {Array.from({ length: count }).map((_, i) => (
         <div
           key={i}
-          className="h-24 rounded-2xl border border-[--border] bg-[--card] animate-pulse"
-        />
+          className="rounded-2xl border border-[--border] bg-[--card] p-4 animate-pulse"
+        >
+          <div className="h-5 w-1/2 mb-2 bg-[--bg-muted] rounded" />
+          <div className="h-3 w-1/3 mb-4 bg-[--bg-muted] rounded" />
+          <div className="h-3 w-full mb-2 bg-[--bg-muted] rounded" />
+          <div className="h-3 w-5/6 bg-[--bg-muted] rounded" />
+        </div>
       ))}
     </div>
   );
 }
-

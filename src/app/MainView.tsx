@@ -1,9 +1,11 @@
-import React from 'react';
-import { SidebarNav, NavItem } from '../ui/SidebarNav';
-import { FiltersBar, Filters } from '../ui/FiltersBar';
-import { CardsList, CardProps } from '../ui/CardsList';
-import { EmptyState } from '../ui/EmptyState';
-import { SkeletonList } from '../ui/SkeletonList';
+// src/app/MainView.tsx
+import * as React from "react";
+import { SidebarNav, NavItem } from "../ui/SidebarNav";
+import { FiltersBar, Filters } from "../ui/FiltersBar";
+import { CardsList } from "../ui/CardsList";
+import type { CardProps } from "../ui/Card";
+import { EmptyState } from "../ui/EmptyState";
+import { SkeletonList } from "../ui/SkeletonList";
 
 export type MainViewProps = {
   nav: { items: NavItem[]; activeId?: string; onSelect: (id: string) => void };
@@ -13,63 +15,83 @@ export type MainViewProps = {
     loading: boolean;
     page: number;
     pageSize: number;
-    total?: number;               // opcional para mostrar contador
+    total?: number;
     onPage: (page: number) => void;
     onOpen?: (id: string) => void;
   };
-  title?: string;                 // default: "Bandeja"
-  emptyHint?: string;             // mensaje para estado vacío
+  title?: string;
+  emptyHint?: string;
 };
 
-export function MainView({ nav, filters, data, title = 'Bandeja', emptyHint }: MainViewProps): JSX.Element {
-  const titleId = React.useId();
-  const count = data.total ?? data.items.length;
-  const prevDisabled = data.page <= 1;
-  const nextDisabled = data.items.length < data.pageSize;
+export function MainView({
+  nav,
+  filters,
+  data,
+  title = "Bandeja",
+  emptyHint = "Sin resultados",
+}: MainViewProps) {
+  const total = data.total ?? data.items.length;
+  const canPrev = data.page > 1;
+  const canNext = data.items.length >= data.pageSize;
 
   return (
-    <div className="grid md:grid-cols-[240px_1fr] gap-4">
-      <nav aria-label="Navegación" className="md:sticky md:top-0 md:h-screen">
+    <div className="grid md:grid-cols-[240px_1fr] gap-4 p-4">
+      {/* Sidebar */}
+      <nav aria-label="Navegación" className="md:sticky md:top-4 self-start">
         <SidebarNav items={nav.items} activeId={nav.activeId} onSelect={nav.onSelect} />
       </nav>
-      <main role="main" className="flex flex-col gap-4 bg-[--bg]">
-        <div className="sticky top-0 z-10 bg-[--bg] border-b border-[--border] p-4">
-          <header aria-labelledby={titleId} className="flex items-center justify-between">
-            <div className="flex items-baseline gap-2">
-              <h1 id={titleId} className="text-lg font-semibold text-[--fg]">{title}</h1>
-              <span className="text-sm text-[--fg-muted]">{count} resultados</span>
+
+      {/* Content */}
+      <main role="main" className="space-y-4">
+        {/* Header sticky */}
+        <div className="sticky top-0 z-10 bg-[--bg] border-b border-[--border] py-2">
+          <div
+            className="flex items-center justify-between"
+            aria-labelledby="main-title"
+          >
+            <div>
+              <h2 id="main-title" className="text-lg font-semibold">
+                {title}
+              </h2>
+              <p className="text-sm text-[--fg-muted]">{total} resultados</p>
             </div>
-            <div className="flex items-center gap-2" />
-          </header>
-          <div className="mt-2">
+            <div className="flex items-center gap-2">{/* acciones futuras */}</div>
+          </div>
+
+          {/* Filters */}
+          <div className="mt-3">
             <FiltersBar value={filters.value} onChange={filters.onChange} tags={filters.tags} />
           </div>
         </div>
-        <div className="p-4">
-          {data.loading ? (
-            <SkeletonList />
-          ) : data.items.length === 0 ? (
-            <EmptyState message={emptyHint || 'Sin resultados'} />
-          ) : (
-            <CardsList items={data.items} onOpen={data.onOpen} />
-          )}
-        </div>
-        <nav aria-label="Paginación" className="px-4 pb-4 flex justify-center gap-2">
+
+        {/* Body */}
+        {data.loading ? (
+          <SkeletonList />
+        ) : data.items.length === 0 ? (
+          <EmptyState message={emptyHint} />
+        ) : (
+          <CardsList items={data.items} onOpen={data.onOpen} />
+        )}
+
+        {/* Pagination */}
+        <nav
+          aria-label="Paginación"
+          className="flex items-center justify-end gap-2 pt-2 border-t border-[--border]"
+        >
           <button
-            type="button"
-            aria-label="Anterior"
-            disabled={prevDisabled}
+            className="h-9 px-3 rounded-xl border border-[--border] bg-[--bg-muted] hover:bg-[--card] focus:outline-none focus:ring-2 ring-[--ring] disabled:opacity-50"
             onClick={() => data.onPage(data.page - 1)}
-            className="rounded-md border border-[--border] bg-[--card] px-3 py-1 text-sm text-[--fg] disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-[--ring]"
+            disabled={!canPrev}
+            aria-label="Página anterior"
           >
             Anterior
           </button>
+          <span className="text-sm text-[--fg-muted] px-2">Pág. {data.page}</span>
           <button
-            type="button"
-            aria-label="Siguiente"
-            disabled={nextDisabled}
+            className="h-9 px-3 rounded-xl border border-[--border] bg-[--bg-muted] hover:bg-[--card] focus:outline-none focus:ring-2 ring-[--ring] disabled:opacity-50"
             onClick={() => data.onPage(data.page + 1)}
-            className="rounded-md border border-[--border] bg-[--card] px-3 py-1 text-sm text-[--fg] disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-[--ring]"
+            disabled={!canNext}
+            aria-label="Página siguiente"
           >
             Siguiente
           </button>
@@ -78,4 +100,3 @@ export function MainView({ nav, filters, data, title = 'Bandeja', emptyHint }: M
     </div>
   );
 }
-

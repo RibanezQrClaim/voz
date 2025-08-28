@@ -1,39 +1,41 @@
-import React from 'react';
-import type { CardProps } from './Card';
-import { Card } from './Card';
+import * as React from "react";
+import { Card } from "./Card";
+import type { CardProps } from "./Card";
 
 export type CardsListProps = {
   items: CardProps[];
   onOpen?: (id: string) => void;
-  emptyHint?: string; // mensaje opcional si no hay items
+  emptyHint?: string;
 };
 
-export function CardsList({ items, onOpen, emptyHint }: CardsListProps): JSX.Element {
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
-
+export function CardsList({ items, onOpen, emptyHint }: CardsListProps) {
   if (items.length === 0) {
     return (
-      <div className="p-8 text-center text-sm text-[--fg-muted]">
-        {emptyHint || 'Sin resultados'}
+      <div role="status" className="text-center text-[--fg-muted] py-8">
+        {emptyHint ?? "Sin resultados"}
       </div>
     );
   }
 
   return (
-    <ul role="list" className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {items.map((item) => (
-        <li
-          key={item.id}
+    <div role="list" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {items.map((it) => (
+        <div
           role="listitem"
-          className={`transition-opacity transition-transform duration-200 ${
-            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
-          }`}
+          key={it.id}
+          className="opacity-0 translate-y-2 animate-[fadeIn_.2s_ease-out_forwards]"
         >
-          <Card {...item} onOpen={onOpen ?? item.onOpen} />
-        </li>
+          <Card {...it} onOpen={onOpen ?? it.onOpen} />
+        </div>
       ))}
-    </ul>
+
+      <style>{`
+        @keyframes fadeIn {
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
+    </div>
   );
 }
 
+export type { CardProps };

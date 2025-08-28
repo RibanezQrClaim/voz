@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========  Design Tokens (light/dark)  ========= */
+:root {
+    --bg: #0b0c0e;
+    /* fallback until JS adds .light */
+    --card: #111318;
+    --border: #1f242b;
+    --fg: #e7eaee;
+    --fg-muted: #b4bcc8;
+    --bg-muted: #151922;
+    --ring: #7aa2ff;
+
+    --primary: #6ea8fe;
+    --primary-fg: #0b0c0e;
+
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+}
+
+/* Light theme */
+:root,
+html.light,
+:root.light {
+    --bg: #f7f8fa;
+    --card: #ffffff;
+    --border: #e5e7eb;
+    --fg: #0b0c0e;
+    --fg-muted: #6b7280;
+    --bg-muted: #f1f5f9;
+    --ring: #3b82f6;
+
+    --primary: #2563eb;
+    --primary-fg: #ffffff;
+
+    --success: #16a34a;
+    --warning: #d97706;
+    --danger: #dc2626;
+}
+
+/* Dark theme */
+html.dark {
+    --bg: #0b0c0e;
+    --card: #111318;
+    --border: #1f242b;
+    --fg: #e7eaee;
+    --fg-muted: #b4bcc8;
+    --bg-muted: #151922;
+    --ring: #7aa2ff;
+
+    --primary: #6ea8fe;
+    --primary-fg: #0b0c0e;
+
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+}
+
+/* Base app */
+html,
+body,
+#root {
+    height: 100%;
+}
+
+body {
+    background: var(--bg);
+    color: var(--fg);
+}
+
+/* Tailwind forms plugin: neutralizar inputs nativos */
+@layer base {
+
+    input,
+    select,
+    textarea,
+    button {
+        @apply text-[--fg];
+    }
+}
+
+/* Helpers */
+.card {
+    @apply rounded-2xl border border-[--border] bg-[--card] shadow-soft;
+}

@@ -1,10 +1,9 @@
-import React from 'react';
+import * as React from "react";
 
-type Props = { message: string };
-
-export function EmptyState({ message }: Props): JSX.Element {
+export function EmptyState({ message = "Sin resultados" }: { message?: string }) {
   return (
-    <div className="p-8 text-center text-sm text-[--fg-muted]">{message}</div>
+    <div className="text-center text-[--fg-muted] py-16">
+      <p className="text-sm">{message}</p>
+    </div>
   );
 }
-

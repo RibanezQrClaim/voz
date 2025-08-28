@@ -1,52 +1,27 @@
-import React from "react";
+// src/app/TopNav.tsx
+import * as React from "react";
 import { useUI } from "../store/ui";
-import { Button } from "../ui/Button";
 
-function toggleTheme() {
-    const root = document.documentElement;
-    const nextIsDark = !root.classList.contains("dark");
-    root.classList.toggle("dark", nextIsDark);
-    try {
-        localStorage.setItem("nexusg.v1.ui:theme", nextIsDark ? "dark" : "light");
-    } catch { }
-}
-
-// restaurar tema al cargar el módulo
-(function restoreTheme() {
-    try {
-        const saved = localStorage.getItem("nexusg.v1.ui:theme");
-        if (saved === "dark") document.documentElement.classList.add("dark");
-    } catch { }
-})();
-
-export function TopNav() {
-    const { state, setState } = useUI();
-    const setView = (v: "main" | "config") => setState((s) => ({ ...s, view: v }));
+export default function TopNav() {
+    const { view, toggleView } = useUI();
 
     return (
-        <nav className="sticky top-0 z-40 border-b bg-white/80 backdrop-blur dark:bg-zinc-900/80 dark:border-zinc-800">
-            <div className="mx-auto flex max-w-5xl items-center justify-between p-3">
-                <div className="text-base font-semibold tracking-tight">Voz</div>
-                <div className="flex gap-2">
-                    <Button
-                        size="sm"
-                        variant={state.view === "main" ? "primary" : "secondary"}
-                        onClick={() => setView("main")}
+        <header className="sticky top-0 z-40 bg-[--bg] border-b border-[--border]">
+            <div className="mx-auto max-w-6xl px-4 h-12 flex items-center justify-between">
+                <div className="font-semibold">voz_agente_gmail</div>
+                <div className="flex items-center gap-2">
+                    <span className="text-sm text-[--fg-muted] hidden sm:inline">
+                        {view === "config" ? "Configuración" : "Principal"}
+                    </span>
+                    <button
+                        className="h-9 px-3 rounded-xl border border-[--border] bg-[--bg-muted] hover:bg-[--card] focus:outline-none focus:ring-2 ring-[--ring]"
+                        onClick={toggleView}
+                        aria-label="Cambiar vista"
                     >
-                        Inicio
-                    </Button>
-                    <Button
-                        size="sm"
-                        variant={state.view === "config" ? "primary" : "secondary"}
-                        onClick={() => setView("config")}
-                    >
-                        Config
-                    </Button>
-                    <Button size="sm" variant="ghost" onClick={toggleTheme} aria-label="Cambiar tema">
-                        Tema
-                    </Button>
+                        {view === "config" ? "Ir a Main" : "Ir a Config"}
+                    </button>
                 </div>
             </div>
-        </nav>
+        </header>
     );
 }
