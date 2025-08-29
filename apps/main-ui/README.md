@@ -44,10 +44,14 @@ npm run -w apps/main-ui dev
 
 ## Estados de depuración
 
-Agrega `?state=empty` o `?state=loading` al URL para forzar estados.
+Agrega `?state=empty`, `?state=loading`, `?state=error` o `?state=offline` al URL para forzar estados.
 
 - `?state=empty` renderiza un placeholder con `role="status"`.
 - `?state=loading` muestra skeletons con glass y `aria-busy="true"`.
+- `?state=error` muestra un banner de error con botón **Reintentar**.
+- `?state=offline` fuerza el aviso de sin conexión.
+
+Para simular offline en el navegador usa DevTools → pestaña Network y selecciona **Offline**.
 
 Revisar copy claro, contraste y que la navegación con tab mantenga foco visible en botones e inputs.
 

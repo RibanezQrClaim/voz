@@ -1,6 +1,9 @@
-import type { FormEvent } from 'react';
-import { useMemo } from 'react';
+import type { FormEvent, ReactNode } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { NxAssistantBubble, NxButton, NxChip, NxUserBubble } from '@nexusg/ui';
+import ErrorBanner from './components/ErrorBanner';
+import OfflineNotice from './components/OfflineNotice';
+import FirstVictoryBanner from './components/FirstVictoryBanner';
 
 export default function App() {
   const handleSubmit = (e: FormEvent) => {
@@ -15,6 +18,27 @@ export default function App() {
     }
   }, []);
 
+  const [isOffline, setIsOffline] = useState(false);
+
+  useEffect(() => {
+    const update = () => {
+      try {
+        setIsOffline(!navigator.onLine);
+      } catch {
+        setIsOffline(false);
+      }
+    };
+    update();
+    window.addEventListener('online', update);
+    window.addEventListener('offline', update);
+    return () => {
+      window.removeEventListener('online', update);
+      window.removeEventListener('offline', update);
+    };
+  }, []);
+
+  const isError = state === 'error';
+  const offline = state === 'offline' || isOffline;
   const isLoading = state === 'loading';
 
   let content;
@@ -49,10 +73,16 @@ export default function App() {
     );
   }
 
+  let banner: ReactNode = null;
+  if (isError) banner = <ErrorBanner />;
+  else if (offline) banner = <OfflineNotice />;
+  else banner = <FirstVictoryBanner />;
+
   return (
     <div className="flex h-screen text-text">
       <aside className="w-56 bg-surface border-r border-primary/10 p-4">Sidebar</aside>
       <main className="flex flex-1 flex-col" aria-busy={isLoading}>
+        {banner}
         {content}
         <form
           onSubmit={handleSubmit}
