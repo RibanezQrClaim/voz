@@ -27,3 +27,12 @@ module.exports = {
 npm run -w apps/main-ui dev
 ```
 
+## Estados de depuración
+
+Agrega `?state=empty` o `?state=loading` al URL para forzar estados.
+
+- `?state=empty` renderiza un placeholder con `role="status"`.
+- `?state=loading` muestra skeletons con glass y `aria-busy="true"`.
+
+Revisar copy claro, contraste y que la navegación con tab mantenga foco visible en botones e inputs.
+
