@@ -1,5 +1,11 @@
 # README — Voz Agente Gmail (MVP + H4 Robustez)
 
+## Quick start
+1) npm install
+2) npm run sync:figma
+3) npm run dev:app
+4) npm run build:all / npm run typecheck:all
+
 ## 🚀 Descripción
 Asistente (voz/texto) para **Gmail**: consulta, resume y prioriza correos. Funciona en:
 - **Fake** (fixtures JSON) — ideal para dev/QA.

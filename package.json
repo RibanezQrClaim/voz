@@ -6,7 +6,11 @@
     "dev": "vite",
     "build": "vite build",
     "build:gh": "vite build && node -e \"const fs=require('fs');fs.copyFileSync('dist/index.html','dist/404.html')\"",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sync:figma": "npm run -w packages/ui sync:figma",
+    "build:all": "npm run -w packages/ui build && npm run -w apps/main-ui build",
+    "typecheck:all": "npx -w packages/ui tsc --noEmit && npx -w apps/main-ui tsc --noEmit",
+    "dev:app": "npm run -w apps/main-ui dev"
   },
   "dependencies": {
     "react": "^18.2.0",
