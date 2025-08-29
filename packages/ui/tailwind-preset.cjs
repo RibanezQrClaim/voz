@@ -1,22 +1,26 @@
-Set-Content packages\ui\tailwind-preset.cjs @'
-/** @type {import("tailwindcss").Config} */
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
     extend: {
       colors: {
-        surface: "var(--nx-color-surface)",
-        primary: "var(--nx-color-primary)",
-        text: "var(--nx-color-text)"
+        surface: 'rgb(var(--nx-color-surface) / <alpha-value>)',
+        primary: 'rgb(var(--nx-color-primary) / <alpha-value>)',
+        text: 'rgb(var(--nx-color-text) / <alpha-value>)'
       },
       borderRadius: {
-        xl: "var(--nx-radius-xl)",
-        "2xl": "var(--nx-radius-2xl)"
+        xl: 'var(--nx-radius-xl)',
+        '2xl': 'var(--nx-radius-2xl)'
       },
       boxShadow: {
-        glass: "var(--nx-shadow-glass)"
+        glass: 'var(--nx-shadow-glass)'
+      },
+      spacing: {
+        base: 'var(--nx-spacing-base)'
+      },
+      fontFamily: {
+        sans: 'var(--nx-font-sans)'
       }
     }
   },
   plugins: []
 };
-'@
