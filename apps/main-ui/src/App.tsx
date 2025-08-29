@@ -1,30 +1,45 @@
-import { useState } from 'react';
-import FirstVictoryBanner from './components/FirstVictoryBanner';
-import SummaryTodayPanel from './components/SummaryTodayPanel';
+import type { FormEvent } from 'react';
+import { NxAssistantBubble, NxButton, NxChip, NxUserBubble } from '@nexusg/ui';
 
 export default function App() {
-  const [summaryOpen, setSummaryOpen] = useState(false);
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white text-text">
-      <div className="mx-4 w-full max-w-xl">
-        <FirstVictoryBanner onOpenSummary={() => setSummaryOpen(true)} />
-
-        <div className="bg-surface backdrop-blur-[14px] rounded-2xl shadow-glass border border-white/40 p-6">
-          <h1 className="text-2xl font-semibold mb-2">NexusG UI — Smoke</h1>
-          <p className="mb-4">Glassmorphism + tokens funcionando.</p>
-
-          <div className="flex gap-3">
-            <button className="px-4 py-2 rounded-xl bg-primary text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/60">
-              Botón primario
-            </button>
-            <button className="px-4 py-2 rounded-xl border border-black/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/40">
-              Botón secundario
-            </button>
-          </div>
+    <div className="flex h-screen text-text">
+      <aside className="w-56 bg-surface border-r border-primary/10 p-4">
+        Sidebar
+      </aside>
+      <main className="flex flex-1 flex-col">
+        <div className="flex-1 overflow-y-auto p-4 space-y-4">
+          <NxUserBubble ariaLabel="Mensaje de usuario">Hola</NxUserBubble>
+          <NxAssistantBubble ariaLabel="Respuesta del asistente">
+            <div className="space-y-2">
+              <p>¿En qué puedo ayudarte?</p>
+              <div className="flex gap-2">
+                <NxChip>Normal</NxChip>
+                <NxChip variant="urgent">Urgente</NxChip>
+              </div>
+            </div>
+          </NxAssistantBubble>
         </div>
-      </div>
-      {summaryOpen && <SummaryTodayPanel onClose={() => setSummaryOpen(false)} />}
+        <form
+          onSubmit={handleSubmit}
+          className="flex items-center gap-2 border-t border-primary/10 p-4"
+        >
+          <input
+            aria-label="Escribe un mensaje"
+            className="flex-1 rounded-xl border border-primary/20 bg-surface px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            placeholder="Escribe un mensaje..."
+          />
+          <NxButton type="submit">Enviar</NxButton>
+          <NxButton type="button" variant="secondary">
+            Cancelar
+          </NxButton>
+        </form>
+      </main>
     </div>
   );
 }
+
