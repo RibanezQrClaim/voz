@@ -10,7 +10,8 @@
     "sync:figma": "npm run -w packages/ui sync:figma",
     "build:all": "npm run -w packages/ui build && npm run -w apps/main-ui build",
     "typecheck:all": "npx -w packages/ui tsc --noEmit && npx -w apps/main-ui tsc --noEmit",
-    "dev:app": "npm run -w apps/main-ui dev"
+    "dev:app": "npm run -w apps/main-ui dev",
+    "test": "echo \"No tests yet\" && exit 0"
   },
   "dependencies": {
     "react": "^18.2.0",
