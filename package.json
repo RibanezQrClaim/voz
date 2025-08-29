@@ -1,6 +1,6 @@
 {
   "name": "voz-frontend",
-  "private": true,
+  "private": "true",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
@@ -22,5 +22,26 @@
     "tailwindcss": "^3.4.17",
     "typescript": "^5.9.2",
     "vite": "^4.4.9"
-  }
+  },
+  "description": "## 🚀 Descripción Asistente (voz/texto) para **Gmail**: consulta, resume y prioriza correos. Funciona en: - **Fake** (fixtures JSON) — ideal para dev/QA. - **Real** (API Gmail + OAuth) — con **backoff**, **paginación**, **fields** mínimos y **errores amables** (H4).",
+  "main": "postcss.config.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RibanezQrClaim/voz.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RibanezQrClaim/voz/issues"
+  },
+  "homepage": "https://github.com/RibanezQrClaim/voz#readme",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ]
 }
