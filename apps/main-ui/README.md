@@ -21,6 +21,21 @@ module.exports = {
 };
 ```
 
+## Fuentes
+
+Las tipografías **Inter** e **IBM Plex Sans** se descargan desde Google Fonts mediante las etiquetas añadidas en `index.html`:
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+```
+
+<!-- Ejemplo para alojar las fuentes localmente:
+<link rel="stylesheet" href="/fonts/inter.css">
+<link rel="stylesheet" href="/fonts/ibm-plex-sans.css">
+-->
+
 ## Desarrollo
 
 ```bash
