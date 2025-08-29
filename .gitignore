@@ -15,6 +15,9 @@ coverage.xml
 # === Node / Vite (frontend) ===
 node_modules/
 dist/
+!/packages/ui/dist/
+/packages/ui/dist/*
+!/packages/ui/dist/styles.css
 .vite/
 *.tsbuildinfo
 

@@ -1,10 +1,14 @@
+import { useState } from 'react';
 import FirstVictoryBanner from './components/FirstVictoryBanner';
+import SummaryTodayPanel from './components/SummaryTodayPanel';
 
 export default function App() {
+  const [summaryOpen, setSummaryOpen] = useState(false);
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-white text-text">
       <div className="mx-4 w-full max-w-xl">
-        <FirstVictoryBanner />
+        <FirstVictoryBanner onOpenSummary={() => setSummaryOpen(true)} />
 
         <div className="bg-surface backdrop-blur-[14px] rounded-2xl shadow-glass border border-white/40 p-6">
           <h1 className="text-2xl font-semibold mb-2">NexusG UI — Smoke</h1>
@@ -20,6 +24,7 @@ export default function App() {
           </div>
         </div>
       </div>
+      {summaryOpen && <SummaryTodayPanel onClose={() => setSummaryOpen(false)} />}
     </div>
   );
 }

@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 
-export default function FirstVictoryBanner() {
+interface Props {
+  onOpenSummary?: () => void;
+}
+
+export default function FirstVictoryBanner({ onOpenSummary }: Props) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -23,7 +27,8 @@ export default function FirstVictoryBanner() {
   };
 
   const onCta = () => {
-    console.log('cta:first-victory'); // TODO: conectar con resumen real en un pitch posterior
+    if (onOpenSummary) onOpenSummary();
+    else console.log('cta:first-victory'); // TODO: conectar con resumen real en un pitch posterior
   };
 
   if (!visible) return null;
