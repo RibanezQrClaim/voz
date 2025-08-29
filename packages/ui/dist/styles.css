@@ -1,10 +1,10 @@
 :root {
   --nx-color-surface: 255 255 255;
   --nx-color-primary: 3 2 19;
-  --nx-color-text: 29 29 29;
+  --nx-color-text: 1 1 1;
   --nx-radius-xl: 0.875rem;
-  --nx-radius-2xl: 1.125rem;
+  --nx-radius-2xl: 1rem;
   --nx-spacing-base: 0.25rem;
   --nx-shadow-glass: 0 4px 30px rgba(0, 0, 0, 0.1);
-  --nx-font-sans: 'Inter', 'IBM Plex Sans', sans-serif;
+  --nx-font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
