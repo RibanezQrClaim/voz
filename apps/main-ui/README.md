@@ -4,20 +4,31 @@ Aplicación que consume el kit `@nexusg/ui`.
 
 ## Uso del kit
 
-1. Importa los estilos en `src/main.tsx`:
+1. Importa los estilos del kit en `src/index.css` antes de las directivas de Tailwind:
 
-```ts
-import '@nexusg/ui/dist/styles.css';
-import './index.css';
+```css
+/* src/index.css */
+@import '@nexusg/ui/dist/styles.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 ```
 
-2. Tailwind utiliza el preset del paquete:
+2. `tailwind.config.cjs` debe usar el preset y escanear también el paquete para que se generen las clases del kit:
 
 ```js
 // tailwind.config.cjs
+const nxPreset = require('@nexusg/ui/tailwind-preset.cjs');
+
 module.exports = {
-  presets: [require('@nexusg/ui/tailwind-preset.cjs')],
-  content: ['./index.html', './src/**/*.{ts,tsx}'],
+  presets: [nxPreset],
+  content: [
+    './index.html',
+    './src/**/*.{ts,tsx}',
+    './node_modules/@nexusg/ui/**/*.{js,jsx,ts,tsx}',
+    '../../packages/ui/src/**/*.{ts,tsx}',
+    '../../packages/ui/dist/**/*.{js,jsx}',
+  ],
 };
 ```
 
