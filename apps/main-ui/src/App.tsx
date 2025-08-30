@@ -1,3 +1,4 @@
+// apps/main-ui/src/App.tsx
 import type { FormEvent, ReactNode } from 'react';
 import { useEffect, useMemo, useState } from 'react';
 import { NxAssistantBubble, NxButton, NxChip, NxUserBubble } from '@nexusg/ui';
@@ -41,7 +42,7 @@ export default function App() {
   const offline = state === 'offline' || isOffline;
   const isLoading = state === 'loading';
 
-  let content;
+  let content: ReactNode;
   if (state === 'empty') {
     content = (
       <div className="flex flex-1 items-center justify-center p-4" role="status">
@@ -83,7 +84,16 @@ export default function App() {
       <aside className="w-56 bg-surface border-r border-primary/10 p-4">Sidebar</aside>
       <main className="flex flex-1 flex-col" aria-busy={isLoading}>
         {banner}
+
+        {/* --- SMOKE (quitar cuando valides que Tailwind está activo) --- */}
+        <div className="p-3 bg-red-500 text-white rounded-xl mb-4">tailwind OK</div>
+        <div className="mt-2 p-6 rounded-2xl border border-white/40 shadow-glass backdrop-blur-[14px] bg-white/60">
+          Glass card con tokens
+        </div>
+        {/* --- /SMOKE --- */}
+
         {content}
+
         <form
           onSubmit={handleSubmit}
           className="flex items-center gap-2 border-t border-primary/10 p-4"
@@ -102,4 +112,3 @@ export default function App() {
     </div>
   );
 }
-

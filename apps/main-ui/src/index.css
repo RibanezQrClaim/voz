@@ -1,3 +1,7 @@
+/* 1) importa el CSS del kit aquí, para que Tailwind lo procese en su pipeline */
+@import '@nexusg/ui/dist/styles.css';
+
+/* 2) directivas de Tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
