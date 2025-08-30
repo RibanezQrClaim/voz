@@ -6,21 +6,19 @@ module.exports = {
   content: [
     './index.html',
     './src/**/*.{ts,tsx}',
-
-    // escanear el UI kit (node_modules)
+    // UI kit instalado desde node_modules
     './node_modules/@nexusg/ui/**/*.{js,jsx,ts,tsx}',
-
-    // escanear el UI kit cuando se resuelve desde el workspace local
+    // UI kit local en workspace (por si se resuelve directo durante dev)
     '../../packages/ui/src/**/*.{ts,tsx}',
     '../../packages/ui/dist/**/*.{js,jsx}',
   ],
+  // Pequeño salvavidas por si el escaneo falla en Windows
   safelist: [
-    // utilidades mínimas que deben existir aunque el escaneo falle
-    'bg-surface', 'text-text', 'shadow-glass',
-    'rounded-xl', 'rounded-2xl',
-    'backdrop-blur-[14px]', 'border', 'border-white/40', 'bg-white/60',
-    'px-3', 'py-2', 'focus:outline-none', 'focus:ring-2',
-    'bg-red-500', 'text-white' // (para el smoke test de abajo)
+    'bg-surface','text-text','shadow-glass',
+    'rounded-xl','rounded-2xl',
+    'backdrop-blur-[14px]','border','border-white/40','bg-white/60',
+    'px-3','py-2','focus:outline-none','focus:ring-2',
+    'bg-red-500','text-white'
   ],
   theme: { extend: {} },
   plugins: [],
