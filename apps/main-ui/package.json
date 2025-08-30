@@ -4,12 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "set TAILWIND_CONFIG=tailwind.config.cjs && vite",
-    "build": "set TAILWIND_CONFIG=tailwind.config.cjs && tsc -b && vite build",
-    "preview": "set TAILWIND_CONFIG=tailwind.config.cjs && vite preview",
-    "lint": "eslint .",
-    "tw:debug": "npx tailwindcss -i ./src/index.css -o ./.debug/tw.css --minify --config ./tailwind.config.cjs"
-  },
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "tw:debug": "tailwindcss -c tailwind.config.cjs -i src/index.css -o .debug/tw.css --minify"
+  }
   "dependencies": {
     "@nexusg/ui": "file:../../packages/ui",
     "react": "^19.1.1",
