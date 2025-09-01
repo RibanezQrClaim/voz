@@ -1,17 +1,26 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
-          node-version: 20.x
-          cache: npm
-      - run: npm install
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install deps
+        run: npm install --prefer-offline --no-audit --no-fund
+
+      - name: Pin Tailwind v3 in app workspace
+        run: npm i -w apps/main-ui -D tailwindcss@3.4.17 postcss@8.4.47 autoprefixer@10.4.21
+
       - run: npm run -w packages/ui sync:figma --if-present
       - run: npm run -w packages/ui build
       - run: npm run -w apps/main-ui build
