@@ -1,13 +1,14 @@
 // apps/main-ui/postcss.config.cjs
 const path = require('path');
-
-// Fuerza a resolver Tailwind desde este workspace (evita que se cuele v4 hoisted)
-const tailwind = require(require.resolve('tailwindcss', { paths: [__dirname] }));
 const autoprefixer = require('autoprefixer');
 
-module.exports = {
-  plugins: [
-    tailwind({ config: path.join(__dirname, 'tailwind.config.cjs') }),
-    autoprefixer
-  ]
-};
+const isCI = !!process.env.CI;
+const plugins = [autoprefixer];
+
+if (!isCI) {
+  // En local, usa Tailwind v3 como plugin PostCSS
+  const tailwind = require(require.resolve('tailwindcss', { paths: [__dirname] }));
+  plugins.unshift(tailwind({ config: path.join(__dirname, 'tailwind.config.cjs') }));
+}
+
+module.exports = { plugins };
