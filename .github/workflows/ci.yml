@@ -1,19 +1,48 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          node-version: 20.x
-          cache: npm
-      - run: npm install
-      - run: npm run -w packages/ui sync:figma --if-present
-      - run: npm run -w packages/ui build
-      - run: npm run -w apps/main-ui build
-      - run: npx -w packages/ui tsc --noEmit
-      - run: npx -w apps/main-ui tsc --noEmit
+          node-version: '20'
+          cache: 'npm'
+
+      # Monorepo: intenta npm ci y, si no hay lock compatible, cae a npm install
+      - name: Install deps
+        run: |
+          npm ci || npm install --prefer-offline --no-audit --no-fund
+
+      # (Opcional, no falla si no existe)
+      - name: Sync Figma tokens
+        run: npm run -w packages/ui sync:figma --if-present
+
+      - name: Build UI kit
+        run: npm run -w packages/ui build
+
+      - name: Build app
+        run: npm run -w apps/main-ui build
+
+      - name: Typecheck UI kit
+        run: npx -w packages/ui tsc --noEmit
+
+      - name: Typecheck app
+        run: npx -w apps/main-ui tsc --noEmit
+
+      # Debug útil si algo vuelve a fallar
+      - name: Show versions
+        if: always()
+        run: |
+          node -v
+          npm -v
+          npm ls -w apps/main-ui tailwindcss || true
