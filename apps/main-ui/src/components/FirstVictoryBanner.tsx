@@ -10,7 +10,9 @@ export default function FirstVictoryBanner({ onOpenSummary }: Props) {
   useEffect(() => {
     try {
       const params = new URLSearchParams(window.location.search);
-      const debug = params.get('state') === 'firstVictory';
+      const debug =
+        params.get('banner') === 'force' ||
+        params.get('state') === 'firstVictory';
       const onboardingDone = localStorage.getItem('nx.onboarding.done') === '1';
       const dismissed = localStorage.getItem('nx.fv.dismissed') === '1';
       if (debug || (onboardingDone && !dismissed)) setVisible(true);

@@ -11,13 +11,15 @@ export default function App() {
     e.preventDefault();
   };
 
-  const state = useMemo(() => {
+  const params = useMemo(() => {
     try {
-      return new URLSearchParams(window.location.search).get('state');
+      return new URLSearchParams(window.location.search);
     } catch {
-      return null;
+      return new URLSearchParams();
     }
   }, []);
+  const state = params.get('state');
+  const smoke = params.get('smoke') === '1';
 
   const [isOffline, setIsOffline] = useState(false);
 
@@ -85,18 +87,15 @@ export default function App() {
       <main className="flex flex-1 flex-col" aria-busy={isLoading}>
         {banner}
 
-        {/* --- SMOKE UI (temporal) --- */}
-        <div className="p-4 space-y-4">
-          {/* Bloque rojo (utilidad estándar Tailwind v3) */}
-          <div className="h-10 w-full bg-red-500 rounded-2xl" />
+        {smoke && (
+          <div className="p-4 space-y-4">
+            <div className="bg-red-500 rounded-2xl p-4 text-white">Tailwind v3 OK</div>
 
-          {/* Tarjeta glass (tokens + preset NexusG) */}
-          <div className="rounded-2xl border border-white/40 bg-surface/60 shadow-glass backdrop-blur-[14px] p-4">
-            <p className="text-sm text-text">Glass OK — tokens & preset activos</p>
-            <button className="px-3 py-2 rounded-xl bg-primary/10 text-text">Chip</button>
+            <div className="rounded-2xl border border-white/40 bg-white/60 shadow-glass backdrop-blur-[14px] p-4">
+              <p className="text-sm text-text">Glass OK — tokens & preset activos</p>
+            </div>
           </div>
-        </div>
-        {/* --- /SMOKE UI --- */}
+        )}
 
         {content}
 
