@@ -24,6 +24,21 @@ jobs:
       - name: Pin Tailwind v3 in app workspace
         run: npm i -w apps/main-ui -D tailwindcss@3.4.17 postcss@8.4.47 autoprefixer@10.4.21
 
+      # Si el CSS de entrada no existe en el repo, lo generamos para CI
+      - name: Ensure Tailwind input (CI)
+        run: |
+          CSS_IN=apps/main-ui/src/index.css
+          if [ ! -f "$CSS_IN" ]; then
+            echo "CI: creating $CSS_IN"
+            mkdir -p apps/main-ui/src
+            cat > "$CSS_IN" <<'CSS'
+@import "../../packages/ui/dist/styles.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+CSS
+          fi
+
       - name: Compile Tailwind CSS (CI)
         run: |
           npx -w apps/main-ui tailwindcss \
