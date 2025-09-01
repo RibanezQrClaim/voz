@@ -7,10 +7,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
@@ -21,8 +24,48 @@ jobs:
       - name: Pin Tailwind v3 in app workspace
         run: npm i -w apps/main-ui -D tailwindcss@3.4.17 postcss@8.4.47 autoprefixer@10.4.21
 
-      - run: npm run -w packages/ui sync:figma --if-present
-      - run: npm run -w packages/ui build
-      - run: npm run -w apps/main-ui build
-      - run: npx -w packages/ui tsc --noEmit
-      - run: npx -w apps/main-ui tsc --noEmit
+      # Si el CSS de entrada no existe en el repo, lo generamos para CI
+      - name: Ensure Tailwind input (CI)
+        run: |
+          CSS_IN=apps/main-ui/src/index.css
+          if [ ! -f "$CSS_IN" ]; then
+            echo "CI: creating $CSS_IN"
+            mkdir -p apps/main-ui/src
+            cat > "$CSS_IN" <<'CSS'
+@import "../../packages/ui/dist/styles.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+CSS
+          fi
+
+      - name: Compile Tailwind CSS (CI)
+        run: |
+          npx -w apps/main-ui tailwindcss \
+            -c apps/main-ui/tailwind.config.cjs \
+            -i apps/main-ui/src/index.css \
+            -o apps/main-ui/src/__compiled.css \
+            --minify
+          mv apps/main-ui/src/__compiled.css apps/main-ui/src/index.css
+
+      - name: Sync Figma tokens
+        run: npm run -w packages/ui sync:figma --if-present
+
+      - name: Build UI kit
+        run: npm run -w packages/ui build
+
+      - name: Build app
+        run: npm run -w apps/main-ui build
+
+      - name: Typecheck UI kit
+        run: npx -w packages/ui tsc --noEmit
+
+      - name: Typecheck app
+        run: npx -w apps/main-ui tsc --noEmit
+
+      - name: Show versions
+        if: always()
+        run: |
+          node -v
+          npm -v
+          npm ls -w apps/main-ui tailwindcss || true
