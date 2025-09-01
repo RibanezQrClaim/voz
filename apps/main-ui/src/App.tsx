@@ -85,12 +85,18 @@ export default function App() {
       <main className="flex flex-1 flex-col" aria-busy={isLoading}>
         {banner}
 
-        {/* --- SMOKE (quitar cuando valides que Tailwind está activo) --- */}
-        <div className="p-3 bg-red-500 text-white rounded-xl mb-4">tailwind OK</div>
-        <div className="mt-2 p-6 rounded-2xl border border-white/40 shadow-glass backdrop-blur-[14px] bg-white/60">
-          Glass card con tokens
+        {/* --- SMOKE UI (temporal) --- */}
+        <div className="p-4 space-y-4">
+          {/* Bloque rojo (utilidad estándar Tailwind v3) */}
+          <div className="h-10 w-full bg-red-500 rounded-2xl" />
+
+          {/* Tarjeta glass (tokens + preset NexusG) */}
+          <div className="rounded-2xl border border-white/40 bg-surface/60 shadow-glass backdrop-blur-[14px] p-4">
+            <p className="text-sm text-text">Glass OK — tokens & preset activos</p>
+            <button className="px-3 py-2 rounded-xl bg-primary/10 text-text">Chip</button>
+          </div>
         </div>
-        {/* --- /SMOKE --- */}
+        {/* --- /SMOKE UI --- */}
 
         {content}
 

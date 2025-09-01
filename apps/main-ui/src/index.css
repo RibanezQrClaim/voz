@@ -1,4 +1,4 @@
-@import '@nexusg/ui/dist/styles.css'; /* ✅ primero el kit */
+@import '@nexusg/ui/dist/styles.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
