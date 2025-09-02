@@ -2,12 +2,10 @@
   "name": "voz-frontend",
   "private": true,
   "version": "0.0.0",
-
   "workspaces": [
     "packages/*",
     "apps/*"
   ],
-
   "scripts": {
     "sync:figma": "npm run -w packages/ui sync:figma",
     "build:all": "npm run -w packages/ui build && npm run -w apps/main-ui build",
@@ -15,16 +13,17 @@
     "dev:app": "npm run -w apps/main-ui dev",
     "test": "echo \"No tests yet\" && exit 0"
   },
-
   "overrides": {
     "tailwindcss": "3.4.17",
     "postcss": "8.4.47",
-    "autoprefixer": "10.4.21"
+    "autoprefixer": "10.4.21",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
-
-  "dependencies": {},
-  "devDependencies": {},
-
+  "devDependencies": {
+    "@types/react": "^18.3.24",
+    "@types/react-dom": "^18.3.7"
+  },
   "description": "## 🚀 Descripción Asistente (voz/texto) para **Gmail**: consulta, resume y prioriza correos. Funciona en: - **Fake** (fixtures JSON) — ideal para dev/QA. - **Real** (API Gmail + OAuth) — con **backoff**, **paginación**, **fields** mínimos y **errores amables** (H4).",
   "main": "postcss.config.js",
   "directories": {

@@ -1,11 +1,15 @@
+const path = require('path');
+
 module.exports = {
   presets: [require('@nexusg/ui/tailwind-preset.cjs')],
   content: [
-    './index.html',
-    './src/**/*.{ts,tsx,js,jsx}',
-    '../../packages/ui/**/*.{ts,tsx,js,jsx,cjs}',
-    './node_modules/@nexusg/ui/**/*.{js,cjs}',
+    path.join(__dirname, 'index.html'),
+    path.join(__dirname, 'src/**/*.{ts,tsx,js,jsx}'),
+    path.join(__dirname, 'src/figma/**/*.{ts,tsx}'),
+    path.join(__dirname, 'src/skins/**/*.{ts,tsx,css}'),
+    path.join(__dirname, '../../packages/ui/src/**/*.{ts,tsx,js,jsx}'),
   ],
-  // habilitar si el proyecto usaba forms con v3:
-  // plugins: [require('@tailwindcss/forms')],
+  theme: { extend: {} },
+  plugins: [],
 };
+

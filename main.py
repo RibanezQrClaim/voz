@@ -24,7 +24,7 @@ except Exception:
 
 # ---- Helpers para tomar primero ENV y luego CONFIG ----
 def _cfg(path: str, default=None):
-    cur = CONFIG or {}
+    cur = CONFIG or []
     try:
         for p in path.split("."):
             cur = cur[p]
@@ -64,7 +64,8 @@ except FileNotFoundError:
 # Debug rápido
 print(f"LLM_MODE={get_llm_mode()}  MODEL={get_llm_model_path()}")
 
-from flask import Flask, send_from_directory
+# ⬇️ añadimos request/jsonify y mantenemos lo tuyo
+from flask import Flask, send_from_directory, request, jsonify
 from flask_cors import CORS
 
 # Blueprints del proyecto
@@ -92,6 +93,16 @@ def home():
 @app.route("/static/<path:filename>")
 def static_files(filename):
     return send_from_directory("frontend", filename)
+
+# --- API del agente: stub mínimo para el frontend ---
+@app.route("/api/chat", methods=["POST"])
+def api_chat():
+    data = request.get_json(silent=True) or {}
+    msg = (data.get("message") or "").strip()
+    if not msg:
+        return jsonify(reply="Escribe algo y te ayudo."), 200
+    # TODO: conecta aquí tu orquestador real (Gmail/Calendar/LLM)
+    return jsonify(reply=f"Echo: {msg}"), 200
 
 if __name__ == "__main__":
     host = get_host()

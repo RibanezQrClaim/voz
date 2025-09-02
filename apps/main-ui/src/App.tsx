@@ -6,31 +6,24 @@ import ErrorBanner from './components/ErrorBanner';
 import OfflineNotice from './components/OfflineNotice';
 import FirstVictoryBanner from './components/FirstVictoryBanner';
 
-export default function App() {
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-  };
+// ⬇️ importa el skin
+import FigmaZipShell from './FigmaZipShell';
 
-  const params = useMemo(() => {
-    try {
-      return new URLSearchParams(window.location.search);
-    } catch {
-      return new URLSearchParams();
-    }
-  }, []);
+export default function App() {
+  // Flags QA
+  const params = useMemo(() => new URLSearchParams(window.location.search), []);
+  const ui = params.get('ui');
   const state = params.get('state');
-  const smoke = params.get('smoke') === '1';
+  const isSmoke = params.get('smoke') === '1';
+
+  // ⬇️ si pides el skin, lo devolvemos y listo
+  if (ui === 'figma') {
+    return <FigmaZipShell />;
+  }
 
   const [isOffline, setIsOffline] = useState(false);
-
   useEffect(() => {
-    const update = () => {
-      try {
-        setIsOffline(!navigator.onLine);
-      } catch {
-        setIsOffline(false);
-      }
-    };
+    const update = () => setIsOffline(!navigator.onLine);
     update();
     window.addEventListener('online', update);
     window.addEventListener('offline', update);
@@ -44,23 +37,22 @@ export default function App() {
   const offline = state === 'offline' || isOffline;
   const isLoading = state === 'loading';
 
-  let content: ReactNode;
-  if (state === 'empty') {
-    content = (
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+  }
+
+  const content: ReactNode =
+    state === 'empty' ? (
       <div className="flex flex-1 items-center justify-center p-4" role="status">
         <p>No hay mensajes aún.</p>
       </div>
-    );
-  } else if (isLoading) {
-    content = (
+    ) : isLoading ? (
       <div className="flex-1 overflow-y-auto p-4 space-y-4 animate-pulse">
-        <div className="h-4 rounded-xl bg-surface/60 backdrop-blur-[14px] shadow-glass border border-white/40" />
-        <div className="h-4 rounded-xl bg-surface/60 backdrop-blur-[14px] shadow-glass border border-white/40" />
-        <div className="h-4 rounded-xl bg-surface/60 backdrop-blur-[14px] shadow-glass border border-white/40" />
+        <div className="h-4 rounded-xl bg-white/60 backdrop-blur-[14px] shadow-glass border border-white/40" />
+        <div className="h-4 rounded-xl bg-white/60 backdrop-blur-[14px] shadow-glass border border-white/40" />
+        <div className="h-4 rounded-xl bg-white/60 backdrop-blur-[14px] shadow-glass border border-white/40" />
       </div>
-    );
-  } else {
-    content = (
+    ) : (
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         <NxUserBubble ariaLabel="Mensaje de usuario">Hola</NxUserBubble>
         <NxAssistantBubble ariaLabel="Respuesta del asistente">
@@ -74,23 +66,18 @@ export default function App() {
         </NxAssistantBubble>
       </div>
     );
-  }
-
-  let banner: ReactNode = null;
-  if (isError) banner = <ErrorBanner />;
-  else if (offline) banner = <OfflineNotice />;
-  else banner = <FirstVictoryBanner />;
 
   return (
     <div className="flex h-screen text-text">
       <aside className="w-56 bg-surface border-r border-primary/10 p-4">Sidebar</aside>
-      <main className="flex flex-1 flex-col" aria-busy={isLoading}>
-        {banner}
 
-        {smoke && (
+      <main className="flex flex-1 flex-col" aria-busy={isLoading}>
+        {isError ? <ErrorBanner /> : offline ? <OfflineNotice /> : <FirstVictoryBanner />}
+
+        {/* Smoke QA solo con ?smoke=1 */}
+        {isSmoke && (
           <div className="p-4 space-y-4">
             <div className="bg-red-500 rounded-2xl p-4 text-white">Tailwind v3 OK</div>
-
             <div className="rounded-2xl border border-white/40 bg-white/60 shadow-glass backdrop-blur-[14px] p-4">
               <p className="text-sm text-text">Glass OK — tokens & preset activos</p>
             </div>
