@@ -1,39 +1,72 @@
-name: Deploy
+name: deploy
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env:
+      CI: true
+      HUSKY: 0
     steps:
-      - name: Checkout repo
+      - name: Checkout (no submodules)
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0      # historial + tags completos
+          fetch-depth: 0
+          submodules: false  # evita error por Landpage
 
-      - name: Mark workspace as safe for git
-        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - name: Disable submodule recursion (safety)
+        run: git config --global submodule.recurse false
 
-      - name: Git diagnostics
-        run: |
-          git rev-parse --is-inside-work-tree || true
-          git status || true
-          git describe --tags --always || true
-
-      - name: Set up Node
-        uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
+          cache: npm
 
-      - name: Install dependencies
-        run: npm install
+      - name: NPM config (deterministic + peers)
+        run: |
+          npm config set save-exact true
+          npm config set legacy-peer-deps true
 
-      - name: Build
-        run: npm run build
+      - name: Install dependencies (root)
+        run: npm ci || (rm -rf node_modules package-lock.json && npm install)
 
-      - name: Deploy
-        run: echo "Aquí iría tu comando real de deploy"
+      - name: Build UI kit (si existe)
+        run: |
+          if [ -d packages/ui ]; then
+            npm run -w packages/ui build
+          else
+            echo "packages/ui no existe, se omite."
+          fi
+
+      - name: Build main-ui (Vite)
+        run: npm run -w apps/main-ui build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/main-ui/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
