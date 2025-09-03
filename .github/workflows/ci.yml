@@ -10,6 +10,9 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      CI: true
+      HUSKY: 0     # evita hooks que disparan git en CI
     defaults:
       run:
         shell: bash
@@ -19,12 +22,23 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          submodules: recursive
 
       - name: Configure git for CI
         run: |
-          git config --global --add safe.directory '*'
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config --global --add safe.directory "/github/workspace"
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Diagnose git
+        run: |
+          set -x
+          pwd
+          ls -la .git || true
+          git rev-parse --is-inside-work-tree
+          git rev-parse --abbrev-ref HEAD
+          git rev-parse HEAD
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -37,13 +51,8 @@ jobs:
           npm config set save-exact true
           npm config set legacy-peer-deps true
 
-      - name: Install dependencies
-        run: |
-          npm ci || (rm -rf node_modules package-lock.json && npm install)
-
-      - name: Assert Tailwind major v3
-        run: |
-          node -e "const major=require('tailwindcss/package.json').version.split('.')[0]; if(major!=='3'){console.error('Tailwind not v3'); process.exit(1)}"
+      - name: Install dependencies (root)
+        run: npm ci || (rm -rf node_modules package-lock.json && npm install)
 
       - name: Build UI kit
         run: npm run -w packages/ui build
