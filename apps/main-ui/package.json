@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npx -y -p typescript@5.4.5 tsc -b && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
     "tw:debug": "tailwindcss -c tailwind.config.cjs -i src/index.css -o .debug/tw.css --minify"
@@ -70,7 +70,7 @@
     "globals": "^16.3.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17",
-    "typescript": "~5.8.3",
+    "typescript": "5.4.5",
     "typescript-eslint": "^8.39.1",
     "vite": "^5.4.19",
     "vite-tsconfig-paths": "^4.3.2"
