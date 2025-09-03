@@ -1,14 +1,52 @@
 name: ci
-on: [push, pull_request]
+
+on:
+  - push
+  - pull_request
+
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 20, cache: 'npm' }
-      - run: npm ci
-      - run: node -e "const v=require('tailwindcss/package.json').version.split('.')[0];if(v!=='3'){console.error('Tailwind not v3');process.exit(1)}"
-      - run: npm run -w packages/ui build
-      - run: npm run -w apps/main-ui build
+    defaults:
+      run:
+        shell: bash
 
+    steps:
+      - name: Checkout (full)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git for CI
+        run: |
+          git config --global --add safe.directory '*'
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: NPM config (deterministic + peer deps)
+        run: |
+          npm config set save-exact true
+          npm config set legacy-peer-deps true
+
+      - name: Install dependencies
+        run: |
+          npm ci || (rm -rf node_modules package-lock.json && npm install)
+
+      - name: Assert Tailwind major v3
+        run: |
+          node -e "const major=require('tailwindcss/package.json').version.split('.')[0]; if(major!=='3'){console.error('Tailwind not v3'); process.exit(1)}"
+
+      - name: Build UI kit
+        run: npm run -w packages/ui build
+
+      - name: Build main-ui
+        run: npm run -w apps/main-ui build
