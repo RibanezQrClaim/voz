@@ -12,7 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CI: true
-      HUSKY: 0     # evita hooks que disparan git en CI
+      HUSKY: 0
+      GIT_TRACE: 1
+      GIT_TRACE_SETUP: 1
     defaults:
       run:
         shell: bash
@@ -31,11 +33,25 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Diagnose git
+      - name: Ensure tags (some builds call `git describe`)
+        run: |
+          git fetch --tags --force || true
+          git describe --always --dirty || echo "[diag] no tags available"
+
+      - name: Wrap git to log every call
+        run: |
+          mkdir -p "$HOME/bin"
+          cat > "$HOME/bin/git" <<'BASH'
+          #!/usr/bin/env bash
+          echo "[GIT WRAP] pwd=$(pwd) args=$*" >&2
+          exec /usr/bin/git "$@"
+          BASH
+          chmod +x "$HOME/bin/git"
+          echo "$HOME/bin" >> "$GITHUB_PATH"
+
+      - name: Quick git sanity
         run: |
           set -x
-          pwd
-          ls -la .git || true
           git rev-parse --is-inside-work-tree
           git rev-parse --abbrev-ref HEAD
           git rev-parse HEAD
@@ -45,11 +61,6 @@ jobs:
         with:
           node-version: 20
           cache: npm
-
-      - name: NPM config (deterministic + peer deps)
-        run: |
-          npm config set save-exact true
-          npm config set legacy-peer-deps true
 
       - name: Install dependencies (root)
         run: npm ci || (rm -rf node_modules package-lock.json && npm install)
