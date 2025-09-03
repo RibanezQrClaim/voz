@@ -1,72 +1,53 @@
-name: ci
+name: CI (main-ui)
 
 on:
-  - push
-  - pull_request
-
-permissions:
-  contents: read
+  push:
+    branches: [main, master, develop]
+    paths:
+      - 'apps/main-ui/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/**'
+  pull_request:
+    branches: [main, master, develop]
+    paths:
+      - 'apps/main-ui/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      CI: true
-      HUSKY: 0
-      GIT_TRACE: 1
-      GIT_TRACE_SETUP: 1
-    defaults:
-      run:
-        shell: bash
 
     steps:
-      - name: Checkout (full)
+      - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-          submodules: recursive
+          fetch-depth: 1
+          submodules: false  # evita cualquier intento de procesar submodules (p.ej. Landpage)
 
-      - name: Configure git for CI
+      - name: Remove unused Landpage dir (if present)
         run: |
-          git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          git config --global --add safe.directory "/github/workspace"
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Ensure tags (some builds call `git describe`)
-        run: |
-          git fetch --tags --force || true
-          git describe --always --dirty || echo "[diag] no tags available"
-
-      - name: Wrap git to log every call
-        run: |
-          mkdir -p "$HOME/bin"
-          cat > "$HOME/bin/git" <<'BASH'
-          #!/usr/bin/env bash
-          echo "[GIT WRAP] pwd=$(pwd) args=$*" >&2
-          exec /usr/bin/git "$@"
-          BASH
-          chmod +x "$HOME/bin/git"
-          echo "$HOME/bin" >> "$GITHUB_PATH"
-
-      - name: Quick git sanity
-        run: |
-          set -x
-          git rev-parse --is-inside-work-tree
-          git rev-parse --abbrev-ref HEAD
-          git rev-parse HEAD
+          if [ -d "Landpage" ]; then
+            rm -rf Landpage
+          fi
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: npm
+          node-version: '20'
+          cache: 'npm'
 
-      - name: Install dependencies (root)
-        run: npm ci || (rm -rf node_modules package-lock.json && npm install)
+      - name: Install deps (workspaces)
+        run: npm ci --workspaces
 
-      - name: Build UI kit
-        run: npm run -w packages/ui build
-
-      - name: Build main-ui
+      - name: Build main-ui (forces TS 5.4.5 via npm script)
         run: npm run -w apps/main-ui build
+
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: main-ui-dist
+          path: apps/main-ui/dist
+          if-no-files-found: error
