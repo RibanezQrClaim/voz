@@ -2,50 +2,29 @@ name: Deploy
 
 on:
   push:
-    branches: [ main ]
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout repo
         uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: npm
+          fetch-depth: 0   # Trae todo el historial, evita error git 128
 
-      - name: Install
-        run: npm ci
-
-      # Construye con base correcta y genera 404.html para SPA
-      - name: Build (GH Pages)
-        run: npm run build:gh
-
-      # ↳ usa la acción nueva para Pages (no upload-artifact@v3)
-      - name: Upload artifact (Pages)
-        uses: actions/upload-pages-artifact@v3
+      - name: Set up Node
+        uses: actions/setup-node@v3
         with:
-          path: ./dist
+          node-version: 18
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy
+        run: echo "Aquí iría tu comando real de deploy"
