@@ -1,4 +1,4 @@
-import * as React from "react";
+﻿import * as React from "react";
 
 export type ChatRole = "user" | "assistant" | "system";
 
@@ -38,3 +38,6 @@ export function MessageBubble({ role, content, timestamp }: MessageBubbleProps) 
     </div>
   );
 }
+
+
+

@@ -1,12 +1,12 @@
-// src/app/MainContainer.tsx
+﻿// src/app/MainContainer.tsx
 import React, { useEffect, useMemo, useState } from "react";
 import { MainView } from "./MainView";
 import type { NavItem } from "../ui/SidebarNav";
 import type { Filters } from "../ui/FiltersBar";
-import type { CardProps } from "../ui/Card"; // ← FIX: importar desde Card
+import type { CardProps } from "../ui/Card"; // â† FIX: importar desde Card
 
 // --- datos de ejemplo (puedes reemplazar por fetch real luego) ---
-const sampleTags = ["cliente", "proveedor", "interno", "pendiente", "reunión"];
+const sampleTags = ["cliente", "proveedor", "interno", "pendiente", "reuniÃ³n"];
 
 const makeMock = (n = 18): CardProps[] => {
     const now = new Date();
@@ -20,9 +20,7 @@ const makeMock = (n = 18): CardProps[] => {
         items.push({
             id: `msg_${i}`,
             title: `Asunto ${i + 1}`,
-            subtitle: `remitente${i}@ejemplo.com`,
-            preview:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            subtitle: `remitente${i}"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             meta: { date: dateIso, tags, urgent },
             onOpen: (id) => console.log("open", id),
         });
@@ -43,12 +41,12 @@ export function MainContainer() {
     const navItems: NavItem[] = [
         { id: "inbox", label: "Bandeja", group: "Gmail" },
         { id: "today", label: "Hoy", group: "Agenda" },
-        { id: "config", label: "Configuración" },
+        { id: "config", label: "ConfiguraciÃ³n" },
     ];
 
     const [activeId, setActiveId] = useState<string>("inbox");
 
-    // estado de filtros/paginación local (sin tocar stores)
+    // estado de filtros/paginaciÃ³n local (sin tocar stores)
     const [filters, setFilters] = useState<Filters>({
         q: "",
         urgentOnly: false,
@@ -68,18 +66,18 @@ export function MainContainer() {
         // simula carga inicial (reemplazar por fetch real)
         setLoading(true);
         const t = setTimeout(() => {
-            setRawItems(makeMock(27)); // genera algunos más para ver paginación
+            setRawItems(makeMock(27)); // genera algunos mÃ¡s para ver paginaciÃ³n
             setLoading(false);
         }, 350);
         return () => clearTimeout(t);
     }, []);
 
-    // recalcula al cambiar filtros → vuelve a página 1
+    // recalcula al cambiar filtros â†’ vuelve a pÃ¡gina 1
     useEffect(() => {
         setPage(1);
     }, [filters.q, filters.tag, filters.urgentOnly, filters.dateFrom, filters.dateTo]);
 
-    // aplicar filtros + ordenar por fecha desc + paginación
+    // aplicar filtros + ordenar por fecha desc + paginaciÃ³n
     const { paged, total } = useMemo(() => {
         const norm = (s: string) => s.toLowerCase();
         const q = filters.q?.trim().toLowerCase() || "";
@@ -130,7 +128,7 @@ export function MainContainer() {
             nav={{
                 items: navItems,
                 activeId,
-                onSelect: (id: string) => setActiveId(id), // ← tip explícito
+                onSelect: (id: string) => setActiveId(id), // â† tip explÃ­cito
             }}
             filters={{
                 value: filters,
@@ -151,3 +149,6 @@ export function MainContainer() {
         />
     );
 }
+
+
+

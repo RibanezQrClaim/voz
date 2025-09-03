@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Input } from './Input';
 import { Select } from './Select';
 
@@ -68,10 +68,10 @@ export function FiltersBar({ value, onChange, tags = [] }: Props): JSX.Element {
           type="checkbox"
           checked={value.urgentOnly}
           onChange={(e) => update({ urgentOnly: e.target.checked })}
-          aria-label="Sólo urgentes"
+          aria-label="SÃ³lo urgentes"
           className="h-4 w-4 rounded border border-[--border] bg-[--card] text-[--ring] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--ring]"
         />
-        <span>Sólo urgentes</span>
+        <span>SÃ³lo urgentes</span>
       </label>
       <Input
         type="date"
@@ -90,4 +90,7 @@ export function FiltersBar({ value, onChange, tags = [] }: Props): JSX.Element {
     </div>
   );
 }
+
+
+
 

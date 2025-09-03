@@ -1,4 +1,4 @@
-// src/store/ui.ts
+﻿// src/store/ui.ts
 import * as React from "react";
 
 export type View = "config" | "main";
@@ -23,7 +23,7 @@ export function useUI() {
   React.useEffect(() => {
     const fn = (v: View) => setView(v);
     subs.add(fn);
-    // ✅ cleanup debe devolver void, no boolean
+    // âœ… cleanup debe devolver void, no boolean
     return () => {
       subs.delete(fn);
     };
@@ -35,3 +35,6 @@ export function useUI() {
     toggleView: () => setGlobalView(_view === "config" ? "main" : "config"),
   };
 }
+
+
+

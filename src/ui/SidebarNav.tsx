@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 export type NavItem = { id: string; label: string; icon?: JSX.Element; group?: string };
 type Props = { items: NavItem[]; activeId?: string; onSelect: (id: string) => void };
@@ -51,4 +51,7 @@ export function SidebarNav({ items, activeId, onSelect }: Props) {
     </nav>
   );
 }
+
+
+
 

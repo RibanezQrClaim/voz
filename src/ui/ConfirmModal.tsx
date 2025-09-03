@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useRef } from "react";
+﻿import React, { useEffect, useId, useRef } from "react";
 import { Button } from "./Button";
 
 export type ConfirmModalProps = {
@@ -10,13 +10,13 @@ export type ConfirmModalProps = {
   cancelLabel?: string;        // default: "Cancelar"
   onConfirm: () => void;       // guardar
   onDiscard: () => void;       // descartar
-  onCancel: () => void;        // cerrar sin acción
+  onCancel: () => void;        // cerrar sin acciÃ³n
 };
 
 export function ConfirmModal({
   open,
   title = "Hay cambios sin guardar",
-  description = "Los cambios se perderán si sales sin guardar.",
+  description = "Los cambios se perderÃ¡n si sales sin guardar.",
   confirmLabel = "Guardar y continuar",
   discardLabel = "Descartar cambios",
   cancelLabel = "Cancelar",
@@ -100,3 +100,6 @@ export function ConfirmModal({
     </div>
   );
 }
+
+
+

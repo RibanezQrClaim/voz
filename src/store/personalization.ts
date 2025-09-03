@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { memoryAdapter } from '../adapters/memoryAdapter';
 import type { PersonalizationState } from '../contracts';
 
@@ -36,3 +36,6 @@ export function usePersonalization() {
 
   return { state, save, lastStep, saveLastStep };
 }
+
+
+

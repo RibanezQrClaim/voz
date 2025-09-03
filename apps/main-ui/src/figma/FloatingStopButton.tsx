@@ -1,4 +1,4 @@
-import { Square } from 'lucide-react';
+﻿import { Square } from 'lucide-react';
 
 interface FloatingStopButtonProps {
   isRecording: boolean;
@@ -21,13 +21,13 @@ export function FloatingStopButton({ isRecording, onToggle }: FloatingStopButton
             : '0 8px 24px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.2) inset'
         }}
       >
-        {/* Contenido del botón */}
+        {/* Contenido del botÃ³n */}
         <div className="flex items-center space-x-2 text-white relative z-10">
           <Square className="w-5 h-5" strokeWidth={2} />
           <span className="text-sm font-semibold hidden sm:inline">Stop Audio</span>
         </div>
         
-        {/* Aro animado cuando está grabando */}
+        {/* Aro animado cuando estÃ¡ grabando */}
         {isRecording && (
           <>
             {/* Aro principal */}
@@ -54,3 +54,6 @@ export function FloatingStopButton({ isRecording, onToggle }: FloatingStopButton
     </div>
   );
 }
+
+
+

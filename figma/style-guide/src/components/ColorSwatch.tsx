@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 
 interface ColorSwatchProps {
   color: string;
@@ -28,7 +28,7 @@ export function ColorSwatch({ color, label, textColor = "#000000" }: ColorSwatch
       >
         {copied && (
           <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-            <span className="text-white text-xs font-medium">✓ Copiado</span>
+            <span className="text-white text-xs font-medium">âœ“ Copiado</span>
           </div>
         )}
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-black/10 flex items-center justify-center">
@@ -59,3 +59,6 @@ export function ColorSwatch({ color, label, textColor = "#000000" }: ColorSwatch
     </div>
   );
 }
+
+
+

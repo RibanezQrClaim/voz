@@ -1,4 +1,4 @@
-import { MessageSquare, Calendar, Users, CheckSquare, AlertTriangle, Plus, Settings } from 'lucide-react';
+﻿import { MessageSquare, Calendar, Users, CheckSquare, AlertTriangle, Plus, Settings } from 'lucide-react';
 
 interface SidebarProps {
   activeCategory: string;
@@ -15,8 +15,8 @@ export function Sidebar({ activeCategory, onCategoryChange, onStateChange }: Sid
   ];
 
   const conversations = [
-    { id: 1, title: 'Reunión con cliente', time: '10:30', category: 'CLIENTES' },
-    { id: 2, title: 'Revisión de proyecto', time: '14:00', category: 'TAREAS' },
+    { id: 1, title: 'ReuniÃ³n con cliente', time: '10:30', category: 'CLIENTES' },
+    { id: 2, title: 'RevisiÃ³n de proyecto', time: '14:00', category: 'TAREAS' },
     { id: 3, title: 'Llamada urgente', time: '16:15', category: 'URGENTES' },
     { id: 4, title: 'Planning semanal', time: '09:00', category: 'HOY' },
     { id: 5, title: 'Seguimiento ventas', time: '15:30', category: 'CLIENTES' }
@@ -54,7 +54,7 @@ export function Sidebar({ activeCategory, onCategoryChange, onStateChange }: Sid
           </div>
         </div>
         
-        {/* Categorías */}
+        {/* CategorÃ­as */}
         <div className="space-y-3">
           {categories.map((category) => {
             const Icon = category.icon;
@@ -176,3 +176,6 @@ export function Sidebar({ activeCategory, onCategoryChange, onStateChange }: Sid
     </div>
   );
 }
+
+
+

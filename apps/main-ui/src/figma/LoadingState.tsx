@@ -1,4 +1,4 @@
-import { Bot, Loader2 } from 'lucide-react';
+﻿import { Bot, Loader2 } from 'lucide-react';
 
 export function LoadingState() {
   return (
@@ -69,7 +69,7 @@ export function LoadingState() {
           </div>
         </div>
         
-        {/* Indicador dinámico adicional */}
+        {/* Indicador dinÃ¡mico adicional */}
         <div className="flex justify-center">
           <div className="flex space-x-3 py-4">
             <div className="w-3 h-3 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full shadow-lg"
@@ -95,3 +95,6 @@ export function LoadingState() {
     </div>
   );
 }
+
+
+

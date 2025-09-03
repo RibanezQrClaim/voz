@@ -1,14 +1,14 @@
-interface NavigationProps {
+﻿interface NavigationProps {
   activeSection: string;
   onSectionChange: (section: string) => void;
 }
 
 export function StyleGuideNavigation({ activeSection, onSectionChange }: NavigationProps) {
   const sections = [
-    { id: 'colors', label: 'Paleta de Colores', icon: '🎨' },
-    { id: 'typography', label: 'Tipografías', icon: '📝' },
-    { id: 'components', label: 'Componentes', icon: '🧩' },
-    { id: 'examples', label: 'Ejemplos', icon: '💡' }
+    { id: 'colors', label: 'Paleta de Colores', icon: 'ðŸŽ¨' },
+    { id: 'typography', label: 'TipografÃ­as', icon: 'ðŸ“' },
+    { id: 'components', label: 'Componentes', icon: 'ðŸ§©' },
+    { id: 'examples', label: 'Ejemplos', icon: 'ðŸ’¡' }
   ];
 
   return (
@@ -22,7 +22,7 @@ export function StyleGuideNavigation({ activeSection, onSectionChange }: Navigat
             fontWeight: '600' 
           }}
         >
-          Navegación
+          NavegaciÃ³n
         </h2>
         <ul className="space-y-2">
           {sections.map((section) => (
@@ -46,3 +46,6 @@ export function StyleGuideNavigation({ activeSection, onSectionChange }: Navigat
     </nav>
   );
 }
+
+
+

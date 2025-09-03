@@ -1,4 +1,4 @@
-// src/app/TopNav.tsx
+﻿// src/app/TopNav.tsx
 import * as React from "react";
 import { useUI } from "../store/ui";
 
@@ -11,7 +11,7 @@ export default function TopNav() {
                 <div className="font-semibold">voz_agente_gmail</div>
                 <div className="flex items-center gap-2">
                     <span className="text-sm text-[--fg-muted] hidden sm:inline">
-                        {view === "config" ? "Configuración" : "Principal"}
+                        {view === "config" ? "ConfiguraciÃ³n" : "Principal"}
                     </span>
                     <button
                         className="h-9 px-3 rounded-xl border border-[--border] bg-[--bg-muted] hover:bg-[--card] focus:outline-none focus:ring-2 ring-[--ring]"
@@ -25,3 +25,6 @@ export default function TopNav() {
         </header>
     );
 }
+
+
+

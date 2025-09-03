@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 
 export default function ConsultaRemitentes({ usuarioId = 1 }) {
     const [remitentes, setRemitentes] = useState([]);
@@ -12,7 +12,7 @@ export default function ConsultaRemitentes({ usuarioId = 1 }) {
             const data = await res.json();
             setRemitentes(data.remitentes || []);
         } catch (err) {
-            setRemitentes(['⚠️ Error al consultar']);
+            setRemitentes(['âš ï¸ Error al consultar']);
         } finally {
             setLoading(false);
         }
@@ -20,7 +20,7 @@ export default function ConsultaRemitentes({ usuarioId = 1 }) {
 
     return (
         <div className="p-4 border rounded-xl shadow bg-white max-w-xl">
-            <h2 className="text-xl font-semibold mb-2">¿Quién me escribió hoy?</h2>
+            <h2 className="text-xl font-semibold mb-2">Â¿QuiÃ©n me escribiÃ³ hoy?</h2>
             <button
                 onClick={consultar}
                 className="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700"
@@ -38,3 +38,6 @@ export default function ConsultaRemitentes({ usuarioId = 1 }) {
         </div>
     );
 }
+
+
+

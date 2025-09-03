@@ -1,4 +1,4 @@
-// src/ui/Button.tsx
+﻿// src/ui/Button.tsx
 import * as React from "react";
 
 export type ButtonVariant = "primary" | "secondary" | "danger" | "ghost";
@@ -7,7 +7,7 @@ export type ButtonSize = "sm" | "md" | "lg";
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   /** API nueva */
   variant?: ButtonVariant;
-  /** ⚠️ Compat: API antigua que usan los Step* (kind≡variant) */
+  /** âš ï¸ Compat: API antigua que usan los Step* (kindâ‰¡variant) */
   kind?: ButtonVariant;
   size?: ButtonSize;
 };
@@ -55,3 +55,6 @@ export function Button(props: ButtonProps) {
 
   return <button className={classes} disabled={disabled} {...rest} />;
 }
+
+
+

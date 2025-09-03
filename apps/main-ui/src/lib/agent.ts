@@ -1,4 +1,4 @@
-// apps/main-ui/src/lib/agent.ts
+﻿// apps/main-ui/src/lib/agent.ts
 const BASE =
   (import.meta.env.VITE_AGENT_URL as string | undefined)?.replace(/\/$/, '') || '';
 
@@ -20,3 +20,6 @@ export async function sendMessage(text: string): Promise<string> {
   const data = await postJSON<ChatResponse>('/api/chat', { message: text });
   return data.reply ?? data.message ?? '';
 }
+
+
+

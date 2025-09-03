@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+﻿import React, { useEffect } from "react";
 import { Input } from "../../ui/Input";
 import type { UserContext } from "../../contracts";
 
@@ -37,3 +37,6 @@ export function StepRolePriorities({ user, onChange, onValidChange }: StepRolePr
     </div>
   );
 }
+
+
+

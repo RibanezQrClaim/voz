@@ -1,4 +1,4 @@
-// src/app/MainView.tsx
+﻿// src/app/MainView.tsx
 import * as React from "react";
 import { SidebarNav, NavItem } from "../ui/SidebarNav";
 import { FiltersBar, Filters } from "../ui/FiltersBar";
@@ -37,7 +37,7 @@ export function MainView({
   return (
     <div className="grid md:grid-cols-[240px_1fr] gap-4 p-4">
       {/* Sidebar */}
-      <nav aria-label="Navegación" className="md:sticky md:top-4 self-start">
+      <nav aria-label="NavegaciÃ³n" className="md:sticky md:top-4 self-start">
         <SidebarNav items={nav.items} activeId={nav.activeId} onSelect={nav.onSelect} />
       </nav>
 
@@ -75,23 +75,23 @@ export function MainView({
 
         {/* Pagination */}
         <nav
-          aria-label="Paginación"
+          aria-label="PaginaciÃ³n"
           className="flex items-center justify-end gap-2 pt-2 border-t border-[--border]"
         >
           <button
             className="h-9 px-3 rounded-xl border border-[--border] bg-[--bg-muted] hover:bg-[--card] focus:outline-none focus:ring-2 ring-[--ring] disabled:opacity-50"
             onClick={() => data.onPage(data.page - 1)}
             disabled={!canPrev}
-            aria-label="Página anterior"
+            aria-label="PÃ¡gina anterior"
           >
             Anterior
           </button>
-          <span className="text-sm text-[--fg-muted] px-2">Pág. {data.page}</span>
+          <span className="text-sm text-[--fg-muted] px-2">PÃ¡g. {data.page}</span>
           <button
             className="h-9 px-3 rounded-xl border border-[--border] bg-[--bg-muted] hover:bg-[--card] focus:outline-none focus:ring-2 ring-[--ring] disabled:opacity-50"
             onClick={() => data.onPage(data.page + 1)}
             disabled={!canNext}
-            aria-label="Página siguiente"
+            aria-label="PÃ¡gina siguiente"
           >
             Siguiente
           </button>
@@ -100,3 +100,6 @@ export function MainView({
     </div>
   );
 }
+
+
+

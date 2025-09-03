@@ -1,4 +1,4 @@
-export default function OfflineNotice() {
+﻿export default function OfflineNotice() {
   return (
     <div className="sticky top-0 z-10 mb-4">
       <div
@@ -6,8 +6,11 @@ export default function OfflineNotice() {
         aria-live="polite"
         className="bg-surface backdrop-blur-[14px] rounded-2xl shadow-glass border border-white/40 px-4 py-3 text-sm"
       >
-        Estás sin conexión.
+        EstÃ¡s sin conexiÃ³n.
       </div>
     </div>
   );
 }
+
+
+

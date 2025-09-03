@@ -1,4 +1,4 @@
-import { Bot, User, Loader2 } from 'lucide-react';
+﻿import { Bot, User, Loader2 } from 'lucide-react';
 
 interface Message {
   id: number;
@@ -51,7 +51,7 @@ export function ChatPanel({ messages, isLoading }: ChatPanelProps) {
                     : undefined
                 }}
               >
-                {/* Mini-título para respuestas del asistente */}
+                {/* Mini-tÃ­tulo para respuestas del asistente */}
                 {message.type === 'assistant' && message.title && (
                   <div className="mb-3 pb-2 border-b border-slate-200/40">
                     <h4 className="text-sm font-semibold font-['IBM_Plex_Sans']" style={{ color: '#1E3A8A' }}>
@@ -95,7 +95,7 @@ export function ChatPanel({ messages, isLoading }: ChatPanelProps) {
           </div>
         )}
         
-        {/* Indicador dinámico cuando el asistente está respondiendo */}
+        {/* Indicador dinÃ¡mico cuando el asistente estÃ¡ respondiendo */}
         {isLoading && (
           <div className="flex justify-center">
             <div className="flex space-x-2 py-2">
@@ -109,3 +109,6 @@ export function ChatPanel({ messages, isLoading }: ChatPanelProps) {
     </div>
   );
 }
+
+
+

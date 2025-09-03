@@ -1,4 +1,4 @@
-import { AlertTriangle, X } from 'lucide-react';
+﻿import { AlertTriangle, X } from 'lucide-react';
 
 interface ErrorBannerProps {
   onClose: () => void;
@@ -14,10 +14,10 @@ export function ErrorBanner({ onClose }: ErrorBannerProps) {
           </div>
           <div className="flex-1 min-w-0">
             <h3 className="text-sm font-semibold text-red-800 font-['IBM_Plex_Sans']">
-              Error de conexión
+              Error de conexiÃ³n
             </h3>
             <p className="text-sm text-red-700 font-['Inter'] mt-1">
-              No se pudo conectar con el servidor. Verifica tu conexión a internet.
+              No se pudo conectar con el servidor. Verifica tu conexiÃ³n a internet.
             </p>
           </div>
           <button
@@ -31,3 +31,6 @@ export function ErrorBanner({ onClose }: ErrorBannerProps) {
     </div>
   );
 }
+
+
+

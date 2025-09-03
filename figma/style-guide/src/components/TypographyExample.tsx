@@ -1,4 +1,4 @@
-interface TypographyExampleProps {
+﻿interface TypographyExampleProps {
   text: string;
   description: string;
   fontSize: string;
@@ -31,3 +31,6 @@ export function TypographyExample({
     </div>
   );
 }
+
+
+

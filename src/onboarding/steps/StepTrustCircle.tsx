@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 import { Input } from "../../ui/Input";
 import { Button } from "../../ui/Button";
 import type { TrustCircleItem } from "../../contracts";
@@ -9,24 +9,11 @@ export interface StepTrustCircleProps {
     onValidChange?: (v: boolean) => void;
 }
 
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-export function StepTrustCircle({ items, onChange, onValidChange }: StepTrustCircleProps) {
-    const [rows, setRows] = useState<TrustCircleItem[]>(items);
-
-    const aliasCounts = rows.reduce<Record<string, number>>((acc, r) => {
-        const key = r.alias.trim().toLowerCase();
-        if (key) acc[key] = (acc[key] || 0) + 1;
-        return acc;
-    }, {});
-
-    const errors = rows.map((r) => ({
-        alias: !r.alias.trim()
-            ? "Requerido"
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s"Requerido"
             : aliasCounts[r.alias.trim().toLowerCase()] > 1
                 ? "Alias duplicado"
                 : "",
-        email: emailRegex.test(r.email) ? "" : "Email inválido",
+        email: emailRegex.test(r.email) ? "" : "Email invÃ¡lido",
     }));
 
     const allValid = errors.every((e) => !e.alias && !e.email);
@@ -60,3 +47,6 @@ export function StepTrustCircle({ items, onChange, onValidChange }: StepTrustCir
         </div>
     );
 }
+
+
+

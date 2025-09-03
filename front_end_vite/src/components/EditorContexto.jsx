@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 
 export default function EditorContexto({ usuarioId = 1 }) {
     const [contexto, setContexto] = useState({
@@ -108,3 +108,6 @@ export default function EditorContexto({ usuarioId = 1 }) {
         </div>
     );
 }
+
+
+

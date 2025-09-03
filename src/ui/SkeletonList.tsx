@@ -1,10 +1,10 @@
-import * as React from "react";
+﻿import * as React from "react";
 
 export function SkeletonList({ count = 6 }: { count?: number }) {
   return (
     <div
       role="status"
-      aria-label="Cargando…"
+      aria-label="Cargandoâ€¦"
       className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
     >
       {Array.from({ length: count }).map((_, i) => (
@@ -21,3 +21,6 @@ export function SkeletonList({ count = 6 }: { count?: number }) {
     </div>
   );
 }
+
+
+

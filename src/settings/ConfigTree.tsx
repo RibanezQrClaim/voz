@@ -1,4 +1,4 @@
-// src/settings/ConfigTree.tsx
+﻿// src/settings/ConfigTree.tsx
 import React from "react";
 
 export type SectionId = "agent" | "voice" | "user" | "trust" | "rules" | "advanced";
@@ -42,7 +42,7 @@ export function ConfigTree({
                                     >
                                         <span>{n.label}</span>
                                         <span aria-hidden className="text-gray-400 dark:text-zinc-500">
-                                            {isOpen ? "▾" : "▸"}
+                                            {isOpen ? "â–¾" : "â–¸"}
                                         </span>
                                     </button>
 
@@ -69,7 +69,7 @@ export function ConfigTree({
                                                             </span>
                                                             <span className="flex items-center gap-1">
                                                                 {dirty[c.id] && <span title="Cambios sin guardar" className="h-1.5 w-1.5 rounded-full bg-amber-500" />}
-                                                                {invalid[c.id] && <span title="Campos inválidos" className="h-1.5 w-1.5 rounded-full bg-red-500" />}
+                                                                {invalid[c.id] && <span title="Campos invÃ¡lidos" className="h-1.5 w-1.5 rounded-full bg-red-500" />}
                                                             </span>
                                                         </button>
                                                     </li>
@@ -108,3 +108,6 @@ export function ConfigTree({
         </aside>
     );
 }
+
+
+

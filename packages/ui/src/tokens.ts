@@ -1,4 +1,4 @@
-export const colors = {
+﻿export const colors = {
   surface: 'rgb(var(--nx-color-surface))',
   primary: 'rgb(var(--nx-color-primary))',
   text: 'rgb(var(--nx-color-text))'
@@ -20,3 +20,6 @@ export const shadows = {
 export const fonts = {
   sans: 'var(--nx-font-sans)'
 } as const;
+
+
+

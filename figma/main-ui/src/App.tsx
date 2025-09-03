@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { ChatPanel } from './components/ChatPanel';
 import { BottomBar } from './components/BottomBar';
@@ -22,7 +22,7 @@ export default function App() {
       id: 1,
       type: 'assistant' as const,
       title: 'Bienvenida',
-      content: 'Hola, soy tu asistente conversacional. ¿En qué puedo ayudarte hoy?',
+      content: 'Hola, soy tu asistente conversacional. Â¿En quÃ© puedo ayudarte hoy?',
       timestamp: new Date()
     },
     {
@@ -35,7 +35,7 @@ export default function App() {
       id: 3,
       type: 'assistant' as const,
       title: 'Resumen de hoy',
-      content: 'Perfecto, te muestro un resumen de tus tareas pendientes para el día de hoy. Tienes 3 tareas importantes y 2 reuniones programadas.',
+      content: 'Perfecto, te muestro un resumen de tus tareas pendientes para el dÃ­a de hoy. Tienes 3 tareas importantes y 2 reuniones programadas.',
       timestamp: new Date()
     }
   ]);
@@ -58,7 +58,7 @@ export default function App() {
         id: messages.length + 2,
         type: 'assistant' as const,
         title: 'Respuesta',
-        content: 'He procesado tu mensaje. ¿Hay algo más en lo que pueda ayudarte?',
+        content: 'He procesado tu mensaje. Â¿Hay algo mÃ¡s en lo que pueda ayudarte?',
         timestamp: new Date()
       };
       setMessages(prev => [...prev, assistantMessage]);
@@ -118,7 +118,7 @@ export default function App() {
         <BottomBar onSendMessage={handleSendMessage} />
       </div>
       
-      {/* Botón Stop Audio flotante */}
+      {/* BotÃ³n Stop Audio flotante */}
       <FloatingStopButton 
         isRecording={isRecording}
         onToggle={() => setIsRecording(!isRecording)}
@@ -126,3 +126,6 @@ export default function App() {
     </div>
   );
 }
+
+
+

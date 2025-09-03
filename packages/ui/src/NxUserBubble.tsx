@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react';
+﻿import type { HTMLAttributes } from 'react';
 import { spacing } from './tokens.js';
 
 export interface NxBubbleProps extends HTMLAttributes<HTMLDivElement> {
@@ -11,3 +11,6 @@ export function NxUserBubble({ ariaLabel, className = '', ...props }: NxBubblePr
     <div role="group" aria-label={ariaLabel} tabIndex={0} className={`${base} ${className}`} {...props} />
   );
 }
+
+
+

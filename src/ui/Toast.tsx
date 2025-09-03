@@ -1,4 +1,4 @@
-// src/ui/Toast.tsx
+﻿// src/ui/Toast.tsx
 import * as React from "react";
 
 export type ToastType = "success" | "error" | "info";
@@ -40,3 +40,6 @@ export function Toast({
     </div>
   );
 }
+
+
+

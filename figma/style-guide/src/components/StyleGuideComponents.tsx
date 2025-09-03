@@ -1,4 +1,4 @@
-export function PrimaryButton({ children }: { children: React.ReactNode }) {
+﻿export function PrimaryButton({ children }: { children: React.ReactNode }) {
   return (
     <button className="px-6 py-3 bg-[#0EA5E9] text-white rounded-lg hover:bg-[#0284C7] transition-colors font-medium">
       {children}
@@ -47,3 +47,6 @@ export function AssistantBubble({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
+
+
+

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 
 export default function EditorFiltros({ usuarioId = 1 }) {
     const [filtros, setFiltros] = useState({});
@@ -89,4 +89,7 @@ export default function EditorFiltros({ usuarioId = 1 }) {
         </div>
     );
 }
+
+
+
 

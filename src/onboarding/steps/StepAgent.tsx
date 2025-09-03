@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+﻿import React, { useEffect } from "react";
 import { Input } from "../../ui/Input";
 import type { AgentProfile } from "../../contracts";
 
@@ -9,7 +9,7 @@ export interface StepAgentProps {
 }
 
 export function StepAgent({ value, onChange, onValidChange }: StepAgentProps) {
-  const error = !value.name ? "Requerido" : value.name.length > 40 ? "Máx. 40" : "";
+  const error = !value.name ? "Requerido" : value.name.length > 40 ? "MÃ¡x. 40" : "";
 
   useEffect(() => {
     onValidChange?.(!error);
@@ -26,3 +26,6 @@ export function StepAgent({ value, onChange, onValidChange }: StepAgentProps) {
     </div>
   );
 }
+
+
+

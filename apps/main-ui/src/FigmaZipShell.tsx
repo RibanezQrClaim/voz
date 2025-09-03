@@ -1,4 +1,4 @@
-// apps/main-ui/src/FigmaZipShell.tsx
+﻿// apps/main-ui/src/FigmaZipShell.tsx
 import { useMemo, useState } from 'react';
 import { sendMessage } from './lib/agent';
 
@@ -37,7 +37,7 @@ export default function FigmaZipShell() {
       type: 'assistant',
       title: 'Resumen de hoy',
       content:
-        'Perfecto, te muestro un resumen de tus tareas para el día de hoy. Tienes 3 tareas importantes y 2 reuniones programadas.',
+        'Perfecto, te muestro un resumen de tus tareas para el dÃ­a de hoy. Tienes 3 tareas importantes y 2 reuniones programadas.',
       timestamp: new Date(),
     },
     { id: 2, type: 'user', content: 'Necesito revisar mis tareas pendientes para hoy', timestamp: new Date() },
@@ -96,3 +96,6 @@ export default function FigmaZipShell() {
     </div>
   );
 }
+
+
+

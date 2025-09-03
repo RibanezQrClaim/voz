@@ -1,4 +1,4 @@
-import * as React from "react";
+﻿import * as React from "react";
 import { ChatView } from "./ChatView";
 import type { ChatMessage } from "./ChatView";
 
@@ -21,11 +21,11 @@ function saveThread(msgs: ChatMessage[]) {
   } catch {}
 }
 
-// simulación de backend; reemplazar por fetch a tu API
+// simulaciÃ³n de backend; reemplazar por fetch a tu API
 async function respond(userText: string): Promise<string> {
-  // aquí luego puedes llamar a /api/comando o lo que definas
+  // aquÃ­ luego puedes llamar a /api/comando o lo que definas
   await new Promise((r) => setTimeout(r, 600));
-  return `Entendido: "${userText}". (Simulación de respuesta)`;
+  return `Entendido: "${userText}". (SimulaciÃ³n de respuesta)`;
 }
 
 export function ChatContainer() {
@@ -87,3 +87,6 @@ export function ChatContainer() {
     />
   );
 }
+
+
+

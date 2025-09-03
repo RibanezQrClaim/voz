@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 
 export default function EditorContactos({ usuarioId = 1 }) {
     const [contactos, setContactos] = useState({});
@@ -20,7 +20,7 @@ export default function EditorContactos({ usuarioId = 1 }) {
         const correoValido = /^[\w\.\-\+]+@[\w\.-]+\.[a-zA-Z]{2,10}$/.test(correo) || /^\*@[\w\.-]+\.[a-zA-Z]{2,10}$/.test(correo);
 
         if (!correoValido) {
-            setMensaje('❌ Correo inválido');
+            setMensaje('âŒ Correo invÃ¡lido');
             setTimeout(() => setMensaje(''), 2000);
             return;
         }
@@ -53,7 +53,7 @@ export default function EditorContactos({ usuarioId = 1 }) {
             const data = await res.json();
             setMensaje(data.mensaje || 'Guardado correctamente');
         } catch (e) {
-            setMensaje('❌ Error al guardar');
+            setMensaje('âŒ Error al guardar');
         }
         setTimeout(() => setMensaje(''), 3000);
     };
@@ -73,7 +73,7 @@ export default function EditorContactos({ usuarioId = 1 }) {
             <div className="flex space-x-2 mt-4">
                 <input
                     className="border p-1 flex-1 mr-2"
-                    placeholder="correo o dominio (ej: *@empresa.com)"
+                    placeholder="correo o dominio (ej: *"
                     value={nuevoCorreo}
                     onChange={(e) => setNuevoCorreo(e.target.value)}
                 />
@@ -97,3 +97,6 @@ export default function EditorContactos({ usuarioId = 1 }) {
         </div>
     );
 }
+
+
+

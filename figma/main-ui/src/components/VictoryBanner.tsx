@@ -1,4 +1,4 @@
-import { Trophy, Eye, X } from 'lucide-react';
+﻿import { Trophy, Eye, X } from 'lucide-react';
 
 interface VictoryBannerProps {
   onAccept: () => void;
@@ -15,10 +15,10 @@ export function VictoryBanner({ onAccept, onDismiss }: VictoryBannerProps) {
           </div>
           <div className="flex-1 min-w-0">
             <h3 className="text-base font-semibold text-slate-800 font-['IBM_Plex_Sans'] mb-1">
-              Primera Victoria 🎉
+              Primera Victoria ðŸŽ‰
             </h3>
             <p className="text-sm text-slate-700 font-['Inter'] mb-4 leading-relaxed">
-              ¿Ver urgentes de las últimas 24 h?
+              Â¿Ver urgentes de las Ãºltimas 24 h?
             </p>
             <div className="flex space-x-3">
               <button
@@ -32,7 +32,7 @@ export function VictoryBanner({ onAccept, onDismiss }: VictoryBannerProps) {
                 onClick={onDismiss}
                 className="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-xl transition-all duration-200 text-sm font-medium"
               >
-                Después
+                DespuÃ©s
               </button>
             </div>
           </div>
@@ -47,3 +47,6 @@ export function VictoryBanner({ onAccept, onDismiss }: VictoryBannerProps) {
     </div>
   );
 }
+
+
+

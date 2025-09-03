@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Mic, Send, Calendar, AlertTriangle, Users, CheckSquare, Info } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
 
@@ -47,7 +47,7 @@ export function BottomBar({ onSendMessage }: BottomBarProps) {
            style={{
              boxShadow: '0 -10px 40px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
            }}>
-        {/* Atajos rápidos */}
+        {/* Atajos rÃ¡pidos */}
         <div className="flex items-center justify-center space-x-3">
           {shortcuts.map((shortcut) => {
             const Icon = shortcut.icon;
@@ -73,9 +73,9 @@ export function BottomBar({ onSendMessage }: BottomBarProps) {
                   </PopoverTrigger>
                   <PopoverContent className="w-64 bg-white/95 backdrop-blur-md border border-slate-200/50 shadow-2xl rounded-2xl">
                     <div className="space-y-2">
-                      <h4 className="font-semibold text-slate-800 font-['IBM_Plex_Sans']">¿Por qué?</h4>
+                      <h4 className="font-semibold text-slate-800 font-['IBM_Plex_Sans']">Â¿Por quÃ©?</h4>
                       <p className="text-sm text-slate-600 font-['Inter']">
-                        Los elementos marcados como urgentes requieren atención inmediata y pueden afectar objetivos críticos o fechas límite importantes.
+                        Los elementos marcados como urgentes requieren atenciÃ³n inmediata y pueden afectar objetivos crÃ­ticos o fechas lÃ­mite importantes.
                       </p>
                     </div>
                   </PopoverContent>
@@ -98,13 +98,13 @@ export function BottomBar({ onSendMessage }: BottomBarProps) {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Escribe tu mensaje aquí..."
+                placeholder="Escribe tu mensaje aquÃ­..."
                 className="flex-1 bg-transparent border-none outline-none resize-none font-['Inter'] text-slate-800 placeholder-slate-500 transition-all duration-150"
                 rows={1}
                 style={{ maxHeight: '120px', minHeight: '24px' }}
               />
               
-              {/* Botón de micrófono */}
+              {/* BotÃ³n de micrÃ³fono */}
               <button
                 onClick={() => setIsRecording(!isRecording)}
                 className={`p-3 rounded-2xl transition-all duration-150 relative overflow-hidden ${
@@ -117,7 +117,7 @@ export function BottomBar({ onSendMessage }: BottomBarProps) {
               </button>
             </div>
 
-            {/* Botón de envío */}
+            {/* BotÃ³n de envÃ­o */}
             <button
               onClick={handleSend}
               disabled={!message.trim()}
@@ -135,3 +135,6 @@ export function BottomBar({ onSendMessage }: BottomBarProps) {
     </div>
   );
 }
+
+
+

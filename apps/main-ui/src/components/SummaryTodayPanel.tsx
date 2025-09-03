@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+﻿import { useEffect, useRef } from 'react';
 
 interface Props {
   onClose: () => void;
@@ -34,9 +34,9 @@ export default function SummaryTodayPanel({ onClose }: Props) {
   const today = new Date().toLocaleDateString();
 
   const items = [
-    { time: '09:00', subject: 'Reunión con equipo' },
+    { time: '09:00', subject: 'ReuniÃ³n con equipo' },
     { time: '11:30', subject: 'Llamada a proveedor' },
-    { time: '14:00', subject: 'Evento del día' },
+    { time: '14:00', subject: 'Evento del dÃ­a' },
   ];
 
   return (
@@ -49,14 +49,14 @@ export default function SummaryTodayPanel({ onClose }: Props) {
     >
       <div className="bg-surface backdrop-blur-[14px] rounded-2xl shadow-glass border border-white/40 p-4 w-full max-w-md">
         <div className="flex items-start justify-between mb-4">
-          <h2 className="font-semibold text-lg">Resumen de hoy — {today}</h2>
+          <h2 className="font-semibold text-lg">Resumen de hoy â€” {today}</h2>
           <button
             ref={closeRef}
             onClick={onClose}
             aria-label="Cerrar"
             className="px-2 py-1 rounded-xl border border-white/40 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/40"
           >
-            ✕
+            âœ•
           </button>
         </div>
 
@@ -69,7 +69,7 @@ export default function SummaryTodayPanel({ onClose }: Props) {
         <ul className="text-sm space-y-2 mb-4">
           {items.map((item, idx) => (
             <li key={idx}>
-              {item.time} — {item.subject}
+              {item.time} â€” {item.subject}
             </li>
           ))}
         </ul>
@@ -85,4 +85,7 @@ export default function SummaryTodayPanel({ onClose }: Props) {
     </div>
   );
 }
+
+
+
 

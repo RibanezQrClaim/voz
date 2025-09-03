@@ -1,10 +1,10 @@
-import React from 'react';
+﻿import React from 'react';
 
 export type CardProps = {
   id: string;
   title: string;
   subtitle?: string;
-  preview?: string; // truncado visual a ~3 líneas
+  preview?: string; // truncado visual a ~3 lÃ­neas
   meta?: { date?: string; tags?: string[]; urgent?: boolean };
   onOpen?: (id: string) => void;
 };
@@ -60,4 +60,7 @@ export function Card({ id, title, subtitle, preview, meta, onOpen }: CardProps):
     </article>
   );
 }
+
+
+
 

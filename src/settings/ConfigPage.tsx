@@ -1,4 +1,4 @@
-// src/settings/ConfigPage.tsx
+﻿// src/settings/ConfigPage.tsx
 import React, { useMemo, useState } from "react";
 import { usePersonalization } from "../store/personalization";
 import { Button } from "../ui/Button";
@@ -13,7 +13,7 @@ import { StepRolePriorities } from "../onboarding/steps/StepRolePriorities";
 import { StepTrustCircle } from "../onboarding/steps/StepTrustCircle";
 import { StepRules } from "../onboarding/steps/StepRules";
 
-// Tipos para callbacks (evita any implícito)
+// Tipos para callbacks (evita any implÃ­cito)
 import type {
     AgentProfile,
     UserContext,
@@ -30,7 +30,7 @@ export function ConfigPage() {
     // Estado local editable (draft)
     const [draft, setDraft] = useState(state);
 
-    // Árbol de navegación
+    // Ãrbol de navegaciÃ³n
     const nodes: TreeNode[] = useMemo(
         () => [
             {
@@ -49,7 +49,7 @@ export function ConfigPage() {
             {
                 id: "grp-trust",
                 label: "Confianza",
-                children: [{ id: "trust", label: "Círculo" }],
+                children: [{ id: "trust", label: "CÃ­rculo" }],
             },
             {
                 id: "grp-rules",
@@ -65,7 +65,7 @@ export function ConfigPage() {
         []
     );
 
-    // Expansión del árbol
+    // ExpansiÃ³n del Ã¡rbol
     const [expanded, setExpanded] = useState<Record<GroupId, boolean>>({
         "grp-agent": true,
         "grp-user": true,
@@ -74,10 +74,10 @@ export function ConfigPage() {
         "grp-advanced": false,
     });
 
-    // Sección activa
+    // SecciÃ³n activa
     const [active, setActive] = useState<SectionId>("agent");
 
-    // Flags simples por sección
+    // Flags simples por secciÃ³n
     const emptyFlags = {
         agent: false,
         voice: false,
@@ -166,7 +166,7 @@ export function ConfigPage() {
             case "trust":
                 return (
                     <div className="panel p-4" id="config-trust">
-                        <h2 className="mb-3 text-lg font-semibold">Círculo de Confianza</h2>
+                        <h2 className="mb-3 text-lg font-semibold">CÃ­rculo de Confianza</h2>
                         <StepTrustCircle
                             items={draft.trustCircle}
                             onChange={(items: TrustCircleItem[]) => {
@@ -220,7 +220,7 @@ export function ConfigPage() {
 
             <section className="flex-1 space-y-4">
                 <header className="flex items-center justify-between">
-                    <h1 className="text-xl font-semibold">Configuración</h1>
+                    <h1 className="text-xl font-semibold">ConfiguraciÃ³n</h1>
                     <div className="flex gap-2">
                         <Button variant="ghost" onClick={onReset}>
                             Deshacer
@@ -265,3 +265,6 @@ export function ConfigPage() {
         </div>
     );
 }
+
+
+

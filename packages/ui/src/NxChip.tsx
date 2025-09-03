@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react';
+﻿import type { HTMLAttributes } from 'react';
 import { spacing } from './tokens.js';
 
 export type NxChipProps = HTMLAttributes<HTMLDivElement> & {
@@ -15,3 +15,6 @@ export function NxChip({ variant = 'default', className = '', ...props }: NxChip
     <div className={`${base} ${variants[variant]} ${className}`} {...props} />
   );
 }
+
+
+

@@ -1,4 +1,4 @@
-import { NxButton, NxChip, NxUserBubble, NxAssistantBubble } from '@nexusg/ui';
+﻿import { NxButton, NxChip, NxUserBubble, NxAssistantBubble } from '@nexusg/ui';
 
 export default function ExampleNx() {
   return (
@@ -6,7 +6,10 @@ export default function ExampleNx() {
       <NxButton>Enviar</NxButton>
       <NxChip>Etiqueta</NxChip>
       <NxUserBubble ariaLabel="mensaje de usuario">Hola</NxUserBubble>
-      <NxAssistantBubble ariaLabel="mensaje del asistente">¿En qué puedo ayudarte?</NxAssistantBubble>
+      <NxAssistantBubble ariaLabel="mensaje del asistente">Â¿En quÃ© puedo ayudarte?</NxAssistantBubble>
     </div>
   );
 }
+
+
+

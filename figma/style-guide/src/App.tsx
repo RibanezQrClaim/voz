@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { ColorSwatch } from './components/ColorSwatch';
 import { TypographyExample } from './components/TypographyExample';
 import { StyleGuideNavigation } from './components/StyleGuideNavigation';
@@ -16,7 +16,7 @@ export default function App() {
 
   const colors = [
     { color: '#F3F4F6', label: 'Gray 100', usage: 'Fondos secundarios' },
-    { color: 'rgba(255,255,255,0.7)', label: 'White 70%', usage: 'Overlay translúcido' },
+    { color: 'rgba(255,255,255,0.7)', label: 'White 70%', usage: 'Overlay translÃºcido' },
     { color: '#0EA5E9', label: 'Sky 500', usage: 'Color primario' },
     { color: '#1E3A8A', label: 'Blue 900', usage: 'Texto principal' },
     { color: '#E2E8F0', label: 'Slate 200', usage: 'Bordes suaves' },
@@ -29,8 +29,8 @@ export default function App() {
   ];
 
   const spacingTokens = [
-    { name: 'xs', value: '4px', description: 'Espacio extra pequeño' },
-    { name: 'sm', value: '8px', description: 'Espacio pequeño' },
+    { name: 'xs', value: '4px', description: 'Espacio extra pequeÃ±o' },
+    { name: 'sm', value: '8px', description: 'Espacio pequeÃ±o' },
     { name: 'md', value: '16px', description: 'Espacio medio' },
     { name: 'lg', value: '24px', description: 'Espacio grande' },
     { name: 'xl', value: '32px', description: 'Espacio extra grande' },
@@ -38,7 +38,7 @@ export default function App() {
   ];
 
   const borderRadiusTokens = [
-    { name: 'sm', value: '4px', description: 'Radio pequeño' },
+    { name: 'sm', value: '4px', description: 'Radio pequeÃ±o' },
     { name: 'md', value: '8px', description: 'Radio medio' },
     { name: 'lg', value: '12px', description: 'Radio grande' },
     { name: 'xl', value: '16px', description: 'Radio extra grande' },
@@ -80,7 +80,7 @@ export default function App() {
               className="mt-2 text-gray-600"
               style={{ fontFamily: 'Inter', fontSize: '16px' }}
             >
-              Guía completa de componentes, tokens y patrones de diseño
+              GuÃ­a completa de componentes, tokens y patrones de diseÃ±o
             </p>
           </div>
         </div>
@@ -96,7 +96,7 @@ export default function App() {
                 fontWeight: '600' 
               }}
             >
-              🎨 Paleta de Colores
+              ðŸŽ¨ Paleta de Colores
             </h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
@@ -131,7 +131,7 @@ export default function App() {
                     fontWeight: '500' 
                   }}
                 >
-                  Colores Semánticos
+                  Colores SemÃ¡nticos
                 </h3>
                 <div className="grid grid-cols-3 gap-4">
                   {colors.slice(6).map((colorItem, index) => (
@@ -163,7 +163,7 @@ export default function App() {
             </div>
           </section>
 
-          {/* Tipografías */}
+          {/* TipografÃ­as */}
           <section id="typography">
             <h2 
               className="mb-8 text-gray-900"
@@ -173,7 +173,7 @@ export default function App() {
                 fontWeight: '600' 
               }}
             >
-              📝 Sistema Tipográfico
+              ðŸ“ Sistema TipogrÃ¡fico
             </h2>
             
             <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm">
@@ -187,24 +187,24 @@ export default function App() {
                       fontWeight: '500' 
                     }}
                   >
-                    Jerarquía Tipográfica
+                    JerarquÃ­a TipogrÃ¡fica
                   </h3>
                   <TypographyExample
-                    text="Título Principal H1"
+                    text="TÃ­tulo Principal H1"
                     description="IBM Plex Sans 32px semibold"
                     fontSize="32px"
                     fontWeight="600"
                     fontFamily='"IBM Plex Sans", sans-serif'
                   />
                   <TypographyExample
-                    text="Título Secundario H2"
+                    text="TÃ­tulo Secundario H2"
                     description="IBM Plex Sans 24px medium"
                     fontSize="24px"
                     fontWeight="500"
                     fontFamily='"IBM Plex Sans", sans-serif'
                   />
                   <TypographyExample
-                    text="Subtítulo H3"
+                    text="SubtÃ­tulo H3"
                     description="IBM Plex Sans 18px medium"
                     fontSize="18px"
                     fontWeight="500"
@@ -224,21 +224,21 @@ export default function App() {
                     Texto de Contenido
                   </h3>
                   <TypographyExample
-                    text="Texto de cuerpo para párrafos y contenido principal. Esta es la tipografía base que se usa en la mayoría del contenido."
+                    text="Texto de cuerpo para pÃ¡rrafos y contenido principal. Esta es la tipografÃ­a base que se usa en la mayorÃ­a del contenido."
                     description="Inter 16px regular"
                     fontSize="16px"
                     fontWeight="400"
                     fontFamily='Inter, sans-serif'
                   />
                   <TypographyExample
-                    text="Texto pequeño para etiquetas, metadatos y contenido secundario."
+                    text="Texto pequeÃ±o para etiquetas, metadatos y contenido secundario."
                     description="Inter 14px regular"
                     fontSize="14px"
                     fontWeight="400"
                     fontFamily='Inter, sans-serif'
                   />
                   <TypographyExample
-                    text="Texto de capción muy pequeño."
+                    text="Texto de capciÃ³n muy pequeÃ±o."
                     description="Inter 12px regular"
                     fontSize="12px"
                     fontWeight="400"
@@ -259,7 +259,7 @@ export default function App() {
                 fontWeight: '600' 
               }}
             >
-              🧩 Biblioteca de Componentes
+              ðŸ§© Biblioteca de Componentes
             </h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -277,15 +277,15 @@ export default function App() {
                 </h3>
                 <div className="space-y-6">
                   <div className="space-y-3">
-                    <PrimaryButton>Botón Primario</PrimaryButton>
+                    <PrimaryButton>BotÃ³n Primario</PrimaryButton>
                     <div className="text-xs text-gray-500 font-mono">
-                      bg-[#0EA5E9] • Acciones principales
+                      bg-[#0EA5E9] â€¢ Acciones principales
                     </div>
                   </div>
                   <div className="space-y-3">
-                    <SecondaryButton>Botón Secundario</SecondaryButton>
+                    <SecondaryButton>BotÃ³n Secundario</SecondaryButton>
                     <div className="text-xs text-gray-500 font-mono">
-                      bg-[#E2E8F0] • Acciones secundarias
+                      bg-[#E2E8F0] â€¢ Acciones secundarias
                     </div>
                   </div>
                 </div>
@@ -307,7 +307,7 @@ export default function App() {
                   <div className="space-y-3">
                     <UrgentChip />
                     <div className="text-xs text-gray-500 font-mono">
-                      bg-[#EF4444] • Estado de urgencia
+                      bg-[#EF4444] â€¢ Estado de urgencia
                     </div>
                   </div>
                   <div className="flex gap-2 flex-wrap">
@@ -335,7 +335,7 @@ export default function App() {
                   fontWeight: '500' 
                 }}
               >
-                Componentes de Conversación
+                Componentes de ConversaciÃ³n
               </h3>
               <div className="space-y-6 max-w-lg">
                 <div className="space-y-2">
@@ -343,15 +343,15 @@ export default function App() {
                     Mensaje del usuario con estilo alineado a la derecha
                   </UserBubble>
                   <div className="text-xs text-gray-500 text-right font-mono">
-                    bg-[#F3F4F6] • Mensaje del usuario
+                    bg-[#F3F4F6] â€¢ Mensaje del usuario
                   </div>
                 </div>
                 <div className="space-y-2">
                   <AssistantBubble>
-                    Respuesta del asistente con efecto de vidrio translúcido
+                    Respuesta del asistente con efecto de vidrio translÃºcido
                   </AssistantBubble>
                   <div className="text-xs text-gray-500 font-mono">
-                    rgba(255,255,255,0.7) • backdrop-blur • Mensaje del asistente
+                    rgba(255,255,255,0.7) â€¢ backdrop-blur â€¢ Mensaje del asistente
                   </div>
                 </div>
               </div>
@@ -368,11 +368,11 @@ export default function App() {
                 fontWeight: '600' 
               }}
             >
-              💡 Ejemplos de Implementación
+              ðŸ’¡ Ejemplos de ImplementaciÃ³n
             </h2>
             
             <div className="space-y-8">
-              {/* Ejemplo de Conversación */}
+              {/* Ejemplo de ConversaciÃ³n */}
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-8 border border-blue-100">
                 <h3 
                   className="mb-6 text-gray-700 text-center"
@@ -382,7 +382,7 @@ export default function App() {
                     fontWeight: '500' 
                   }}
                 >
-                  Ejemplo de Conversación
+                  Ejemplo de ConversaciÃ³n
                 </h3>
                 <div className="space-y-4 max-w-lg mx-auto">
                   <UserBubble>
@@ -390,7 +390,7 @@ export default function App() {
                   </UserBubble>
                   <div className="flex items-center gap-2">
                     <AssistantBubble>
-                      ¡Por supuesto! Te puedo ayudar con eso.
+                      Â¡Por supuesto! Te puedo ayudar con eso.
                     </AssistantBubble>
                     <UrgentChip />
                   </div>
@@ -404,7 +404,7 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Guía de Uso */}
+              {/* GuÃ­a de Uso */}
               <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm">
                 <h3 
                   className="mb-6 text-gray-700"
@@ -414,7 +414,7 @@ export default function App() {
                     fontWeight: '500' 
                   }}
                 >
-                  Guía de Uso
+                  GuÃ­a de Uso
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -426,13 +426,13 @@ export default function App() {
                         fontWeight: '500' 
                       }}
                     >
-                      ✅ Buenas Prácticas
+                      âœ… Buenas PrÃ¡cticas
                     </h4>
                     <ul className="space-y-2 text-sm text-gray-600" style={{ fontFamily: 'Inter' }}>
-                      <li>• Usa un solo botón primario por sección</li>
-                      <li>• Aplica colores semánticos consistentemente</li>
-                      <li>• Mantén la jerarquía tipográfica</li>
-                      <li>• Usa el espaciado de tokens definidos</li>
+                      <li>â€¢ Usa un solo botÃ³n primario por secciÃ³n</li>
+                      <li>â€¢ Aplica colores semÃ¡nticos consistentemente</li>
+                      <li>â€¢ MantÃ©n la jerarquÃ­a tipogrÃ¡fica</li>
+                      <li>â€¢ Usa el espaciado de tokens definidos</li>
                     </ul>
                   </div>
                   <div>
@@ -444,13 +444,13 @@ export default function App() {
                         fontWeight: '500' 
                       }}
                     >
-                      ❌ Evitar
+                      âŒ Evitar
                     </h4>
                     <ul className="space-y-2 text-sm text-gray-600" style={{ fontFamily: 'Inter' }}>
-                      <li>• Múltiples botones primarios juntos</li>
-                      <li>• Colores fuera de la paleta definida</li>
-                      <li>• Tamaños de texto personalizados</li>
-                      <li>• Espaciado inconsistente</li>
+                      <li>â€¢ MÃºltiples botones primarios juntos</li>
+                      <li>â€¢ Colores fuera de la paleta definida</li>
+                      <li>â€¢ TamaÃ±os de texto personalizados</li>
+                      <li>â€¢ Espaciado inconsistente</li>
                     </ul>
                   </div>
                 </div>
@@ -462,3 +462,6 @@ export default function App() {
     </div>
   );
 }
+
+
+

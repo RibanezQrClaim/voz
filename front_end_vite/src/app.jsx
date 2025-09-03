@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import VoiceCommandApp from './components/VoiceCommandApp';
 import EditorFiltros from './components/EditorFiltros';
 import EditorContexto from './components/EditorContexto';
@@ -43,5 +43,8 @@ export default function App() {
     </div>
   );
 }
+
+
+
 
 

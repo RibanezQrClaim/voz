@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 
 interface TokenDisplayProps {
   title: string;
@@ -73,9 +73,9 @@ export function DesignTokens({ title, tokens }: TokenDisplayProps) {
                 {token.value}
               </code>
               {copiedToken === token.name ? (
-                <span className="text-green-600 text-xs font-medium">✓</span>
+                <span className="text-green-600 text-xs font-medium">âœ“</span>
               ) : (
-                <span className="text-gray-400 text-xs">📋</span>
+                <span className="text-gray-400 text-xs">ðŸ“‹</span>
               )}
             </div>
           </div>
@@ -84,3 +84,6 @@ export function DesignTokens({ title, tokens }: TokenDisplayProps) {
     </div>
   );
 }
+
+
+

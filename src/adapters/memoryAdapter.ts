@@ -1,4 +1,4 @@
-export interface MemoryAdapter {
+﻿export interface MemoryAdapter {
   get(ns: string, key: string): any | null;
   set(ns: string, key: string, value: any): void;
   remove(ns: string, key: string): void;
@@ -49,3 +49,6 @@ export const memoryAdapter: MemoryAdapter = {
     delete memStore[k];
   }
 };
+
+
+

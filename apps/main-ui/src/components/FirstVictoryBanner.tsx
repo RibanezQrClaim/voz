@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 
 interface Props {
   onOpenSummary?: () => void;
@@ -57,10 +57,13 @@ export default function FirstVictoryBanner({ onOpenSummary }: Props) {
             title="Cerrar"
             className="px-2 py-1 rounded-xl border border-black/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/40"
           >
-            ✕
+            âœ•
           </button>
         </div>
       </div>
     </div>
   );
 }
+
+
+

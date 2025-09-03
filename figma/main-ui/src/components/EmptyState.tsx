@@ -1,4 +1,4 @@
-import { MessageSquare, Sparkles, ArrowRight } from 'lucide-react';
+﻿import { MessageSquare, Sparkles, ArrowRight } from 'lucide-react';
 
 export function EmptyState() {
   return (
@@ -23,13 +23,13 @@ export function EmptyState() {
           <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-400/20 to-blue-400/20 -z-10 blur-xl group-hover:blur-lg transition-all duration-150"></div>
         </div>
         
-        {/* Título y descripción */}
+        {/* TÃ­tulo y descripciÃ³n */}
         <div className="space-y-3">
           <h2 className="text-xl font-medium text-slate-800 font-['IBM_Plex_Sans'] bg-gradient-to-r from-slate-700 to-slate-900 bg-clip-text text-transparent">
-            ¡Comencemos a conversar!
+            Â¡Comencemos a conversar!
           </h2>
           <p className="text-slate-600 font-['Inter'] leading-relaxed">
-            Tu asistente está listo para ayudarte. Escribe un mensaje o usa uno de los atajos rápidos para comenzar.
+            Tu asistente estÃ¡ listo para ayudarte. Escribe un mensaje o usa uno de los atajos rÃ¡pidos para comenzar.
           </p>
         </div>
         
@@ -39,7 +39,7 @@ export function EmptyState() {
             Prueba preguntando:
           </p>
           <div className="space-y-2">
-            {['¿Qué tengo programado para hoy?', '¿Cuáles son mis tareas urgentes?', 'Muéstrame mis clientes recientes'].map((suggestion, index) => (
+            {['Â¿QuÃ© tengo programado para hoy?', 'Â¿CuÃ¡les son mis tareas urgentes?', 'MuÃ©strame mis clientes recientes'].map((suggestion, index) => (
               <div 
                 key={index}
                 className="flex items-center space-x-2 p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-slate-200/50 hover:bg-white/90 transition-all duration-150 cursor-pointer group hover:scale-105 hover:shadow-lg"
@@ -64,3 +64,6 @@ export function EmptyState() {
     </div>
   );
 }
+
+
+

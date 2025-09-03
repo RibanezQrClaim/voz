@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+﻿import React, { useEffect } from "react";
 import { Input } from "../../ui/Input";
 import { Button } from "../../ui/Button";
 import { Select } from "../../ui/Select";
@@ -60,3 +60,6 @@ export function StepRules({ rules, onChange, onValidChange }: StepRulesProps) {
         </div>
     );
 }
+
+
+

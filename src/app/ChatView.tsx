@@ -1,4 +1,4 @@
-import * as React from "react";
+﻿import * as React from "react";
 import { MessageBubble, ChatRole } from "../ui/MessageBubble";
 
 export type ChatMessage = {
@@ -75,7 +75,7 @@ export function ChatView({
       >
         {messages.length === 0 ? (
           <div className="text-center text-[--fg-muted] mt-12">
-            Escribe tu primera pregunta…
+            Escribe tu primera preguntaâ€¦
           </div>
         ) : (
           messages.map((m) => (
@@ -110,7 +110,7 @@ export function ChatView({
         <div className="flex items-end gap-2">
           <textarea
             className="flex-1 min-h-[46px] max-h-40 rounded-xl border border-[--border] bg-[--card] text-[--fg] placeholder-[--fg-muted] p-3 focus:outline-none focus:ring-2 ring-[--ring]"
-            placeholder="Escribe un mensaje… (Enter para enviar, Shift+Enter salto de línea)"
+            placeholder="Escribe un mensajeâ€¦ (Enter para enviar, Shift+Enter salto de lÃ­nea)"
             value={text}
             onChange={(e) => setText(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -130,3 +130,6 @@ export function ChatView({
     </div>
   );
 }
+
+
+

@@ -1,4 +1,4 @@
-import type { NxBubbleProps } from './NxUserBubble.js';
+﻿import type { NxBubbleProps } from './NxUserBubble.js';
 import { spacing } from './tokens.js';
 
 export function NxAssistantBubble({ ariaLabel, className = '', ...props }: NxBubbleProps) {
@@ -7,3 +7,6 @@ export function NxAssistantBubble({ ariaLabel, className = '', ...props }: NxBub
     <div role="group" aria-label={ariaLabel} tabIndex={0} className={`${base} ${className}`} {...props} />
   );
 }
+
+
+

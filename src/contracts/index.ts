@@ -1,4 +1,4 @@
-// src/contracts/index.ts
+﻿// src/contracts/index.ts
 
 // === Agente / Usuario / Confianza / Reglas ===
 export interface AgentProfile {
@@ -45,7 +45,7 @@ export interface EmailSummary {
   subject: string;
   snippet: string;
   summary280: string; // resumen corto para card
-  why: string;        // explicación breve (reglas/razón)
+  why: string;        // explicaciÃ³n breve (reglas/razÃ³n)
 }
 
 export interface Card {
@@ -60,12 +60,15 @@ export interface Card {
 }
 
 export interface UIState {
-  // ← Agregamos 'config' para la Config Page
+  // â† Agregamos 'config' para la Config Page
   view: 'onboarding' | 'main' | 'config';
   list: Card[];
   listFilter: 'all' | 'urgent' | 'today';
   listSort: 'recency' | 'importance';
 }
 
-// (Opcional) alias útil
+// (Opcional) alias Ãºtil
 export type UIView = UIState['view'];
+
+
+

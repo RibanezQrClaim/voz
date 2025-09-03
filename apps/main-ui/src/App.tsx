@@ -1,4 +1,4 @@
-// apps/main-ui/src/App.tsx
+﻿// apps/main-ui/src/App.tsx
 import type { FormEvent, ReactNode } from 'react';
 import { useEffect, useMemo, useState } from 'react';
 import { NxAssistantBubble, NxButton, NxChip, NxUserBubble } from '@nexusg/ui';
@@ -6,7 +6,7 @@ import ErrorBanner from './components/ErrorBanner';
 import OfflineNotice from './components/OfflineNotice';
 import FirstVictoryBanner from './components/FirstVictoryBanner';
 
-// ⬇️ importa el skin
+// â¬‡ï¸ importa el skin
 import FigmaZipShell from './FigmaZipShell';
 
 export default function App() {
@@ -16,7 +16,7 @@ export default function App() {
   const state = params.get('state');
   const isSmoke = params.get('smoke') === '1';
 
-  // ⬇️ si pides el skin, lo devolvemos y listo
+  // â¬‡ï¸ si pides el skin, lo devolvemos y listo
   if (ui === 'figma') {
     return <FigmaZipShell />;
   }
@@ -44,7 +44,7 @@ export default function App() {
   const content: ReactNode =
     state === 'empty' ? (
       <div className="flex flex-1 items-center justify-center p-4" role="status">
-        <p>No hay mensajes aún.</p>
+        <p>No hay mensajes aÃºn.</p>
       </div>
     ) : isLoading ? (
       <div className="flex-1 overflow-y-auto p-4 space-y-4 animate-pulse">
@@ -57,7 +57,7 @@ export default function App() {
         <NxUserBubble ariaLabel="Mensaje de usuario">Hola</NxUserBubble>
         <NxAssistantBubble ariaLabel="Respuesta del asistente">
           <div className="space-y-2">
-            <p>¿En qué puedo ayudarte?</p>
+            <p>Â¿En quÃ© puedo ayudarte?</p>
             <div className="flex gap-2">
               <NxChip>Normal</NxChip>
               <NxChip variant="urgent">Urgente</NxChip>
@@ -79,7 +79,7 @@ export default function App() {
           <div className="p-4 space-y-4">
             <div className="bg-red-500 rounded-2xl p-4 text-white">Tailwind v3 OK</div>
             <div className="rounded-2xl border border-white/40 bg-white/60 shadow-glass backdrop-blur-[14px] p-4">
-              <p className="text-sm text-text">Glass OK — tokens & preset activos</p>
+              <p className="text-sm text-text">Glass OK â€” tokens & preset activos</p>
             </div>
           </div>
         )}
@@ -104,3 +104,6 @@ export default function App() {
     </div>
   );
 }
+
+
+

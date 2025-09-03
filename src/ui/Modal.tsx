@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Button } from './Button';
 
 interface ModalProps {
@@ -20,3 +20,6 @@ export function Modal({ open, onClose, children }: ModalProps) {
     </div>
   );
 }
+
+
+

@@ -1,4 +1,4 @@
-// apps/main-ui/vite.config.ts
+﻿// apps/main-ui/vite.config.ts
 // @ts-nocheck
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -20,3 +20,6 @@ export default defineConfig(({ mode }) => {
     resolve: { dedupe: ['react', 'react-dom', 'react/jsx-runtime'] },
   };
 });
+
+
+

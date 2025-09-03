@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useState } from 'react';
 
 export default function VoiceCommandApp() {
@@ -46,7 +46,7 @@ export default function VoiceCommandApp() {
       });
 
       const data = await res.json();
-      const respuestaTexto = data.respuesta || '⚠️ Sin respuesta del servidor.';
+      const respuestaTexto = data.respuesta || 'âš ï¸ Sin respuesta del servidor.';
       setRespuesta(respuestaTexto);
 
       const synth = window.speechSynthesis;
@@ -55,7 +55,7 @@ export default function VoiceCommandApp() {
       synth.speak(utterance);
     } catch (error) {
       console.error('Error al conectar con backend:', error);
-      setRespuesta('❌ Error al conectar con el servidor.');
+      setRespuesta('âŒ Error al conectar con el servidor.');
     }
   };
 
@@ -75,7 +75,7 @@ export default function VoiceCommandApp() {
           onClick={handleHablar}
           className="bg-purple-500 text-white px-4 py-2 rounded"
         >
-          {grabando ? 'Detener' : '🎙️ Hablar'}
+          {grabando ? 'Detener' : 'ðŸŽ™ï¸ Hablar'}
         </button>
 
         <button
@@ -94,5 +94,8 @@ export default function VoiceCommandApp() {
     </div>
   );
 }
+
+
+
 
 
