@@ -13,7 +13,16 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # Trae todo el historial, evita error git 128
+          fetch-depth: 0      # historial + tags completos
+
+      - name: Mark workspace as safe for git
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      - name: Git diagnostics
+        run: |
+          git rev-parse --is-inside-work-tree || true
+          git status || true
+          git describe --tags --always || true
 
       - name: Set up Node
         uses: actions/setup-node@v3
