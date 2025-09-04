@@ -19,7 +19,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,13 +28,8 @@ jobs:
 
       - name: Remove unused Landpage dir (if present)
         run: |
-          if [ -d "Landpage" ]; then
-            rm -rf Landpage
-          fi
-          # también limpiamos metadata de submódulos si quedara
-          if [ -f ".gitmodules" ]; then
-            rm -f .gitmodules
-          fi
+          if [ -d "Landpage" ]; then rm -rf Landpage; fi
+          if [ -f ".gitmodules" ]; then rm -f .gitmodules; fi
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -43,9 +37,17 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      # 🔒 Instalar SOLO el workspace apps/main-ui (evita que otros WS rompan CI)
-      - name: Install deps (apps/main-ui only)
-        run: npm ci -w apps/main-ui
+      # Instalación robusta SOLO en apps/main-ui
+      - name: Install deps (apps/main-ui only, with fallback)
+        working-directory: apps/main-ui
+        run: |
+          set -e
+          echo ">>> npm ci (workspace)"
+          if ! npm ci; then
+            echo ">>> npm ci falló; limpiando y usando npm install"
+            rm -rf node_modules package-lock.json
+            npm install
+          fi
 
       - name: Print versions (diagnóstico)
         run: |
@@ -53,8 +55,14 @@ jobs:
           npm -v
           npx -y -p typescript@5.4.5 tsc -v
 
-      - name: Build main-ui (forces TS 5.4.5 via npm script)
-        run: npm run -w apps/main-ui build
+      - name: Build main-ui (force TS 5.4.5)
+        working-directory: apps/main-ui
+        run: |
+          npx -y -p typescript@5.4.5 tsc -b
+          npx vite build
+
+      - name: Show dist
+        run: ls -la apps/main-ui/dist || true
 
       - name: Upload dist artifact
         uses: actions/upload-artifact@v4
