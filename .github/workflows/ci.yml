@@ -2,65 +2,68 @@ name: CI (main-ui)
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
+    paths:
+      - "apps/main-ui/**"
+      - ".github/workflows/ci.yml"
   pull_request:
-    branches: [ main ]
+    branches: [main]
+    paths:
+      - "apps/main-ui/**"
+      - ".github/workflows/ci.yml"
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ci-main-ui-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  ci-main-ui:
+  build:
     name: CI (main-ui)
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/main-ui
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 2
-          submodules: false   # evitamos el submodule "Landpage"
+          submodules: false
 
-      - name: Git safe.directory (evitar warnings)
-        run: |
-          git config --global --add safe.directory "$GITHUB_WORKSPACE" || true
-
-      - name: Setup Node.js (sin cache)
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20.x"
+          # Importante: sin cache para no depender de package-lock
+          check-latest: true
 
       - name: Print versions
         run: |
           node -v
           npm -v
 
-      - name: Install deps (prefer ci si hay lock; si no, install)
-        working-directory: apps/main-ui
+      - name: Install (tolerante)
         run: |
-          set -euo pipefail
+          # Si existe lockfile usa ci, si no, instala normal
           if [ -f package-lock.json ]; then
-            npm ci
+            npm ci --no-audit --no-fund
           else
-            npm install
+            npm install --no-audit --no-fund
           fi
 
       - name: Build (TypeScript 5.4.5 + Vite) con logs
-        working-directory: apps/main-ui
-        env:
-          CI: "true"
         run: |
           set -euo pipefail
-          npx -y -p typescript@5.4.5 tsc -b 2>&1 | tee ci-tsc.log
-          vite build 2>&1 | tee -a ci-vite.log
+          echo ">>> TSC 5.4.5"
+          npx -y -p typescript@5.4.5 tsc -b 2>&1 | tee ./ci-tsc.log
+          echo ">>> Vite build (usando npx)"
+          npx -y -p vite@5 vite build 2>&1 | tee ./ci-vite.log
 
-      - name: Subir artefactos de diagnóstico
+      - name: Subir logs (siempre)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ci-debug-logs
-          path: |
-            apps/main-ui/ci-tsc.log
-            apps/main-ui/ci-vite.log
-          if-no-files-found: ignore
+          path: apps/main-ui/ci-*.log
+          if-no-files-found: warn
