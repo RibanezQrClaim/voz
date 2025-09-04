@@ -25,12 +25,16 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
-          submodules: false  # evita cualquier intento de procesar submodules (p.ej. Landpage)
+          submodules: false
 
       - name: Remove unused Landpage dir (if present)
         run: |
           if [ -d "Landpage" ]; then
             rm -rf Landpage
+          fi
+          # también limpiamos metadata de submódulos si quedara
+          if [ -f ".gitmodules" ]; then
+            rm -f .gitmodules
           fi
 
       - name: Setup Node.js
@@ -39,8 +43,15 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - name: Install deps (workspaces)
-        run: npm ci --workspaces
+      # 🔒 Instalar SOLO el workspace apps/main-ui (evita que otros WS rompan CI)
+      - name: Install deps (apps/main-ui only)
+        run: npm ci -w apps/main-ui
+
+      - name: Print versions (diagnóstico)
+        run: |
+          node -v
+          npm -v
+          npx -y -p typescript@5.4.5 tsc -v
 
       - name: Build main-ui (forces TS 5.4.5 via npm script)
         run: npm run -w apps/main-ui build
