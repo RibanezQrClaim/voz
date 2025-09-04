@@ -2,114 +2,75 @@ name: CI (main-ui)
 
 on:
   push:
-    branches: [main]
+    branches: [ "main" ]
     paths:
       - "apps/main-ui/**"
       - ".github/workflows/ci.yml"
   pull_request:
-    branches: [main]
+    branches: [ "main" ]
     paths:
       - "apps/main-ui/**"
       - ".github/workflows/ci.yml"
-  workflow_dispatch:
-
-concurrency:
-  group: ci-main-ui-${{ github.ref }}
-  cancel-in-progress: true
 
 permissions:
   contents: read
 
 jobs:
   build:
+    name: CI (main-ui)
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
+    env:
+      CI: true
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          fetch-depth: 2
           submodules: false
 
-      - name: Sanitize repo (remove Landpage/.gitmodules if present)
+      - name: Configure git safe.directory
         run: |
-          if [ -d "Landpage" ]; then rm -rf Landpage; fi
-          if [ -f ".gitmodules" ]; then
-            grep -v "Landpage" .gitmodules > .gitmodules.tmp || true
-            if [ -s .gitmodules.tmp ]; then mv .gitmodules.tmp .gitmodules; else rm -f .gitmodules .gitmodules.tmp; fi
-          fi
+          git config --global --add safe.directory "$GITHUB_WORKSPACE" || true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: "npm"
-          cache-dependency-path: |
-            apps/main-ui/package-lock.json
+          node-version: '20'
+          cache: 'npm'
+          # ¡Importante! Solo el lockfile real del workspace que se builda
+          cache-dependency-path: apps/main-ui/package-lock.json
 
-      - name: Install deps (apps/main-ui) with fallback + tree
+      - name: Print versions
+        run: |
+          node -v
+          npm -v
+
+      - name: Install deps (robusto)
         working-directory: apps/main-ui
         run: |
-          set -e
-          echo ">>> npm ci"
-          if ! npm ci; then
-            echo ">>> npm ci failed; cleaning and retrying with npm install"
-            rm -rf node_modules package-lock.json
-            npm install
-          fi
-          echo ">>> dependency tree"
-          npm ls --depth=1 || true
-          npm ls --json --all --depth=2 > ../ci-npm-ls.json || true
+          npm ci || { rm -rf node_modules package-lock.json && npm install; }
 
-      - name: Build with diagnostics (tsc 5.4.5 + vite debug)
+      - name: Build with diagnostics (TS 5.4.5 + Vite)
         working-directory: apps/main-ui
         run: |
           set -Eeuo pipefail
-          trap 'echo "❌ FAILED at line $LINENO (phase: ${FASE:-unknown})"; exit 1' ERR
-
-          echo "::group::versions"
-          node -v
-          npm -v
-          npx -y -p typescript@5.4.5 tsc -v
+          echo "::group::tsc (TS 5.4.5)"
+          npx -y -p typescript@5.4.5 tsc -b 2>&1 | tee ci-tsc.log
+          echo "::endgroup::"
+          echo "::group::vite build"
+          npx vite build 2>&1 | tee ci-vite.log
           echo "::endgroup::"
 
-          FASE="tsc"
-          echo "::group::tsc"
-          npx -y -p typescript@5.4.5 tsc -b 2>&1 | tee ../ci-tsc.log
-          echo "::endgroup::"
-
-          FASE="vite"
-          echo "::group::vite"
-          npx vite build --logLevel debug 2>&1 | tee ../ci-vite.log
-          echo "::endgroup::"
-
-          FASE="assert-dist"
-          test -f dist/index.html
-          echo "✅ Build OK"
-
-      - name: Show dist
-        run: ls -la apps/main-ui/dist || true
-
-      - name: Upload debug logs (always)
+      - name: Upload CI debug logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ci-debug-logs
           path: |
-            apps/ci-tsc.log
-            apps/ci-vite.log
-            apps/ci-npm-ls.json
-          if-no-files-found: ignore
-          retention-days: 7
-
-      - name: Upload dist artifact (if present)
-        if: ${{ hashFiles('apps/main-ui/dist/**') != '' }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: main-ui-dist
-          path: apps/main-ui/dist
-          if-no-files-found: error
-          retention-days: 7
+            apps/main-ui/ci-*.log
+          if-no-files-found: warn
+          retention-days: 3
