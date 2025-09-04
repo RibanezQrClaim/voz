@@ -37,7 +37,6 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      # Instalación robusta SOLO en apps/main-ui
       - name: Install deps (apps/main-ui only, with fallback)
         working-directory: apps/main-ui
         run: |
@@ -49,7 +48,7 @@ jobs:
             npm install
           fi
 
-      - name: Print versions (diagnóstico)
+      - name: Print versions
         run: |
           node -v
           npm -v
@@ -64,9 +63,10 @@ jobs:
       - name: Show dist
         run: ls -la apps/main-ui/dist || true
 
+      # ⬇️ Solo subimos artefacto si realmente existe dist/
       - name: Upload dist artifact
+        if: ${{ hashFiles('apps/main-ui/dist/**') != '' }}
         uses: actions/upload-artifact@v4
         with:
           name: main-ui-dist
           path: apps/main-ui/dist
-          if-no-files-found: error
