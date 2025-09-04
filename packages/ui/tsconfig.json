@@ -1,27 +1,22 @@
 {
   "compilerOptions": {
-    "rootDir": "./src",
-    "outDir": "./dist",
-
-    "module": "nodenext",
-    "target": "esnext",
+    "target": "ES2019",
+    "module": "ESNext",
     "jsx": "react-jsx",
-    "lib": ["ESNext", "DOM"],
-    "types": [],
 
-    "sourceMap": true,
     "declaration": true,
-    "declarationMap": true,
+    "outDir": "dist",
 
+    "moduleResolution": "Bundler",
+    "lib": ["ES2020", "DOM"],
     "strict": true,
-    "verbatimModuleSyntax": true,
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
     "skipLibCheck": true,
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+
+    "types": ["react", "react-dom"]
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src"]
 }
