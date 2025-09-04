@@ -2,23 +2,31 @@ name: CI (main-ui)
 
 on:
   push:
-    branches: [main, master, develop]
+    branches: [main]
     paths:
-      - 'apps/main-ui/**'
-      - 'package.json'
-      - 'package-lock.json'
-      - '.github/workflows/**'
+      - "apps/main-ui/**"
+      - ".github/workflows/ci.yml"
   pull_request:
-    branches: [main, master, develop]
+    branches: [main]
     paths:
-      - 'apps/main-ui/**'
-      - 'package.json'
-      - 'package-lock.json'
-      - '.github/workflows/**'
+      - "apps/main-ui/**"
+      - ".github/workflows/ci.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: ci-main-ui-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,47 +34,82 @@ jobs:
           fetch-depth: 1
           submodules: false
 
-      - name: Remove unused Landpage dir (if present)
+      - name: Sanitize repo (remove Landpage/.gitmodules if present)
         run: |
           if [ -d "Landpage" ]; then rm -rf Landpage; fi
-          if [ -f ".gitmodules" ]; then rm -f .gitmodules; fi
+          if [ -f ".gitmodules" ]; then
+            grep -v "Landpage" .gitmodules > .gitmodules.tmp || true
+            if [ -s .gitmodules.tmp ]; then mv .gitmodules.tmp .gitmodules; else rm -f .gitmodules .gitmodules.tmp; fi
+          fi
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: |
+            apps/main-ui/package-lock.json
 
-      - name: Install deps (apps/main-ui only, with fallback)
+      - name: Install deps (apps/main-ui) with fallback + tree
         working-directory: apps/main-ui
         run: |
           set -e
-          echo ">>> npm ci (workspace)"
+          echo ">>> npm ci"
           if ! npm ci; then
-            echo ">>> npm ci falló; limpiando y usando npm install"
+            echo ">>> npm ci failed; cleaning and retrying with npm install"
             rm -rf node_modules package-lock.json
             npm install
           fi
+          echo ">>> dependency tree"
+          npm ls --depth=1 || true
+          npm ls --json --all --depth=2 > ../ci-npm-ls.json || true
 
-      - name: Print versions
+      - name: Build with diagnostics (tsc 5.4.5 + vite debug)
+        working-directory: apps/main-ui
         run: |
+          set -Eeuo pipefail
+          trap 'echo "❌ FAILED at line $LINENO (phase: ${FASE:-unknown})"; exit 1' ERR
+
+          echo "::group::versions"
           node -v
           npm -v
           npx -y -p typescript@5.4.5 tsc -v
+          echo "::endgroup::"
 
-      - name: Build main-ui (force TS 5.4.5)
-        working-directory: apps/main-ui
-        run: |
-          npx -y -p typescript@5.4.5 tsc -b
-          npx vite build
+          FASE="tsc"
+          echo "::group::tsc"
+          npx -y -p typescript@5.4.5 tsc -b 2>&1 | tee ../ci-tsc.log
+          echo "::endgroup::"
+
+          FASE="vite"
+          echo "::group::vite"
+          npx vite build --logLevel debug 2>&1 | tee ../ci-vite.log
+          echo "::endgroup::"
+
+          FASE="assert-dist"
+          test -f dist/index.html
+          echo "✅ Build OK"
 
       - name: Show dist
         run: ls -la apps/main-ui/dist || true
 
-      # ⬇️ Solo subimos artefacto si realmente existe dist/
-      - name: Upload dist artifact
+      - name: Upload debug logs (always)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-debug-logs
+          path: |
+            apps/ci-tsc.log
+            apps/ci-vite.log
+            apps/ci-npm-ls.json
+          if-no-files-found: ignore
+          retention-days: 7
+
+      - name: Upload dist artifact (if present)
         if: ${{ hashFiles('apps/main-ui/dist/**') != '' }}
         uses: actions/upload-artifact@v4
         with:
           name: main-ui-dist
           path: apps/main-ui/dist
+          if-no-files-found: error
+          retention-days: 7
